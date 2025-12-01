@@ -75,6 +75,7 @@ export const routes: Routes = [
   {
     path: APP_ROUTES.main.path,
     component: APP_ROUTES.main.component,
+    canActivate:[AuthGuard],
     data: {
       AuthGuardPipe: redirectToLogin,
     },

@@ -1,10 +1,11 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv"
-import UserRoutes from "./mod/usuario/api/routes"
-import ProgrammerProfileRoutes from "./mod/programador/api/routes"
-import PortafolioRoutes from "./mod/portafolio/api/routes"
-import ProyectRoutes from "./mod/proyecto/api/routes"
+import dotenv from "dotenv";
+import UserRoutes from "./mod/usuario/api/routes";
+import ProgrammerProfileRoutes from "./mod/programador/api/routes";
+import PortafolioRoutes from "./mod/portafolio/api/routes";
+import ProyectRoutes from "./mod/proyecto/api/routes";
+import AvailabilityRoutes from "./mod/disponibilidad/api/routes";
 import { ApiResponse } from "./shared/ApiResponse";
 
 dotenv.config();
@@ -14,16 +15,17 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use("/api/user",UserRoutes );
-app.use("/api/programmerProfile",ProgrammerProfileRoutes );
-app.use("/api/portafolio",PortafolioRoutes );
-app.use("/api/proyect",ProyectRoutes );
+app.use("/api/user", UserRoutes);
+app.use("/api/programmerProfile", ProgrammerProfileRoutes);
+app.use("/api/portafolio", PortafolioRoutes);
+app.use("/api/proyect", ProyectRoutes);
+app.use("/api/availibility", AvailabilityRoutes);
 
 app.use((req, res) => {
-  return ApiResponse.error(res, {},"Seccion no soportada")
+  return ApiResponse.error(res, {}, "Seccion no soportada");
 });
 // Puerto
-const PORT =  3000;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
