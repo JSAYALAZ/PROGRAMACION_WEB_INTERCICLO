@@ -1,11 +1,10 @@
-
 import { Prisma } from "src/generated/prisma/client";
-import { Usuario } from "../domain/models/Usuario";
+import { PerfilProgramador } from "../domain/models/PerfilProgramador";
 
-export interface UserDbDefinition {
-list(q?: any,tx?:Prisma.TransactionClient): Promise<Usuario[]>;
-save(data: Usuario): Promise<string>;
-getById(id:string): Promise<Usuario>;
+export interface ProgrammerProfileDbDefinition {
+list(q?: any,tx?:Prisma.TransactionClient): Promise<PerfilProgramador[]>;
+save(data: PerfilProgramador): Promise<string>;
+getById(id:string): Promise<PerfilProgramador>;
 // count(where: Prisma.UserWhereInput,tx?:Prisma.TransactionClient): Promise<number>;
 //   getById(id: string,tx?:Prisma.TransactionClient): Promise<Usuario>;
 

@@ -9,7 +9,12 @@ export async function zodValidateJson<T>(req: Request, schema: ZodSchema<T>) {
   );
   const result = schema.safeParse(clean);
   if (!result.success || !result.data) {
-    throw AppError.validation("Datos no validos");
+    throw AppError.validation(
+      "Datos no validos",
+      result.error?.issues.map((i) => ({
+        mensage: i.message
+      }))
+    );
   }
   return { validated: result.data, json: data };
 }

@@ -1,12 +1,25 @@
+import { randomBytes } from "crypto";
+
 export class Portafolio {
+  private id: string;
   private ownerId: string;
   private title: string;
-  private description: string;
+  private description: string | null;
 
-  constructor(data: { ownerId: string; title: string; description: string }) {
+  constructor(data: {
+    id: string|null;
+    ownerId: string;
+    title: string;
+    description: string | null;
+  }) {
+    this.id = data.id ?? randomBytes(12).toString("hex");
     this.ownerId = data.ownerId;
     this.title = data.title;
     this.description = data.description;
+  }
+
+  public getId(): string {
+    return this.id;
   }
   // Getters
   public getOwnerId(): string {
@@ -17,7 +30,7 @@ export class Portafolio {
     return this.title;
   }
 
-  public getDescription(): string {
+  public getDescription(): string | null {
     return this.description;
   }
 }

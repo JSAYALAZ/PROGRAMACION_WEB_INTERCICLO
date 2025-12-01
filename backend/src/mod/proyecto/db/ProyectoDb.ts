@@ -30,6 +30,30 @@ export const ProyectoDb: ProyectoDbDefinition = {
       throw AppError.internal();
     }
   },
+  async getById(id) {
+    try {
+      const data = await db.project.findUnique({ where: { id } });
+      if (!data) throw AppError.notFound();
+      //Mapeo a modelos
+      const resp = new Proyecto({
+        id: data.id,
+        description: data.description,
+        liveDemoUrl: data.liveDemoUrl,
+        portafolioId: data.portfolioId,
+        repositoryUrl: data.repositoryUrl,
+        section: data.section,
+        participation: data.participation,
+        title: data.title,
+      });
+
+      return resp;
+    } catch (error) {
+      if (error instanceof AppError) throw error;
+      const mapped = mapPrismaError(error);
+      if (mapped) throw mapped;
+      throw AppError.internal();
+    }
+  },
   async save(data) {
     try {
       const created = await db.project.upsert({

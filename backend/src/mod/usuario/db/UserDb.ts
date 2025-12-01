@@ -29,6 +29,28 @@ export const UserDb: UserDbDefinition = {
       throw AppError.internal();
     }
   },
+  async getById(id) {
+    try {
+      const user = await db.user.findUnique({ where: { id } });
+      if (!user) throw AppError.notFound();
+      //Mapeo a modelos
+      const resp = new Usuario({
+        email: user.email,
+        firebaseUid: user.firebaseUid,
+        foto_perfil: null,
+        id: user.id,
+        rol: user.role,
+        username: user.displayName,
+      });
+
+      return resp;
+    } catch (error) {
+      if (error instanceof AppError) throw error;
+      const mapped = mapPrismaError(error);
+      if (mapped) throw mapped;
+      throw AppError.internal();
+    }
+  },
   async save(data) {
     try {
       const created = await db.user.upsert({
@@ -47,7 +69,7 @@ export const UserDb: UserDbDefinition = {
       return created.id;
     } catch (error) {
       console.log(error);
-      
+
       if (error instanceof AppError) throw error;
       const mapped = mapPrismaError(error);
       if (mapped) throw mapped;

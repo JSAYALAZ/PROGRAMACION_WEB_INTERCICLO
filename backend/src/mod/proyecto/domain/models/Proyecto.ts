@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import { ParticipationType, ProjectSection } from "src/generated/prisma/enums";
 
 export class Proyecto {
@@ -11,7 +12,7 @@ export class Proyecto {
   private portafolioId: string;
 
   constructor(data: {
-    id: string;
+    id: string|null;
     title: string;
     description: string;
     section: ProjectSection;
@@ -20,7 +21,7 @@ export class Proyecto {
     liveDemoUrl: string | null;
     portafolioId: string;
   }) {
-    this.id = data.id;
+   this.id = data.id ?? randomBytes(12).toString("hex");
     this.section = data.section;
     this.title = data.title;
     this.description = data.description;
