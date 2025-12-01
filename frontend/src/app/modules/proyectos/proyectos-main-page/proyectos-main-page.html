@@ -1,0 +1,11 @@
+<div *ngIf="loading$ | async">Cargando...</div>
+
+<div *ngIf="error$ | async as error" class="text-red-500">
+  Error: {{ error }}
+</div>
+
+<pre *ngIf="data$ | async as data">
+  {{ data  }}
+</pre>
+
+<button (click)="reload()">Refetch</button>

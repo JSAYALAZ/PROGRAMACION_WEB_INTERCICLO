@@ -1,0 +1,166 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  PROGRAMMER
+  USER
+}
+
+enum ProjectSection {
+  ACADEMIC
+  WORK
+}
+
+enum ParticipationType {
+  FRONTEND
+  BACKEND
+  DATABASE
+  FULLSTACK
+  OTHER
+}
+
+model User {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  firebaseUid String  @unique // UID de Firebase si usas login Google
+  email       String
+  displayName String
+  role        Role      @default(USER)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime?
+  deleted     Boolean   @default(false)
+
+  // Perfil de programador (nullable; sólo si role == PROGRAMMER)
+  profile     ProgrammerProfile?
+  // Relaciones
+  socialLinks SocialLink[]       @relation("userSocialLinks")
+  // portfolio    Portfolio?          @relation(fields: [portfolioId], references: [id])
+  // portfolioId  String?             @db.ObjectId
+
+  notifications Notification[]
+  bookingsSent  Booking[]      @relation("bookingRequester")
+}
+
+model ProgrammerProfile {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String    @unique @db.ObjectId // relación 1:1 con User
+  name         String
+  specialty    String?
+  bio          String?
+  avatarUrl    String? // URL a imagen (Firebase Storage o CDN)
+  contactLinks Json? // { website?: string, email?: string, phone?: string }
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime?
+  deleted      Boolean   @default(false)
+
+  // Relaciónes
+  user           User           @relation(fields: [userId], references: [id])
+  portfolio      Portfolio?
+  availabilities Availability[]
+  notifications  Notification[]
+  bookings       Booking[]
+}
+
+model SocialLink {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  user      User     @relation("userSocialLinks", fields: [userId], references: [id])
+  userId    String   @db.ObjectId
+  provider  String // e.g., "github", "linkedin", "twitter"
+  url       String
+  label     String? // texto opcional
+  order     Int? // para orden en UI
+  createdAt DateTime @default(now())
+}
+
+model Portfolio {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  ownerId     String    @unique @db.ObjectId // user id (programmer)
+  title       String
+  description String?
+  sections    Json? // estructura libre si quieres (ej: orden de secciones)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime?
+  deleted     Boolean   @default(false)
+
+  owner    ProgrammerProfile @relation(fields: [ownerId], references: [id])
+  projects Project[]
+}
+
+model Project {
+  id            String            @id @default(auto()) @map("_id") @db.ObjectId
+  portfolioId   String            @db.ObjectId
+  title         String
+  description   String
+  section       ProjectSection    @default(ACADEMIC)
+  participation ParticipationType
+  technologies  String[] // lista de tecnologías utilizadas
+  repositoryUrl String?
+  liveDemoUrl   String?
+  images        String[] // URLs a imágenes o demo
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime?
+  deleted       Boolean           @default(false)
+
+  portfolio Portfolio @relation(fields: [portfolioId], references: [id])
+}
+
+model Availability {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  programmerId String   @db.ObjectId
+  // Puedes modelar como rangos o slots; aquí usamos slots reutilizables:
+  date         DateTime // fecha completa (día) + hora inicio según timezone de usuario
+  durationMin  Int // duración en minutos (ej: 60)
+  recurring    Boolean  @default(false) // opcional: si es recurrente
+  notes        String?
+  createdAt    DateTime @default(now())
+  cancelled    Boolean  @default(false)
+
+  programmer ProgrammerProfile @relation(fields: [programmerId], references: [id])
+  bookings   Booking[]         @relation("availabilityBookings")
+}
+
+model Booking {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  requesterId     String    @db.ObjectId // usuario que solicita (User)
+  programmerId    String    @db.ObjectId // programmer (ProgrammerProfile.id)
+  availabilityId  String?   @db.ObjectId // referencia al slot reservado (opcional)
+  date            DateTime // fecha y hora acordada
+  durationMin     Int
+  comment         String?
+  status          String    @default("PENDING") // PENDING, APPROVED, REJECTED, CANCELLED
+  responseMessage String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime?
+  deleted         Boolean   @default(false)
+
+  requester    User              @relation("bookingRequester", fields: [requesterId], references: [id])
+  programmer   ProgrammerProfile @relation(fields: [programmerId], references: [id])
+  availability Availability?     @relation("availabilityBookings", fields: [availabilityId], references: [id])
+}
+
+model Notification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String?  @db.ObjectId // a quién va dirigido (User)
+  profileId String?  @db.ObjectId // alternativa: notificar a un profile (programmer)
+  title     String
+  body      String
+  meta      Json? // payload extra (p. ej. { bookingId: "...", type: "booking.request" })
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user    User?              @relation(fields: [userId], references: [id])
+  profile ProgrammerProfile? @relation(fields: [profileId], references: [id])
+}
