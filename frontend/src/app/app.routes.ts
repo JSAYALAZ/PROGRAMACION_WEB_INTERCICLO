@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { UserResolver } from './services/user-resolver.service';
-import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import {  AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { LoginPage } from './pages/login-page/login-page.component';
 import { SignupPage } from './pages/signup-page/signup-page.component';
 import { MainPage } from './pages/main-page/main-page.component';
@@ -8,9 +8,10 @@ import { Home } from './modules/home/home';
 import { UsersMainPage } from './modules/usuarios/users-main-page/users-main-page';
 import { ProyectosMainPage } from './modules/proyectos/proyectos-main-page/proyectos-main-page';
 import { AsesoriasMainPage } from './asesorias/asesorias-main-page/asesorias-main-page';
+import { UserEditPage } from './modules/usuarios/user-edit-page/user-edit-page';
 
 function redirectToLogin() {
-  redirectUnauthorizedTo('/login');
+  redirectUnauthorizedTo(APP_ROUTES.login.path);
 }
 /** Una ruta protegida concreta */
 export interface RouteConfig {
@@ -44,26 +45,44 @@ export const APP_ROUTES = {
         path: 'usuarios',
         absolutePath: 'idx/usuarios',
         component: UsersMainPage,
-        apiPath: 'https://localhost:3000/api/users',
+        apiPath: 'http://localhost:3000/api/user',
+      },
+      usuarios_edit: {
+        path: 'usuarios/:id/edit',
+        absolutePath: 'idx/usuarios/:id/edit',
+        component: UserEditPage,
+        apiPath: 'http://localhost:3000/api/user',
       },
       proyectos: {
         path: 'proyectos',
         absolutePath: 'idx/proyectos',
         component: ProyectosMainPage,
-        apiPath: 'https://localhost:3000/api/proyects',
+        apiPath: 'http://localhost:3000/api/proyect',
       },
       asesorias: {
         path: 'asesorias',
         absolutePath: 'idx/asesorias',
         component: AsesoriasMainPage,
-        apiPath: 'https://localhost:3000/api/asesorias',
+        apiPath: 'http://localhost:3000/api/asesorias',
+      },
+      portafolio: {
+        path: 'portafolio',
+        absolutePath: 'idx/portafolio',
+        component: AsesoriasMainPage,
+        apiPath: 'http://localhost:3000/api/asesorias',
+      },
+      citas: {
+        path: 'citas',
+        absolutePath: 'idx/citas',
+        component: AsesoriasMainPage,
+        apiPath: 'http://localhost:3000/api/citas',
       },
     },
   },
 };
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: APP_ROUTES.login.path, pathMatch: 'full' },
   {
     path: APP_ROUTES.login.path,
     component: APP_ROUTES.login.component,
@@ -95,9 +114,14 @@ export const routes: Routes = [
         path: APP_ROUTES.main.childrens.asesorias.path,
         component: APP_ROUTES.main.childrens.asesorias.component,
       },
+      //USUARIOS
       {
         path: APP_ROUTES.main.childrens.usuarios.path,
         component: APP_ROUTES.main.childrens.usuarios.component,
+      },
+      {
+        path: APP_ROUTES.main.childrens.usuarios_edit.path,
+        component: APP_ROUTES.main.childrens.usuarios_edit.component,
       },
     ],
   },

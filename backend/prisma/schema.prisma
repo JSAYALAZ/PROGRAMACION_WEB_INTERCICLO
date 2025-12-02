@@ -53,7 +53,15 @@ model User {
   notifications Notification[]
   bookingsSent  Booking[]      @relation("bookingRequester")
 }
-
+enum Weekday {
+  MON
+  TUE
+  WED
+  THU
+  FRI
+  SAT
+  SUN
+}
 model ProgrammerProfile {
   id           String    @id @default(auto()) @map("_id") @db.ObjectId
   userId       String    @unique @db.ObjectId // relación 1:1 con User
@@ -69,9 +77,21 @@ model ProgrammerProfile {
   // Relaciónes
   user           User           @relation(fields: [userId], references: [id])
   portfolio      Portfolio?
-  availabilities Availability[]
+  available ProgrammerAvailability[]
   notifications  Notification[]
   bookings       Booking[]
+}
+
+model ProgrammerAvailability {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  programmerId String   @db.ObjectId
+  day          Weekday
+  startMinutes Int      // minutos desde 00:00 (ej: 8:00 -> 480)
+  endMinutes   Int      // exclusivo/fin (ej: 13:00 -> 780)
+
+  programmer   ProgrammerProfile @relation(fields: [programmerId], references: [id])
+
+  @@index([programmerId, day])
 }
 
 model SocialLink {
@@ -117,20 +137,6 @@ model Project {
   portfolio Portfolio @relation(fields: [portfolioId], references: [id])
 }
 
-model Availability {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  programmerId String   @db.ObjectId
-  // Puedes modelar como rangos o slots; aquí usamos slots reutilizables:
-  date         DateTime // fecha completa (día) + hora inicio según timezone de usuario
-  durationMin  Int // duración en minutos (ej: 60)
-  recurring    Boolean  @default(false) // opcional: si es recurrente
-  notes        String?
-  createdAt    DateTime @default(now())
-  cancelled    Boolean  @default(false)
-
-  programmer ProgrammerProfile @relation(fields: [programmerId], references: [id])
-  bookings   Booking[]         @relation("availabilityBookings")
-}
 
 model Booking {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
@@ -148,7 +154,6 @@ model Booking {
 
   requester    User              @relation("bookingRequester", fields: [requesterId], references: [id])
   programmer   ProgrammerProfile @relation(fields: [programmerId], references: [id])
-  availability Availability?     @relation("availabilityBookings", fields: [availabilityId], references: [id])
 }
 
 model Notification {

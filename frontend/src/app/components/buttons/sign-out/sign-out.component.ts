@@ -1,5 +1,7 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Auth, signOut } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { APP_ROUTES } from '../../../app.routes';
 
 @Component({
   selector: 'app-sign-out',
@@ -11,8 +13,11 @@ import { Auth, signOut } from '@angular/fire/auth';
 })
 export class SignOutComponent {
   auth = inject(Auth);
+  private router = inject(Router)
 
   onSignOut() {
-    signOut(this.auth);
+    signOut(this.auth).then(res=>{
+      this.router.navigate([APP_ROUTES.login.path])
+    });
   }
 }

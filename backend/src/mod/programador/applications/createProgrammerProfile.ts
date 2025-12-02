@@ -18,6 +18,7 @@ export const createProgrammerProfile = async (
       portafolioId: null,
       specialty: "Frontend",
       userId: dto.userId,
+      disponibilidad:[]
     });
     const result = await ProgrammerProfileDb.save(profile);
     return result;

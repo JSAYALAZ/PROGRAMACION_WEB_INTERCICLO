@@ -48,6 +48,20 @@ export class SidebarCompComponent implements OnInit {
         main: { path: APP_ROUTES.main.childrens.asesorias.absolutePath },
       },
     },
+    {
+      name: 'Portafolio',
+      code: 'PORTAFOLIO',
+      routes: {
+        main: { path: APP_ROUTES.main.childrens.portafolio.absolutePath },
+      },
+    },
+    {
+      name: 'Citas',
+      code: 'CITAS',
+      routes: {
+        main: { path: APP_ROUTES.main.childrens.citas.absolutePath },
+      },
+    },
   ];
   onSelect(path: string) {}
   select(path: string) {}

@@ -1,4 +1,5 @@
 import { randomBytes } from "crypto";
+import { Disponibilidad } from "src/mod/disponibilidad/domain/models/Disponibilidad";
 
 export class PerfilProgramador {
   private id: string;
@@ -10,6 +11,12 @@ export class PerfilProgramador {
   private avatarUrl: string|null;
   private contactLinks: string|null;
   private portafolioId: string|null;
+  private disponibilidad: Disponibilidad[]
+
+  // Getters
+  public getDisponibilidad(): Disponibilidad[] {
+    return this.disponibilidad;
+  }
 
   constructor(data: {
     id: string|null;
@@ -20,6 +27,7 @@ export class PerfilProgramador {
     avatarUrl: string|null;
     contactLinks: string|null;
     portafolioId: string|null;
+    disponibilidad: Disponibilidad[]
   }) {
     this.id = data.id ?? randomBytes(12).toString("hex");
     this.userId = data.userId;
@@ -29,6 +37,7 @@ export class PerfilProgramador {
     this.avatarUrl = data.avatarUrl;
     this.contactLinks = data.contactLinks;
     this.portafolioId = data.portafolioId;
+    this.disponibilidad = data.disponibilidad;
   }
     // Getters
   public getId(): string {

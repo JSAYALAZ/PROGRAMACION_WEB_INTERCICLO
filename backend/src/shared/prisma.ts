@@ -4,7 +4,7 @@ import { AppError } from "./AppError";
 
 
 export const db = new PrismaClient({
-  log:["query"]
+  // log:["query"]
 });
 /**db
  * Intenta convertir un error de Prisma en un AppError semántico.

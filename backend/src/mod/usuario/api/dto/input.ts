@@ -10,3 +10,8 @@ export const UserCreateDTO = z.object({
   role: z.enum(Role),
 });
 export type UserCreateDTO = z.infer<typeof UserCreateDTO>;
+export const UserUpdateDTO = z.object({
+  displayName: z.string(),
+  role: z.enum(Role),
+});
+export type UserUpdateDTO = z.infer<typeof UserUpdateDTO>;

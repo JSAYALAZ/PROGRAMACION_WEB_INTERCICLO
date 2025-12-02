@@ -1,51 +1,54 @@
-import { randomBytes } from "crypto";
+import { Weekday } from "src/generated/prisma/enums";
 
 export class Disponibilidad {
-  private id: string;
-
   private programmerId: string;
-  private date: Date;
-  private durationMin: number;
-  private notes: string|null;
-  private cancelled: boolean;
+  private day: Weekday;
+  private startMinutes: number;
+  private endMinutes: number;
 
-  constructor(data: {
-    id: string|null;
-    programmerId: string;
-    date: Date;
-    durationMin: number;
-    notes: string|null;
-    cancelled: boolean;
-  }) {
-    this.id = data.id ?? randomBytes(12).toString("hex");
-    this.programmerId = data.programmerId;
-    this.date = data.date;
-    this.durationMin = data.durationMin;
-    this.notes = data.notes;
-    this.cancelled = data.cancelled;
-  }
-  
-   public getId(): string {
-    return this.id;
-  }
-
+  // Getters
   public getProgrammerId(): string {
     return this.programmerId;
   }
 
-  public getDate(): Date {
-    return this.date;
+  public getDay(): Weekday {
+    return this.day;
   }
 
-  public getDurationMin(): number {
-    return this.durationMin;
+  public getStartMinutes(): number {
+    return this.startMinutes;
   }
 
-  public getNotes(): string|null {
-    return this.notes;
+  public getEndMinutes(): number {
+    return this.endMinutes;
   }
 
-  public getCancelled(): boolean {
-    return this.cancelled;
+  // Setters
+  public setProgrammerId(programmerId: string): void {
+    this.programmerId = programmerId;
+  }
+
+  public setDay(day: Weekday): void {
+    this.day = day;
+  }
+
+  public setStartMinutes(startMinutes: number): void {
+    this.startMinutes = startMinutes;
+  }
+
+  public setEndMinutes(endMinutes: number): void {
+    this.endMinutes = endMinutes;
+  }
+
+  constructor(data: {
+    programmerId: string;
+    day: Weekday;
+    startMinutes: number;
+    endMinutes: number;
+  }) {
+    this.programmerId = data.programmerId;
+    this.day = data.day;
+    this.startMinutes = data.startMinutes;
+    this.endMinutes = data.endMinutes;
   }
 }
