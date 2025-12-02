@@ -5,17 +5,21 @@ import { ApiResponse } from "src/shared/ApiResponse";
 import { PortafolioCreateDTO } from "./dto/input";
 import { createPortafolio } from "../applications/createPortafolio";
 import { getPortafolioById } from "../applications/getPortafolioById";
+import { PortafolioMapper } from "./mapper/portafolio_mapper";
+import { UserMapper } from "src/mod/usuario/api/mapper/user_mapper";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-   try {
-      const user = await listPortafolios();
-  return ApiResponse.success(res, "Correcto", user);
-    } catch (error) {
-      return ApiResponse.error(res, error);
-    }
-  
+  try {
+    const dates = await listPortafolios();
+    const resp = dates.map((user) => {
+      return PortafolioMapper.map(user);
+    });
+    return ApiResponse.success(res, "Correcto", resp);
+  } catch (error) {
+    return ApiResponse.error(res, error);
+  }
 });
 router.post("/", async (req, res) => {
   try {
@@ -29,8 +33,8 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await getPortafolioById(id);
-    return ApiResponse.success(res, "Correcto", user);
+    const data = await getPortafolioById(id);
+    return ApiResponse.success(res, "Correcto", PortafolioMapper.map(data));
   } catch (error) {
     return ApiResponse.error(res, error);
   }

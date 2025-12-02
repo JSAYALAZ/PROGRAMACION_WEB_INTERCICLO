@@ -5,10 +5,9 @@
 </div>
 
 <pre *ngIf="data$ | async as data">
-  <div *ngFor="let d of data">
-    <p>{{d.username}}</p>
-    <button (click)="editar(d.id)">Editar</button>
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-2">
+
+    <app-user-card *ngFor="let d of data" [user]="d"></app-user-card>
   </div>
 </pre>
 
-<!-- <button (click)="reload()">Refetch</button> -->

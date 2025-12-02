@@ -7,8 +7,11 @@ import { MainPage } from './pages/main-page/main-page.component';
 import { Home } from './modules/home/home';
 import { UsersMainPage } from './modules/usuarios/users-main-page/users-main-page';
 import { ProyectosMainPage } from './modules/proyectos/proyectos-main-page/proyectos-main-page';
-import { AsesoriasMainPage } from './asesorias/asesorias-main-page/asesorias-main-page';
 import { UserEditPage } from './modules/usuarios/user-edit-page/user-edit-page';
+import { PortafolioMainPage } from './modules/portafolio/portafolio-main-page/portafolio-main-page';
+import { ProyectosNewPage } from './modules/proyectos/proyectos-new-page/proyectos-new-page';
+import { AsesoriasMainPage } from './modules/asesorias/asesorias-main-page/asesorias-main-page';
+import { PerfilProgramadorMainPage } from './modules/perfilProgramador/perfilProgramador-main-page/perfilProgramador-main-page';
 
 function redirectToLogin() {
   redirectUnauthorizedTo(APP_ROUTES.login.path);
@@ -32,10 +35,10 @@ export const APP_ROUTES = {
     path: 'login',
     component: LoginPage,
   },
-  signup: {
-    path: 'registrarse',
-    component: SignupPage,
-  },
+  // signup: {
+  //   path: 'registrarse',
+  //   component: SignupPage,
+  // },
   main: {
     path: 'idx',
     component: MainPage,
@@ -59,6 +62,12 @@ export const APP_ROUTES = {
         component: ProyectosMainPage,
         apiPath: 'http://localhost:3000/api/proyect',
       },
+      proyectos_new: {
+        path: 'proyectos/new',
+        absolutePath: 'idx/proyectos/new',
+        component: ProyectosNewPage,
+        apiPath: 'http://localhost:3000/api/proyect',
+      },
       asesorias: {
         path: 'asesorias',
         absolutePath: 'idx/asesorias',
@@ -68,7 +77,7 @@ export const APP_ROUTES = {
       portafolio: {
         path: 'portafolio',
         absolutePath: 'idx/portafolio',
-        component: AsesoriasMainPage,
+        component: PortafolioMainPage,
         apiPath: 'http://localhost:3000/api/asesorias',
       },
       citas: {
@@ -76,6 +85,12 @@ export const APP_ROUTES = {
         absolutePath: 'idx/citas',
         component: AsesoriasMainPage,
         apiPath: 'http://localhost:3000/api/citas',
+      },
+      perfilProgramador: {
+        path: 'programmer-profile',
+        absolutePath: 'idx/programmer-profile',
+        component: PerfilProgramadorMainPage,
+        apiPath: 'http://localhost:3000/api/programmerProfile',
       },
     },
   },
@@ -87,10 +102,10 @@ export const routes: Routes = [
     path: APP_ROUTES.login.path,
     component: APP_ROUTES.login.component,
   },
-  {
-    path: APP_ROUTES.signup.path,
-    component: APP_ROUTES.signup.component,
-  },
+  // {
+  //   path: APP_ROUTES.signup.path,
+  //   component: APP_ROUTES.signup.component,
+  // },
   {
     path: APP_ROUTES.main.path,
     component: APP_ROUTES.main.component,
@@ -106,9 +121,14 @@ export const routes: Routes = [
         path: APP_ROUTES.main.childrens.main.path,
         component: APP_ROUTES.main.childrens.main.component,
       },
+      //Proyectos
       {
         path: APP_ROUTES.main.childrens.proyectos.path,
         component: APP_ROUTES.main.childrens.proyectos.component,
+      },
+      {
+        path: APP_ROUTES.main.childrens.proyectos_new.path,
+        component: APP_ROUTES.main.childrens.proyectos_new.component,
       },
       {
         path: APP_ROUTES.main.childrens.asesorias.path,
@@ -122,6 +142,22 @@ export const routes: Routes = [
       {
         path: APP_ROUTES.main.childrens.usuarios_edit.path,
         component: APP_ROUTES.main.childrens.usuarios_edit.component,
+      },
+      //Portafolio
+      {
+        path: APP_ROUTES.main.childrens.portafolio.path,
+        component: APP_ROUTES.main.childrens.portafolio.component,
+      },
+      //Citas
+      {
+        path: APP_ROUTES.main.childrens.citas.path,
+        component: APP_ROUTES.main.childrens.citas.component,
+      },
+
+      //Perfil de programador
+      {
+        path: APP_ROUTES.main.childrens.perfilProgramador.path,
+        component: APP_ROUTES.main.childrens.perfilProgramador.component,
       },
     ],
   },

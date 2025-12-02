@@ -6,6 +6,7 @@ export interface UserDbDefinition {
 list(q?: any,tx?:Prisma.TransactionClient): Promise<Usuario[]>;
 save(data: Usuario): Promise<string>;
 getById(id:string): Promise<Usuario>;
+getByFirebaseId(id:string): Promise<Usuario>;
 // count(where: Prisma.UserWhereInput,tx?:Prisma.TransactionClient): Promise<number>;
 //   getById(id: string,tx?:Prisma.TransactionClient): Promise<Usuario>;
 

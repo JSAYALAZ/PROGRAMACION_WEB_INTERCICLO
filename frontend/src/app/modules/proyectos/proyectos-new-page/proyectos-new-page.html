@@ -1,0 +1,58 @@
+<div>
+  <form
+    [formGroup]="authForm"
+    (ngSubmit)="onSubmit()"
+    class="form_background flex-colpx-6 py-8 rounded-md grid grid-cols-2 gap-4"
+  >
+    <div class="form_container">
+      <label for="title" class="form_label">Titulo</label>
+      <input id="title" type="text" formControlName="title" class="form_input" />
+    </div>
+    <div class="form_container">
+      <label for="description" class="form_label">Descripcion</label>
+      <input id="description" type="text" formControlName="description" class="form_input" />
+    </div>
+    <div class="form_container">
+      <label for="liveDemoUrl" class="form_label">Url path</label>
+      <input id="liveDemoUrl" type="text" formControlName="liveDemoUrl" class="form_input" />
+    </div>
+    <div class="form_container">
+      <label for="portafolioId" class="form_label">Portafolio id</label>
+      <input id="portafolioId" type="text" formControlName="portafolioId" class="form_input" />
+    </div>
+    <div class="form_container">
+      <label for="repositoryUrl" class="form_label">Url de repositorio</label>
+      <input id="repositoryUrl" type="text" formControlName="repositoryUrl" class="form_input" />
+    </div>
+
+    <div>
+      <label for="participation" class="block text-sm font-medium mb-1">Tipo de participacion</label>
+      <select
+        name="participation"
+        id="participation"
+        class="form_input"
+        formControlName="participation"
+      >
+        <option value="FRONTEND">Front-end</option>
+        <option value="BACKEND">Back-end</option>
+        <option value="DATABASE">Base de datos</option>
+        <option value="FULLSTACK">Fullstack</option>
+        <option value="OTHER">Otro</option>
+      </select>
+    </div>
+    <div>
+      <label for="section" class="block text-sm font-medium mb-1">Seccion</label>
+      <select name="section" id="section" class="form_input" formControlName="section">
+        <option value="ACADEMIC">Academico</option>
+        <option value="WORK">Trabajo</option>
+      </select>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full py-2 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 active:scale-98 hover:cursor-pointer col-span-2"
+    >
+      {{ loadingSubmit ? 'Cargando' : ' Iniciar sesion' }}
+    </button>
+  </form>
+</div>

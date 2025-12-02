@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { AxiosService } from '../../../services/axios.service';
 import { APP_ROUTES } from '../../../app.routes';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-edit-page',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './user-edit-page.html',
   styleUrl: './user-edit-page.css',
 })
@@ -16,6 +18,8 @@ export class UserEditPage {
   authForm!: FormGroup;
   userId: string = '';
   loadingSubmit: boolean = false;
+  private sub?: Subscription;
+
   get data$() {
     return this.axios.data$;
   }
@@ -61,31 +65,33 @@ export class UserEditPage {
         });
       this.route.navigate([APP_ROUTES.main.childrens.usuarios.absolutePath]);
     } catch (err: any) {
-      console.log(err);
-
       if (err instanceof Error) {
-        // this.toast.warn('Datos de inicio de session incorrectos');
-        // if (err.message == AuthErrorCodes.INVALID_LOGIN_CREDENTIALS) {
-        // }
       }
     } finally {
       this.loadingSubmit = false;
     }
   }
   ngOnInit() {
-    if (this.activeRoute.snapshot.paramMap.get('id') == null) {
+    const userId = this.activeRoute.snapshot.paramMap.get('id');
+    if (userId == null) {
       this.route.navigate([APP_ROUTES.main.childrens.usuarios.path]);
     } else {
-      this.userId = this.activeRoute.snapshot.paramMap.get('id')!;
-      this.axios.fetch(
-        `${APP_ROUTES.main.childrens.usuarios.apiPath}/${this.userId}`,
-        { page: 1 },
-        []
-      );
+      this.userId = userId;
+      console.log(`${APP_ROUTES.main.childrens.usuarios.apiPath}/${userId}`);
+      this.axios.fetch(`${APP_ROUTES.main.childrens.usuarios.apiPath}/${userId}`, { page: 1 }, []);
+      this.sub = this.axios.data$.pipe(
+
+      ).subscribe(data => {
+        this.authForm.patchValue({
+          displayName: data.username ?? '',
+          role: data.rol ?? ''
+        });
+      });
     }
-    
   }
   reload() {
     this.axios.fetch(APP_ROUTES.main.childrens.proyectos.apiPath);
   }
-}
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
+  }}

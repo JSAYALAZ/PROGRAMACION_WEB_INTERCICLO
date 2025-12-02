@@ -62,6 +62,13 @@ export class SidebarCompComponent implements OnInit {
         main: { path: APP_ROUTES.main.childrens.citas.absolutePath },
       },
     },
+    {
+      name: 'Perfil de programador',
+      code: 'CITAS',
+      routes: {
+        main: { path: APP_ROUTES.main.childrens.perfilProgramador.absolutePath },
+      },
+    },
   ];
   onSelect(path: string) {}
   select(path: string) {}

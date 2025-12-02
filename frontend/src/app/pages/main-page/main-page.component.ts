@@ -17,10 +17,5 @@ export class MainPage {
   user: User = this.activeRoute.snapshot.data['user'];
 
   constructor() {
-
-    console.log("Ejecutando");
-    
-    console.log(this.user);
-    
   }
 }

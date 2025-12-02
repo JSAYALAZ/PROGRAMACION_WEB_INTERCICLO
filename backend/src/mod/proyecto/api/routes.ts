@@ -5,13 +5,17 @@ import { zodValidateJson } from "src/shared/ZodValidator";
 import { ProyectCreateDTO } from "./dto/input";
 import { createProyect } from "../applications/createProyect";
 import { getProyectById } from "../applications/getProyectById";
+import { ProyectoMapper } from "./mapper/proyecto_mapper";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-   try {
-    const user = await listProyects();
-    return ApiResponse.success(res, "Correcto", user);
+  try {
+    const dates = await listProyects();
+    const resp = dates.map((user) => {
+      return ProyectoMapper.map(user);
+    });
+    return ApiResponse.success(res, "Correcto", resp);
   } catch (error) {
     return ApiResponse.error(res, error);
   }
@@ -28,8 +32,8 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await getProyectById(id);
-    return ApiResponse.success(res, "Correcto", user);
+    const data = await getProyectById(id);
+    return ApiResponse.success(res, "Correcto", ProyectoMapper.map(data));
   } catch (error) {
     return ApiResponse.error(res, error);
   }

@@ -10,7 +10,7 @@ export const createUser = async (dto: UserCreateDTO) => {
       firebaseUid: dto.firebaseUid,
       foto_perfil: null,
       id: null,
-      rol: dto.role,
+      rol: "USER",
       username: dto.displayName,
     });
     const result = await UserDb.save(user);

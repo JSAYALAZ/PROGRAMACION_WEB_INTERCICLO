@@ -20,7 +20,7 @@ import { APP_ROUTES } from '../../app.routes';
   imports: [ReactiveFormsModule, RouterLink],
 })
 export class SignupPage {
-  authForm!: FormGroup;
+  // authForm!: FormGroup;
 
   googleAuthProvider = new GoogleAuthProvider();
 
@@ -32,75 +32,66 @@ export class SignupPage {
     private router: Router,
     private http: HttpClient
   ) {
-    this.initForm();
+    // this.initForm();
   }
 
-  initForm() {
-    this.authForm = new FormGroup({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      user: new FormControl('', Validators.required),
-    });
-  }
+  // initForm() {
+  //   this.authForm = new FormGroup({
+  //     email: new FormControl('', Validators.required),
+  //     password: new FormControl('', Validators.required),
+  //     user: new FormControl('', Validators.required),
+  //   });
+  // }
 
-  async onSubmit() {
-    console.log("aqui");
-    console.log(this.loadingSubmit);
+  // async onSubmit() {
+  //   console.log("dskdasljdask");
     
-    
-    if (this.loadingSubmit) return;
-    this.loadingSubmit = true;
-    // this.toast.error('Completa la informacion');
-    if (!this.authForm.valid) {
-      this.loadingSubmit = false;
-      return;
-    }
+  //   if (this.loadingSubmit) return;
+  //   this.loadingSubmit = true;
+  //   // this.toast.error('Completa la informacion');
+  //   if (!this.authForm.valid) {
+  //     this.loadingSubmit = false;
+  //     return;
+  //   }
 
-    try {
-      const credential = await createUserWithEmailAndPassword(
-        this.auth,
-        this.authForm.value.email,
-        this.authForm.value.password
-      );
-      console.log(credential);
+  //   this.authForm.value
+  //   try {
+  //     const credential = await createUserWithEmailAndPassword(
+  //       this.auth,
+  //       this.authForm.value.email,
+  //       this.authForm.value.password
+  //     );
+  //     const object = {
+  //       firebaseUid: credential.user.uid,
+  //       email: credential.user.email,
+  //       displayName: this.authForm.value.user,
+  //     };
 
-      const uid = credential.user.uid;
-      const email = credential.user.email;
-      this.http
-        .post('https://localhost:3000/api/users', {
-          uid,
-          email,
-        })
-        .subscribe((data) => {
-          console.log(data);
-        });
-    } catch (error: any) {
-      console.log(error);
-
-      if (error instanceof Error) {
-        // if (error.message.includes(AuthErrorCodes.INVALID_EMAIL)) {
-        //   this.toast.warn('Email is not val id');
-        // } else if (error.message.includes(AuthErrorCodes.WEAK_PASSWORD)) {
-        //   this.toast.warn('Please enter a stronger password');
-        // } else if (error.message.includes(AuthErrorCodes.EMAIL_EXISTS)) {
-        //   this.toast.warn('The email is already used for another account');
-        // } else {
-        //   this.toast.error('Something went wrong, please try again. ');
-        // }
-      }
-    } finally {
-      this.loadingSubmit = false;
-    }
-  }
+  //     this.http.post(APP_ROUTES.main.childrens.usuarios.apiPath, object).subscribe((data) => {
+  //       console.log(data);
+  //     });
+  //   } catch (error: any) {
+  //     if (error instanceof Error) {
+  //     }
+  //   } finally {
+  //     this.loadingSubmit = false;
+  //   }
+  // }
 
   async createUserWithGoogle() {
     if (this.loadingSubmit) return;
     this.loadingSubmit = true;
     try {
-      await signInWithPopup(this.auth, this.googleAuthProvider);
-      this.redirectMain();
+      const credential = await signInWithPopup(this.auth, this.googleAuthProvider);
+      const object = {
+        firebaseUid: credential.user.uid,
+        email: credential.user.email,
+        displayName: 'Sin definir',
+      };
+      this.http.post(APP_ROUTES.main.childrens.usuarios.apiPath, object).subscribe((data) => {
+        console.log(data);
+      });
     } catch (error) {
-      console.log(error);
       if (error instanceof Error) {
         // this.toast.error('Something went wrong, please try again. ');
       }

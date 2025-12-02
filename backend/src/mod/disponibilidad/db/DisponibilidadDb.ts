@@ -6,17 +6,15 @@ import { Disponibilidad } from "../domain/models/Disponibilidad";
 export const DisponibilidadDb: DisponibilidadDbDefinition = {
   async list() {
     try {
-      const users = await db.availability.findMany();
+      const users = await db.programmerAvailability.findMany();
 
       //Mapeo a modelos
       const resp = users.map(
         (u): Disponibilidad =>
           new Disponibilidad({
-            id: u.id,
-            cancelled: u.cancelled,
-            date: u.date,
-            durationMin: u.durationMin,
-            notes: u.notes,
+            day: u.day,
+            endMinutes: u.endMinutes,
+            startMinutes: u.startMinutes,
             programmerId: u.programmerId,
           })
       );
@@ -30,15 +28,15 @@ export const DisponibilidadDb: DisponibilidadDbDefinition = {
   },
   async getById(id) {
     try {
-      const data = await db.availability.findUnique({ where: { id } });
+      const data = await db.programmerAvailability.findUnique({
+        where: { id },
+      });
       if (!data) throw AppError.notFound();
       //Mapeo a modelos
       const resp = new Disponibilidad({
-        id: data.id,
-        cancelled: data.cancelled,
-        date: data.date,
-        durationMin: data.durationMin,
-        notes: data.notes,
+        day: data.day,
+        endMinutes: data.endMinutes,
+        startMinutes: data.startMinutes,
         programmerId: data.programmerId,
       });
 
@@ -50,23 +48,27 @@ export const DisponibilidadDb: DisponibilidadDbDefinition = {
       throw AppError.internal();
     }
   },
-  async save(data) {
+  async deleteAllFromProgrammer(programmerId) {
     try {
-      const created = await db.availability.upsert({
-        where: { id: data.getId() },
-        create: {
-          date: data.getDate().toISOString(),
-          durationMin: data.getDurationMin(),
-          notes: data.getNotes(),
-          programmerId: data.getProgrammerId(),
-        },
-        update: {
-          durationMin: data.getDurationMin(),
-          notes: data.getNotes(),
-          cancelled: data.getCancelled(),
-        },
+      const created = await db.programmerAvailability.deleteMany({
+        where: { programmerId },
       });
-      return created.id;
+    } catch (error) {
+      if (error instanceof AppError) throw error;
+      const mapped = mapPrismaError(error);
+      if (mapped) throw mapped;
+      throw AppError.internal();
+    }
+  },
+  async createMany(data) {
+    try {
+      // const created = await db.programmerAvailability.createMany({
+      //   data: data.map(d=>({
+          
+      //   })),
+       
+      // });
+
     } catch (error) {
       if (error instanceof AppError) throw error;
       const mapped = mapPrismaError(error);

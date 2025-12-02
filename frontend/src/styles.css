@@ -2,7 +2,7 @@
 
 @layer components {
 .text_color {
-  @apply text-black dark:text-neutral-200
+  @apply text-black 
 }
 }
 .form_label {
@@ -10,15 +10,15 @@
 }
 
 .form_input {
-  @apply w-full pl-2 h-10 rounded shadow-xl dark:bg-neutral-600 invalid:border-2 invalid:border-red-400
+  @apply w-full pl-2 h-10 rounded shadow-xl  invalid:border-2 invalid:border-red-400
 }
 
 .form_container {
-  @apply dark:bg-none items-center gap-3  w-full
+  @apply  items-center gap-3  w-full
 }
 
 .form_background {
-  @apply dark:bg-neutral-800 bg-neutral-300
+  @apply  bg-neutral-300
 }
 
 /*
@@ -31,7 +31,7 @@ table {
 
 /*Estilo de THEAD*/
 thead {
-  @apply text-lg font-extrabold bg-neutral-300 dark:bg-neutral-700 
+  @apply text-lg font-extrabold bg-neutral-300
 }
 
 thead tr {
@@ -44,7 +44,7 @@ thead tr th {
 
 /*Estilo de TBODY*/
 tbody {
-  @apply bg-neutral-200 text-center dark:bg-neutral-800 dark:opacity-85 dark:text-neutral-300 text-sm
+  @apply bg-neutral-200 text-center  text-sm
 }
 
 tbody tr {
@@ -60,7 +60,7 @@ tbody tr td div {
 }
 
 tbody tr:hover {
-  @apply bg-neutral-100 dark:bg-neutral-700 overflow-y-scroll;
+  @apply bg-neutral-100 overflow-y-scroll;
 }
 
 /**

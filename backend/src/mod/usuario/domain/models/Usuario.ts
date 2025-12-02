@@ -1,6 +1,7 @@
 import { Role } from "src/generated/prisma/enums";
 import { RedSocial } from "src/mod/redSocial/domain/models/RedSocial";
 import { randomBytes } from "crypto";
+import { AppError } from "src/shared/AppError";
 
 export class Usuario {
   private id: string;
@@ -9,6 +10,28 @@ export class Usuario {
   private foto_perfil: string | null;
   private email: string;
   private rol: Role;
+
+  // Setters
+  public setUsername(username: string): void {
+    this.username = username;
+  }
+
+  public setFotoPerfil(fotoPerfil: string | null): void {
+    this.foto_perfil = fotoPerfil;
+  }
+
+  public setEmail(email: string): void {
+    this.email = email;
+  }
+
+  public setRol(rol: Role): void {
+    if (this.rol != "USER") {
+      throw AppError.unauthorized(
+        "No se puede actualizar el rol de este usuario"
+      );
+    }
+    this.rol = rol;
+  }
   private redesSociales: RedSocial[] = [];
 
   constructor(data: {

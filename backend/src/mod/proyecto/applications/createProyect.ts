@@ -6,7 +6,7 @@ import { getPortafolioById } from "src/mod/portafolio/applications/getPortafolio
 
 export const createProyect = async (dto: ProyectCreateDTO) => {
   try {
-    await getPortafolioById(dto.portafolioId)
+    await getPortafolioById(dto.portafolioId);
     const user = new Proyecto({
       description: dto.description,
       id: null,

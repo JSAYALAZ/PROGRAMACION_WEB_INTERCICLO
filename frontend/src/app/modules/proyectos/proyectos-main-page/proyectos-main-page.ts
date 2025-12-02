@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AxiosService } from '../../../services/axios.service';
 import { CommonModule } from '@angular/common';
 import { APP_ROUTES } from '../../../app.routes';
+import { ProjectCard } from '../proyect-card/proyect-card';
 
 @Component({
   selector: 'app-proyectos-main-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,ProjectCard],
   templateUrl: './proyectos-main-page.html',
   styleUrl: './proyectos-main-page.css',
 })

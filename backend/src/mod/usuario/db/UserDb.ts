@@ -2,7 +2,6 @@ import { db, mapPrismaError } from "src/shared/prisma";
 import { Usuario } from "../domain/models/Usuario";
 import { AppError } from "src/shared/AppError";
 import { UserDbDefinition } from "./UserDbDefinition";
-import { Prisma } from "src/generated/prisma/client";
 
 export const UserDb: UserDbDefinition = {
   async list() {
@@ -51,6 +50,28 @@ export const UserDb: UserDbDefinition = {
       throw AppError.internal();
     }
   },
+  async getByFirebaseId(id) {
+    try {
+      const user = await db.user.findUnique({ where: { firebaseUid:id } });
+      if (!user) throw AppError.notFound();
+      //Mapeo a modelos
+      const resp = new Usuario({
+        email: user.email,
+        firebaseUid: user.firebaseUid,
+        foto_perfil: null,
+        id: user.id,
+        rol: user.role,
+        username: user.displayName,
+      });
+
+      return resp;
+    } catch (error) {
+      if (error instanceof AppError) throw error;
+      const mapped = mapPrismaError(error);
+      if (mapped) throw mapped;
+      throw AppError.internal();
+    }
+  },
   async save(data) {
     try {
       const created = await db.user.upsert({
@@ -61,6 +82,7 @@ export const UserDb: UserDbDefinition = {
           firebaseUid: data.getFirebaseUid(),
         },
         update: {
+          role: data.getRole(),
           displayName: data.getUsername(),
           email: data.getEmail(),
           firebaseUid: data.getFirebaseUid(),
@@ -68,8 +90,6 @@ export const UserDb: UserDbDefinition = {
       });
       return created.id;
     } catch (error) {
-      console.log(error);
-
       if (error instanceof AppError) throw error;
       const mapped = mapPrismaError(error);
       if (mapped) throw mapped;

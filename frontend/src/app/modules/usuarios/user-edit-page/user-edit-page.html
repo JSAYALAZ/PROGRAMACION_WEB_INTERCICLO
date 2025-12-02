@@ -1,1 +1,30 @@
-<p>u{{data$}}</p>
+<div *ngIf="loading$ | async">Cargando...</div>
+
+<div *ngIf="data$ | async as data">
+  <form
+    [formGroup]="authForm"
+    (ngSubmit)="onSubmit()"
+    class="form_background flex flex-col gap-4 px-6 py-8 rounded-md"
+  >
+    <div class="form_container">
+      <label for="displayName" class="form_label">Nombre de usuario</label>
+      <input id="displayName" type="text" formControlName="displayName" class="form_input" />
+    </div>
+
+    <div>
+      <label for="role" class="block text-sm font-medium mb-1">Rol</label>
+      <select name="role" id="role" class="form_input" formControlName="role">
+        <option value="PROGRAMMER">Programador</option>
+        <option value="USER">Usuario</option>
+        <option value="ADMIN">Administrador</option>
+      </select>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full py-2 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 active:scale-98 hover:cursor-pointer"
+    >
+      {{ loadingSubmit ? 'Cargando' : ' Iniciar sesion' }}
+    </button>
+  </form>
+</div>

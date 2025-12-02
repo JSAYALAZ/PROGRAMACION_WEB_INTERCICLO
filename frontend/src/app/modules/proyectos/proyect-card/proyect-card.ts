@@ -1,0 +1,46 @@
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+
+export type ProyectOutputDTO = {
+  id: string;
+  title: string;
+  description: string;
+  section: string; // normaliza según tu enum ProjectSection
+  participation: string; // normaliza según ParticipationType
+  repositoryUrl: string | null;
+  liveDemoUrl: string | null;
+  portafolioId: string;
+};
+
+@Component({
+  selector: 'app-project-card',
+  imports:[CommonModule],
+  templateUrl: './proyect-card.html',
+})
+export class ProjectCard {
+  @Input({ required: true }) project!: ProyectOutputDTO;
+
+  // Mapeo de color por sección (ajusta claves a tus enums reales)
+  sectionColorMap: Record<string, string> = {
+    WEB: 'bg-indigo-100 text-indigo-800',
+    MOBILE: 'bg-green-100 text-green-800',
+    BACKEND: 'bg-rose-100 text-rose-800',
+    DATA: 'bg-yellow-100 text-yellow-800',
+    DEFAULT: 'bg-gray-100 text-gray-800',
+  };
+
+  participationColorMap: Record<string, string> = {
+    SOLO: 'bg-slate-100 text-slate-800',
+    TEAM: 'bg-blue-100 text-blue-800',
+    LEAD: 'bg-purple-100 text-purple-800',
+    DEFAULT: 'bg-gray-100 text-gray-800',
+  };
+
+  getSectionClasses(section: string) {
+    return this.sectionColorMap[section] ?? 'bg-gray-100 text-gray-800';
+  }
+
+  getParticipationClasses(part: string) {
+    return this.participationColorMap[part] ?? 'bg-gray-100 text-gray-800';
+  }
+}

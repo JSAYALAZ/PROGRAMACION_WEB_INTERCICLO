@@ -51,4 +51,6 @@ export class Disponibilidad {
     this.startMinutes = data.startMinutes;
     this.endMinutes = data.endMinutes;
   }
+
+  
 }

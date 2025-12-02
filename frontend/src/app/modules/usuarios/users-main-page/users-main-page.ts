@@ -4,11 +4,12 @@ import { APP_ROUTES } from '../../../app.routes';
 import { CommonModule } from '@angular/common';
 import { ɵInternalFormsSharedModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserCard, UserOutputDTO } from '../user-card/user-card';
 
 @Component({
   selector: 'app-users-main-page',
   standalone: true,
-  imports: [CommonModule, ɵInternalFormsSharedModule],
+  imports: [CommonModule, ɵInternalFormsSharedModule,UserCard],
   templateUrl: './users-main-page.html',
   styleUrl: './users-main-page.css',
 })
@@ -23,7 +24,7 @@ export class UsersMainPage {
     return this.axios.error$;
   }
 
-  constructor(private axios: AxiosService<any[]>, private router: Router) {}
+  constructor(private axios: AxiosService<UserOutputDTO[]>, private router: Router) {}
   ngOnInit() {
     this.axios.fetch(APP_ROUTES.main.childrens.usuarios.apiPath, { page: 1 }, []);
   }

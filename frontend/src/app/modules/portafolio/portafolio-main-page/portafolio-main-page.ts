@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { AxiosService } from '../../../services/axios.service';
 import { CommonModule } from '@angular/common';
 import { APP_ROUTES } from '../../../app.routes';
+import { PortafolioCard } from '../portafolio-card/portafolio-card';
 
 @Component({
   selector: 'app-portafolio-main-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,PortafolioCard],
   templateUrl: './portafolio-main-page.html',
   styleUrl: './portafolio-main-page.css',
 })
-export class ProyectosMainPage implements OnInit {
+export class PortafolioMainPage implements OnInit {
   get data$() {
     return this.axios.data$;
   }

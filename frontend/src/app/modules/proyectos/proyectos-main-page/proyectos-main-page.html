@@ -1,13 +1,9 @@
 <div *ngIf="loading$ | async">Cargando...</div>
 
-<div *ngIf="error$ | async as error" class="text-red-500">
-  Error: {{ error }}
-</div>
+<div *ngIf="error$ | async as error" class="text-red-500">Error: {{ error }}</div>
 
 <pre *ngIf="data$ | async as data">
-  <div *ngFor="let d of data">
-    <p>{{d.title}}</p>
-  </div>
+  <app-project-card *ngFor="let d of data" [project]="d"></app-project-card>
 </pre>
 
 <!-- <button (click)="reload()">Refetch</button> -->
