@@ -1,0 +1,99 @@
+<article
+  *ngIf="programmer"
+  class="w-full max-w-3xl bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-transform transform hover:-translate-y-0.5 hover:shadow-lg"
+  role="region"
+  aria-label="Ficha de programador {{ programmer.name }}"
+>
+  <div class="flex flex-col sm:flex-row items-stretch">
+    <!-- AVATAR -->
+    <div class="flex-shrink-0 p-4 sm:p-6 flex items-center justify-center bg-slate-50">
+      <img
+        *ngIf="programmer.avatarUrl; else avatarPlaceholder"
+        [src]="programmer.avatarUrl"
+        [alt]="programmer.name"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border border-slate-200"
+      />
+
+      <ng-template #avatarPlaceholder>
+        <div
+          class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center text-xl font-bold text-white"
+        >
+          {{ programmer.name?.charAt(0) }}
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-1 p-4 sm:p-6 flex flex-col justify-between gap-4">
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+        <div>
+          <h3 class="text-lg sm:text-xl font-semibold text-slate-900">
+            {{ programmer.name }}
+          </h3>
+          <p class="text-sm text-slate-600 mt-1" *ngIf="programmer.specialty">
+            {{ programmer.specialty }}
+          </p>
+        </div>
+
+        <div class="hidden sm:flex flex-col items-end">
+          <a
+            *ngIf="programmer.contactLinks"
+            [href]="programmer.contactLinks"
+            target="_blank"
+            rel="noopener"
+            class="text-sm font-medium underline text-indigo-600"
+            >Agendar asesoria</a
+          >
+          <button
+            (click)="portafolioView()"
+            class="mt-2 inline-block text-sm px-3 py-1 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-100
+            hover:cursor-pointer "
+            >Ver portafolio →</button
+          >
+        </div>
+      </div>
+
+      <!-- BIO (oculto en pantallas muy pequeñas si es largo) -->
+      <p class="text-sm text-slate-700 line-clamp-3">
+        {{ programmer.bio || 'Sin biografía disponible.' }}
+      </p>
+
+      <!-- Disponibilidad y botones para móviles -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <ul class="flex flex-wrap gap-2">
+          <li
+            *ngFor="let d of programmer.disponibilidad || []"
+            class="flex items-center gap-3 px-3 py-1 rounded-md bg-slate-50 border border-slate-200 text-sm"
+          >
+            <!-- <span class="font-medium text-slate-800 ">{{ d.day }}</span> -->
+            <!-- <span class="text-slate-600 text-xs">{{ d.horaInicio }} — {{ d.horaFin }}</span> -->
+          </li>
+
+          <li
+            *ngIf="!programmer.disponibilidad?.length"
+            class="px-3 py-1 rounded-md bg-slate-50 border border-slate-200 text-sm text-slate-600"
+          >
+            Sin disponibilidad
+          </li>
+        </ul>
+
+        <!-- BOTONES MÓVIL -->
+        <div class="flex items-center gap-2 sm:hidden">
+          <a
+            *ngIf="programmer.contactLinks"
+            [href]="programmer.contactLinks"
+            target="_blank"
+            rel="noopener"
+            class="text-sm px-3 py-1 rounded-md bg-indigo-600 text-white"
+            >Contactar</a
+          >
+
+          <a class="text-sm px-3 py-1 rounded-md border border-slate-200 text-slate-700"
+            >Portafolio</a
+          >
+          <!-- [routerLink]="['/idx/portafolio/view', programmer.portafolioId]" -->
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

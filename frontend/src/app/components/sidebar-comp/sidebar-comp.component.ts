@@ -63,10 +63,17 @@ export class SidebarCompComponent implements OnInit {
       },
     },
     {
-      name: 'Perfil de programador',
-      code: 'CITAS',
+      name: 'Programadores',
+      code: 'PROGRAMMERS',
       routes: {
         main: { path: APP_ROUTES.main.childrens.perfilProgramador.absolutePath },
+      },
+    },
+    {
+      name: 'Acciones para programador',
+      code: 'PROGRAMMERS',
+      routes: {
+        main: { path: APP_ROUTES.main.childrens.perfilProgramador_actions.absolutePath },
       },
     },
   ];

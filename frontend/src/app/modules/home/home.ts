@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AxiosService } from '../../services/axios.service';
 import { UserOutputDTO } from '../usuarios/user-card/user-card';
 import { APP_ROUTES } from '../../app.routes';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -26,12 +27,12 @@ export class Home {
     return this.axios.error$;
   }
 
-  constructor(private axios: AxiosService<UserOutputDTO>, private router: Router) {}
+  constructor(private axios: AxiosService<UserOutputDTO>) {}
   ngOnInit() {
     this.axios.fetch(`${APP_ROUTES.main.childrens.usuarios.apiPath}/${this.user.uid}`, { page: 1 });
   }
   getInitial() {
-    "J"
+    'J';
     // return this.data$.pipe().subscribe.username?.[0]?.toUpperCase() ?? '?';
   }
 }

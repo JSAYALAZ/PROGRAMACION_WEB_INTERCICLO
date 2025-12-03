@@ -2,6 +2,7 @@ import { Role } from "src/generated/prisma/enums";
 import { RedSocial } from "src/mod/redSocial/domain/models/RedSocial";
 import { randomBytes } from "crypto";
 import { AppError } from "src/shared/AppError";
+import { PerfilProgramador } from "src/mod/programador/domain/models/PerfilProgramador";
 
 export class Usuario {
   private id: string;
@@ -10,15 +11,13 @@ export class Usuario {
   private foto_perfil: string | null;
   private email: string;
   private rol: Role;
+  private programmerProfile :PerfilProgramador|null = null
 
   // Setters
   public setUsername(username: string): void {
     this.username = username;
   }
 
-  public setFotoPerfil(fotoPerfil: string | null): void {
-    this.foto_perfil = fotoPerfil;
-  }
 
   public setEmail(email: string): void {
     this.email = email;
@@ -68,6 +67,12 @@ export class Usuario {
 
   public getEmail() {
     return this.email;
+  }
+  public getProgrammerProfile(): PerfilProgramador|null {
+    return this.programmerProfile;
+  }
+  public setProgrammerProfile(prof: PerfilProgramador){
+    this.programmerProfile = prof
   }
 
   public addRedSocial(red: RedSocial) {

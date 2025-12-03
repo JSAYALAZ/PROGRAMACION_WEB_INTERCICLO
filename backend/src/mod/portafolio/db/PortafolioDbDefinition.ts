@@ -5,6 +5,7 @@ export interface PortafolioDbDefinition {
   list(q?: any, tx?: Prisma.TransactionClient): Promise<Portafolio[]>;
   save(data: Portafolio): Promise<string>;
   getById(id: string): Promise<Portafolio>;
+  getByProgrammerId(ownerId: string): Promise<Portafolio>;
   // count(where: Prisma.UserWhereInput,tx?:Prisma.TransactionClient): Promise<number>;
   //   getById(id: string,tx?:Prisma.TransactionClient): Promise<Usuario>;
 

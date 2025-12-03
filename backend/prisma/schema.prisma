@@ -38,6 +38,7 @@ model User {
   firebaseUid String  @unique // UID de Firebase si usas login Google
   email       String
   displayName String
+  picture String? 
   role        Role      @default(USER)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime?

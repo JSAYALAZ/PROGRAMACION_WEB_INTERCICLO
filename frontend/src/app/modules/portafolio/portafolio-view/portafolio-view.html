@@ -1,0 +1,68 @@
+<div *ngIf="loading$ | async">Cargando...</div>
+
+<div
+  class="w-full flex flex-col gap-8 p-6 lg:p-10 bg-white rounded-2xl shadow"
+  *ngIf="data$ | async as portafolio"
+>
+  <!-- Header -->
+  <header class="flex flex-col gap-2">
+    <h1 class="text-3xl font-bold text-slate-900">
+      {{ portafolio.title }}
+    </h1>
+
+    <p class="text-slate-600" *ngIf="portafolio.description">
+      {{ portafolio.description }}
+    </p>
+    <p class="text-slate-600" *ngIf="portafolio.ownerId">
+      {{ portafolio.ownerId }}
+    </p>
+  </header>
+
+  <!-- Projects -->
+  <section>
+    <h2 class="text-xl font-semibold mb-4 text-slate-800">Proyectos</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <article
+        *ngFor="let project of portafolio.project"
+        class="p-5 bg-slate-50 rounded-xl border border-slate-200"
+      >
+        <h3 class="text-lg font-bold text-slate-900">
+          {{ project.title }}
+        </h3>
+
+        <p class="mt-2 text-slate-600">
+          {{ project.description }}
+        </p>
+
+        <div class="mt-4 flex flex-col gap-1 text-sm">
+          <span class="text-slate-700"> <strong>Sección:</strong> {{ project.section }} </span>
+
+          <span class="text-slate-700">
+            <strong>Participación:</strong> {{ project.participation }}
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-2 mt-4">
+          <a
+            *ngIf="project.repositoryUrl"
+            [href]="project.repositoryUrl"
+            target="_blank"
+            rel="noopener"
+            class="text-blue-600 underline"
+            >Repositorio</a
+          >
+
+          <a
+            *ngIf="project.liveDemoUrl"
+            [href]="project.liveDemoUrl"
+            target="_blank"
+            rel="noopener"
+            class="text-green-600 underline"
+            >Live Demo</a
+          >
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

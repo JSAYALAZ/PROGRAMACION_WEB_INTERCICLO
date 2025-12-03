@@ -9,7 +9,7 @@ import { UserCard, UserOutputDTO } from '../user-card/user-card';
 @Component({
   selector: 'app-users-main-page',
   standalone: true,
-  imports: [CommonModule, ɵInternalFormsSharedModule,UserCard],
+  imports: [CommonModule, ɵInternalFormsSharedModule, UserCard],
   templateUrl: './users-main-page.html',
   styleUrl: './users-main-page.css',
 })
@@ -30,6 +30,6 @@ export class UsersMainPage {
   }
 
   editar(id: string) {
-    this.router.navigate([APP_ROUTES.main.childrens.usuarios_edit.absolutePath.replace(":id",id)]);
+    this.router.navigate([APP_ROUTES.main.childrens.usuarios_edit.absolutePath.replace(':id', id)]);
   }
 }

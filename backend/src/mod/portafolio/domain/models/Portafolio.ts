@@ -1,10 +1,12 @@
 import { randomBytes } from "crypto";
+import { Proyecto } from "src/mod/proyecto/domain/models/Proyecto";
 
 export class Portafolio {
   private id: string;
   private ownerId: string;
   private title: string;
   private description: string | null;
+  private projects: Proyecto[] = []
 
   constructor(data: {
     id: string|null;
@@ -32,5 +34,12 @@ export class Portafolio {
 
   public getDescription(): string | null {
     return this.description;
+  }
+
+  public addProyect(data: Proyecto){
+    this.projects.push(data)
+  }
+  public getProyects():Proyecto[]{
+    return this.projects
   }
 }

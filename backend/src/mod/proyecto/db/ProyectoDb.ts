@@ -4,12 +4,14 @@ import { ProyectoDbDefinition } from "./ProyectoDbDefinition";
 import { Proyecto } from "../domain/models/Proyecto";
 
 export const ProyectoDb: ProyectoDbDefinition = {
-  async list() {
+  async list(filters) {
     try {
-      const users = await db.project.findMany();
+      const datas = await db.project.findMany({
+        ...filters
+      });
 
       //Mapeo a modelos
-      const resp = users.map(
+      const resp = datas.map(
         (u): Proyecto =>
           new Proyecto({
             id: u.id,

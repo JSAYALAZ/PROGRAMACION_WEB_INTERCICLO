@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { APP_ROUTES } from '../../../app.routes';
 export type PortafolioOutputDTO = {
   id: string;
   ownerId: string;
@@ -12,10 +14,17 @@ export type PortafolioOutputDTO = {
   styleUrl: './portafolio-card.css',
 })
 export class PortafolioCard {
- @Input({ required: true }) portfolio!: PortafolioOutputDTO;
+  @Input({ required: true }) portfolio!: PortafolioOutputDTO;
 
+  constructor(private router: Router) {}
   // Color simple para placeholder (puedes mapear ownerId a un color real si lo deseas)
   getInitial() {
     return this.portfolio?.title?.[0]?.toUpperCase() ?? '?';
+  }
+
+  view(id: string) {
+    this.router.navigate([
+      APP_ROUTES.main.childrens.portafolio_view.absolutePath.replace(':id', id),
+    ]);
   }
 }

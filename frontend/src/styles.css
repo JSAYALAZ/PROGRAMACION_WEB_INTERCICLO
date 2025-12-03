@@ -2,15 +2,15 @@
 
 @layer components {
 .text_color {
-  @apply text-black 
+  @apply text-black
 }
 }
 .form_label {
-  @apply text-sm font-bold w-full
+  @apply text-sm font-bold w-full text-black
 }
 
 .form_input {
-  @apply w-full pl-2 h-10 rounded shadow-xl  invalid:border-2 invalid:border-red-400
+  @apply w-full pl-2 h-10 rounded shadow-xl  invalid:border-2 invalid:border-red-400 text-black bg-white
 }
 
 .form_container {

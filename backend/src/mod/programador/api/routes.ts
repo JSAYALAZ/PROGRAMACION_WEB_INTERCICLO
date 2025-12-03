@@ -5,20 +5,27 @@ import { createProgrammerProfile } from "../applications/createProgrammerProfile
 import { ApiResponse } from "src/shared/ApiResponse";
 import { listProgrammerProfile } from "../applications/listProgrammerProfile";
 import { getProgrammerProfileById } from "../applications/getProgrammerProfileById";
+import { ProgrammerMapper } from "./mapper/programmer_mapper";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-   try {
-    const user = await listProgrammerProfile();
-    return ApiResponse.success(res,"Correcto",user);
+  try {
+    const profiles = await listProgrammerProfile();
+    const resp = profiles.map((user) => {
+      return ProgrammerMapper.map(user);
+    });
+    return ApiResponse.success(res, "Correcto", resp);
   } catch (error) {
     return ApiResponse.error(res, error);
   }
 });
 router.post("/", async (req, res) => {
   try {
-    const { validated } = await zodValidateJson(req, ProgrammerProfileCreateDTO);
+    const { validated } = await zodValidateJson(
+      req,
+      ProgrammerProfileCreateDTO
+    );
     const userId = await createProgrammerProfile(validated);
     return ApiResponse.success(res, "Correcto", userId);
   } catch (error) {
@@ -29,7 +36,7 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const user = await getProgrammerProfileById(id);
-    return ApiResponse.success(res, "Correcto", user);
+    return ApiResponse.success(res, "Correcto", ProgrammerMapper.map(user));
   } catch (error) {
     return ApiResponse.error(res, error);
   }

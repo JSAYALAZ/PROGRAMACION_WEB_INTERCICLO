@@ -20,7 +20,7 @@ export const ProgrammerProfileDb: ProgrammerProfileDbDefinition = {
             contactLinks: JSON.stringify(u.contactLinks),
             id: u.id,
             name: u.name,
-            portafolioId: u.portfolio?.id || null,
+            portafolioId: u.portfolio?.id||"",
             specialty: u.specialty,
             userId: u.userId,
             disponibilidad: u.available.map(
@@ -56,7 +56,43 @@ export const ProgrammerProfileDb: ProgrammerProfileDbDefinition = {
         contactLinks: JSON.stringify(prof.contactLinks),
         id: prof.id,
         name: prof.name,
-        portafolioId: prof.portfolio?.id || null,
+        portafolioId: prof.portfolio?.id || "",
+        specialty: prof.specialty,
+        userId: prof.userId,
+         disponibilidad: prof.available.map(
+              (d) =>
+                new Disponibilidad({
+                  day: d.day,
+                  endMinutes: d.endMinutes,
+                  programmerId: d.programmerId,
+                  startMinutes: d.startMinutes,
+                })
+            ),
+      });
+
+      return resp;
+    } catch (error) {
+      if (error instanceof AppError) throw error;
+      const mapped = mapPrismaError(error);
+      if (mapped) throw mapped;
+      throw AppError.internal();
+    }
+  },
+  async getByUserId(userId) {
+    try {
+      const prof = await db.programmerProfile.findUnique({
+        where: { userId },
+        include: { portfolio: true, available: true },
+      });
+      if (!prof) throw AppError.notFound();
+      //Mapeo a modelos
+      const resp = new PerfilProgramador({
+        avatarUrl: prof.avatarUrl,
+        bio: prof.bio,
+        contactLinks: JSON.stringify(prof.contactLinks),
+        id: prof.id,
+        name: prof.name,
+        portafolioId: prof.portfolio?.id || "",
         specialty: prof.specialty,
         userId: prof.userId,
          disponibilidad: prof.available.map(

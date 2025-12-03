@@ -5,7 +5,6 @@ export const ProgrammerProfileCreateDTO = z.object({
   userId: z.string(),
   bio: z.string(),
   specialty: z.string(),
-
   dispinibilidad: z.array(
     z.object({
       day: z.enum(Weekday),

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { APP_ROUTES } from '../../../app.routes';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-proyectos-new-page',
@@ -13,6 +14,9 @@ import { APP_ROUTES } from '../../../app.routes';
   styleUrl: './proyectos-new-page.css',
 })
 export class ProyectosNewPage {
+  private activateRoute = inject(ActivatedRoute);
+
+  user: User = this.activateRoute.parent?.snapshot.data['user'];
   authForm!: FormGroup;
   loadingSubmit: boolean = false;
 
@@ -23,7 +27,6 @@ export class ProyectosNewPage {
     this.authForm = new FormGroup({
       description: new FormControl('', Validators.required),
       liveDemoUrl: new FormControl(''),
-      portafolioId: new FormControl('', Validators.required),
       repositoryUrl: new FormControl(''),
       participation: new FormControl('', Validators.required),
       section: new FormControl('', Validators.required),
@@ -42,16 +45,14 @@ export class ProyectosNewPage {
         displayName: this.authForm.value.displayName,
         description: this.authForm.value.description,
         liveDemoUrl: this.authForm.value.liveDemoUrl,
-        portafolioId: this.authForm.value.portafolioId,
+        userId: this.user.uid,
         repositoryUrl: this.authForm.value.repositoryUrl,
         participation: this.authForm.value.participation,
         section: this.authForm.value.section,
         title: this.authForm.value.title,
       };
 
-      this.http.post(APP_ROUTES.main.childrens.proyectos.apiPath, object).subscribe((data) => {
-        console.log(data);
-      });
+      this.http.post(APP_ROUTES.main.childrens.proyectos.apiPath, object).subscribe((data) => {});
       this.route.navigate([APP_ROUTES.main.childrens.proyectos.absolutePath]);
     } catch (err: any) {
       if (err instanceof Error) {

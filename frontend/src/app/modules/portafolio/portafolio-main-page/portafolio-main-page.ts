@@ -24,9 +24,9 @@ export class PortafolioMainPage implements OnInit {
 
   constructor(private axios: AxiosService<any[]>) {}
   ngOnInit() {
-    this.axios.fetch(APP_ROUTES.main.childrens.proyectos.apiPath, { page: 1 }, []);
+    this.axios.fetch(APP_ROUTES.main.childrens.portafolio.apiPath, { page: 1 }, []);
   }
   reload() {
-    this.axios.fetch(APP_ROUTES.main.childrens.proyectos.apiPath);
+    this.axios.fetch(APP_ROUTES.main.childrens.portafolio.apiPath);
   }
 }

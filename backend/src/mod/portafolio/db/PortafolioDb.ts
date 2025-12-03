@@ -44,6 +44,26 @@ export const PortafolioDb: PortafolioDbDefinition = {
       throw AppError.internal();
     }
   },
+  async getByProgrammerId(ownerId) {
+    try {
+      const data = await db.portfolio.findUnique({ where: { ownerId } });
+      if (!data) throw AppError.notFound();
+      //Mapeo a modelos
+      const resp = new Portafolio({
+        description: data.description,
+        ownerId: data.ownerId,
+        title: data.title,
+        id: data.id,
+      });
+
+      return resp;
+    } catch (error) {
+      if (error instanceof AppError) throw error;
+      const mapped = mapPrismaError(error);
+      if (mapped) throw mapped;
+      throw AppError.internal();
+    }
+  },
   async save(data) {
     try {
       const created = await db.portfolio.upsert({

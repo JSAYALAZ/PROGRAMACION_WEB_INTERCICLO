@@ -14,7 +14,7 @@ export const UserDb: UserDbDefinition = {
           new Usuario({
             email: u.email,
             firebaseUid: u.firebaseUid,
-            foto_perfil: null,
+            foto_perfil: u.picture,
             id: u.id,
             rol: u.role,
             username: u.displayName,
@@ -36,7 +36,7 @@ export const UserDb: UserDbDefinition = {
       const resp = new Usuario({
         email: user.email,
         firebaseUid: user.firebaseUid,
-        foto_perfil: null,
+        foto_perfil: user.picture,
         id: user.id,
         rol: user.role,
         username: user.displayName,
@@ -58,7 +58,7 @@ export const UserDb: UserDbDefinition = {
       const resp = new Usuario({
         email: user.email,
         firebaseUid: user.firebaseUid,
-        foto_perfil: null,
+        foto_perfil: user.picture,
         id: user.id,
         rol: user.role,
         username: user.displayName,
@@ -80,6 +80,7 @@ export const UserDb: UserDbDefinition = {
           displayName: data.getUsername(),
           email: data.getEmail(),
           firebaseUid: data.getFirebaseUid(),
+          picture: data.getFotoPerfil()
         },
         update: {
           role: data.getRole(),

@@ -2,7 +2,7 @@
   <form
     [formGroup]="authForm"
     (ngSubmit)="onSubmit()"
-    class="form_background flex-colpx-6 py-8 rounded-md grid grid-cols-2 gap-4"
+    class="form_background flex-colpx-6 py-8 rounded-md grid grid-cols-2 gap-4 p-4"
   >
     <div class="form_container">
       <label for="title" class="form_label">Titulo</label>
@@ -17,16 +17,12 @@
       <input id="liveDemoUrl" type="text" formControlName="liveDemoUrl" class="form_input" />
     </div>
     <div class="form_container">
-      <label for="portafolioId" class="form_label">Portafolio id</label>
-      <input id="portafolioId" type="text" formControlName="portafolioId" class="form_input" />
-    </div>
-    <div class="form_container">
       <label for="repositoryUrl" class="form_label">Url de repositorio</label>
       <input id="repositoryUrl" type="text" formControlName="repositoryUrl" class="form_input" />
     </div>
 
     <div>
-      <label for="participation" class="block text-sm font-medium mb-1">Tipo de participacion</label>
+      <label for="participation" class="form_label">Tipo de participacion</label>
       <select
         name="participation"
         id="participation"
@@ -41,7 +37,7 @@
       </select>
     </div>
     <div>
-      <label for="section" class="block text-sm font-medium mb-1">Seccion</label>
+      <label for="section" class="form_label">Seccion</label>
       <select name="section" id="section" class="form_input" formControlName="section">
         <option value="ACADEMIC">Academico</option>
         <option value="WORK">Trabajo</option>

@@ -6,7 +6,8 @@ import z from "zod";
 export const UserCreateDTO = z.object({
   firebaseUid: z.string(),
   email: z.string(),
-  displayName: z.string()
+  displayName: z.string(),
+  foto_perfil: z.string(),
 });
 export type UserCreateDTO = z.infer<typeof UserCreateDTO>;
 

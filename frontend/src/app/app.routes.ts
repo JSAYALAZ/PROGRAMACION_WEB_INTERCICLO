@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { UserResolver } from './services/user-resolver.service';
-import {  AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { LoginPage } from './pages/login-page/login-page.component';
 import { SignupPage } from './pages/signup-page/signup-page.component';
 import { MainPage } from './pages/main-page/main-page.component';
@@ -12,6 +12,9 @@ import { PortafolioMainPage } from './modules/portafolio/portafolio-main-page/po
 import { ProyectosNewPage } from './modules/proyectos/proyectos-new-page/proyectos-new-page';
 import { AsesoriasMainPage } from './modules/asesorias/asesorias-main-page/asesorias-main-page';
 import { PerfilProgramadorMainPage } from './modules/perfilProgramador/perfilProgramador-main-page/perfilProgramador-main-page';
+import { PortafolioView } from './modules/portafolio/portafolio-view/portafolio-view';
+import { PerfilProgActions } from './modules/perfilProgramador/perfil-prog-actions/perfil-prog-actions';
+import { ProgrammerProfileFormComponent } from './modules/perfilProgramador/perfilProgramador-edit-page/perfilProgramador-edit-page.';
 
 function redirectToLogin() {
   redirectUnauthorizedTo(APP_ROUTES.login.path);
@@ -74,12 +77,20 @@ export const APP_ROUTES = {
         component: AsesoriasMainPage,
         apiPath: 'http://localhost:3000/api/asesorias',
       },
+      //Portafoli
       portafolio: {
         path: 'portafolio',
         absolutePath: 'idx/portafolio',
         component: PortafolioMainPage,
-        apiPath: 'http://localhost:3000/api/asesorias',
+        apiPath: 'http://localhost:3000/api/portafolio',
       },
+      portafolio_view: {
+        path: 'portafolio/:id/view',
+        absolutePath: 'idx/portafolio/:id/view',
+        component: PortafolioView,
+        apiPath: 'http://localhost:3000/api/portafolio',
+      },
+      //Citas
       citas: {
         path: 'citas',
         absolutePath: 'idx/citas',
@@ -90,6 +101,18 @@ export const APP_ROUTES = {
         path: 'programmer-profile',
         absolutePath: 'idx/programmer-profile',
         component: PerfilProgramadorMainPage,
+        apiPath: 'http://localhost:3000/api/programmerProfile',
+      },
+      perfilProgramador_edit: {
+        path: 'programmer-profile-edit',
+        absolutePath: 'idx/programmer-profile-edit',
+        component: ProgrammerProfileFormComponent,
+        apiPath: 'http://localhost:3000/api/programmerProfile',
+      },
+      perfilProgramador_actions: {
+        path: 'programmer-profile-actions',
+        absolutePath: 'idx/programmer-profile-actions',
+        component: PerfilProgActions,
         apiPath: 'http://localhost:3000/api/programmerProfile',
       },
     },
@@ -109,7 +132,7 @@ export const routes: Routes = [
   {
     path: APP_ROUTES.main.path,
     component: APP_ROUTES.main.component,
-    canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
     data: {
       AuthGuardPipe: redirectToLogin,
     },
@@ -148,6 +171,10 @@ export const routes: Routes = [
         path: APP_ROUTES.main.childrens.portafolio.path,
         component: APP_ROUTES.main.childrens.portafolio.component,
       },
+      {
+        path: APP_ROUTES.main.childrens.portafolio_view.path,
+        component: APP_ROUTES.main.childrens.portafolio_view.component,
+      },
       //Citas
       {
         path: APP_ROUTES.main.childrens.citas.path,
@@ -158,6 +185,15 @@ export const routes: Routes = [
       {
         path: APP_ROUTES.main.childrens.perfilProgramador.path,
         component: APP_ROUTES.main.childrens.perfilProgramador.component,
+      },
+      //Acciones de programador
+      {
+        path: APP_ROUTES.main.childrens.perfilProgramador_actions.path,
+        component: APP_ROUTES.main.childrens.perfilProgramador_actions.component,
+      },
+      {
+        path: APP_ROUTES.main.childrens.perfilProgramador_edit.path,
+        component: APP_ROUTES.main.childrens.perfilProgramador_edit.component,
       },
     ],
   },

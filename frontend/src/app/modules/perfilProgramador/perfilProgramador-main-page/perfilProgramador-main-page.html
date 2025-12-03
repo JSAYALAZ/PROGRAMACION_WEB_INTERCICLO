@@ -5,10 +5,7 @@
 </div>
 
 <pre *ngIf="data$ | async as data">
-  <div *ngFor="let d of data">
-    <p>{{d.username}}</p>
-    <button (click)="editar(d.id)">Editar</button>
-  </div>
+  <app-perfil-programador-card *ngFor="let d of data" [programmer]="d"></app-perfil-programador-card>>
 </pre>
 
 <!-- <button (click)="reload()">Refetch</button> -->

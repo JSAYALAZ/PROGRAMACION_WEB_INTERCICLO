@@ -6,7 +6,6 @@ import { PortafolioCreateDTO } from "./dto/input";
 import { createPortafolio } from "../applications/createPortafolio";
 import { getPortafolioById } from "../applications/getPortafolioById";
 import { PortafolioMapper } from "./mapper/portafolio_mapper";
-import { UserMapper } from "src/mod/usuario/api/mapper/user_mapper";
 
 const router = Router();
 

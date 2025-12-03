@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { APP_ROUTES } from '../../../app.routes';
 export type UserOutputDTO = {
   id: string;
   firebaseUid: string;
@@ -23,6 +25,9 @@ export class UserCard {
     PROGRAMMER: 'bg-purple-600 text-white',
     USER: 'bg-gray-200 text-gray-800'
   };
+  constructor(private router: Router){
+
+  }
 
   getRoleClasses(role: string) {
     return this.roleColorMap[role] ?? 'bg-gray-200 text-gray-800';
@@ -30,5 +35,9 @@ export class UserCard {
 
   getInitial() {
     return this.user?.username?.[0]?.toUpperCase() ?? '?';
+  }
+
+  editar(id:string){
+    this.router.navigate([APP_ROUTES.main.childrens.usuarios_edit.absolutePath.replace(":id",id)])
   }
 }

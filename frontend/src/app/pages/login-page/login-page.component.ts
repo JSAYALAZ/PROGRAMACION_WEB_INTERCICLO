@@ -1,14 +1,9 @@
 import { Component, inject } from '@angular/core';
-import {
-  Auth,
-  GoogleAuthProvider,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from '@angular/fire/auth';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 // import { ToastService } from '../../services/toast.service';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { APP_ROUTES } from '../../app.routes';
 @Component({
@@ -83,7 +78,17 @@ export class LoginPage {
 
   loginWithGoogle() {
     signInWithPopup(this.auth, this.googleAuthProvider)
-      .then((res) => this.redirectMain())
+      .then((res) => {
+        const object = {
+          firebaseUid: res.user.uid,
+          email: res.user.email,
+          displayName: res.user.displayName,
+          foto_perfil: res.user.photoURL,
+        };
+
+        this.http.post(APP_ROUTES.main.childrens.usuarios.apiPath, object).subscribe((data) => {});
+        this.redirectMain();
+      })
       .catch(
         (err) => {}
         // this.toast.error(err.message || 'No se logro crear la cuenta')

@@ -8,7 +8,7 @@ export const createUser = async (dto: UserCreateDTO) => {
     const user = new Usuario({
       email: dto.email,
       firebaseUid: dto.firebaseUid,
-      foto_perfil: null,
+      foto_perfil: dto.foto_perfil,
       id: null,
       rol: "USER",
       username: dto.displayName,

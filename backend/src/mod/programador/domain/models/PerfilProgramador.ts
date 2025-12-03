@@ -10,7 +10,7 @@ export class PerfilProgramador {
   private bio: string|null;
   private avatarUrl: string|null;
   private contactLinks: string|null;
-  private portafolioId: string|null;
+  private portafolioId: string;
   private disponibilidad: Disponibilidad[]
 
   // Getters
@@ -26,7 +26,7 @@ export class PerfilProgramador {
     bio: string|null;
     avatarUrl: string|null;
     contactLinks: string|null;
-    portafolioId: string|null;
+    portafolioId: string;
     disponibilidad: Disponibilidad[]
   }) {
     this.id = data.id ?? randomBytes(12).toString("hex");
@@ -69,7 +69,7 @@ export class PerfilProgramador {
     return this.contactLinks;
   }
 
-  public getPortafolioId(): string|null {
+  public getPortafolioId(): string {
     return this.portafolioId;
   }
 }

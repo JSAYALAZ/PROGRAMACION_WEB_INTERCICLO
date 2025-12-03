@@ -1,11 +1,11 @@
 <article
-  class="w-full max-w-sm mx-auto bg-white/90 dark:bg-slate-900 rounded-2xl shadow-md overflow-hidden transform transition hover:-translate-y-1"
+  class="w-full max-w-sm mx-auto bg-white/90 rounded-2xl shadow-md overflow-hidden transform transition hover:-translate-y-1"
   role="group"
   aria-label="Carta de presentación de usuario"
 >
   <!-- Header visual (imagen de fondo opcional) -->
   <div
-    class="relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900"
+    class="relative bg-gradient-to-br from-slate-50 to-white "
   >
     <div class="p-6 flex flex-col items-center gap-3">
       <!-- Avatar grande -->
@@ -13,21 +13,21 @@
         <img
           [src]="user.foto_perfil"
           [alt]="'Foto de ' + user.username"
-          class="w-28 h-28 rounded-full object-cover ring-4 ring-white dark:ring-slate-800 shadow-sm"
+          class="w-28 h-28 rounded-full object-cover ring-4 ring-white shadow-sm"
           loading="lazy"
         />
       </ng-container>
 
       <ng-template #avatarPlaceholder>
         <div
-          class="w-28 h-28 rounded-full flex items-center justify-center text-3xl font-semibold bg-gray-100 dark:bg-slate-700 text-slate-700 dark:text-slate-100 ring-4 ring-white dark:ring-slate-800 shadow-sm"
+          class="w-28 h-28 rounded-full flex items-center justify-center text-3xl font-semibold bg-gray-100 text-slate-700 ring-4 ring-white shadow-sm"
         >
           {{ getInitial() }}
         </div>
       </ng-template>
 
       <!-- Nombre -->
-      <h1 class="mt-1 text-center text-lg md:text-2xl font-bold text-slate-900 dark:text-slate-100">
+      <h1 class="mt-1 text-center text-lg md:text-2xl font-bold text-slate-900 ">
         {{ user.username }}
       </h1>
 
@@ -45,9 +45,9 @@
   <!-- Body: contacto y descripción breve -->
   <div class="px-6 pb-6">
     <div class="mt-2 text-center">
-      <p class="text-sm text-slate-600 dark:text-slate-300 truncate">
+      <p class="text-sm text-slate-600  truncate">
         <strong>Email:</strong>
-        <span class="text-slate-800 dark:text-slate-100">{{ user.email }}</span>
+        <span class="text-slate-800 ">{{ user.email }}</span>
       </p>
 
       <!-- Aquí podrías añadir una línea de 'bio' o rol secundario si la tuvieras -->
@@ -55,16 +55,16 @@
     </div>
 
     <!-- Divider -->
-    <div class="my-4 border-t border-slate-100 dark:border-slate-800"></div>
+    <div class="my-4 border-t border-slate-100 "></div>
 
     <!-- Meta secundaria -->
-    <div class="flex flex-col gap-1 text-xs text-slate-500 dark:text-slate-400">
+    <div class="flex flex-col gap-1 text-xs text-slate-500 ">
       <div class="flex items-center justify-between">
-        <span class="font-medium text-slate-600 dark:text-slate-300">ID</span>
+        <span class="font-medium text-slate-600 ">ID</span>
         <span class="truncate" title="{{ user.id }}">{{ user.id }}</span>
       </div>
       <div class="flex items-center justify-between">
-        <span class="font-medium text-slate-600 dark:text-slate-300">Firebase UID</span>
+        <span class="font-medium text-slate-600 ">Firebase UID</span>
         <span class="truncate" title="{{ user.firebaseUid }}">{{ user.firebaseUid }}</span>
       </div>
     </div>
@@ -73,15 +73,16 @@
     <div class="mt-4 flex items-center justify-center gap-3">
       <button
         type="button"
-        class="px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:opacity-95"
+        class="px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-800 hover:opacity-95"
         aria-label="Contactar usuario"
+        (click)="editar(user.id)"
       >
-        Contactar
+        Editar
       </button>
 
       <button
         type="button"
-        class="px-3 py-1.5 rounded-lg text-sm font-medium border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
+        class="px-3 py-1.5 rounded-lg text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-50 "
         aria-label="Ver perfil completo"
       >
         Ver perfil

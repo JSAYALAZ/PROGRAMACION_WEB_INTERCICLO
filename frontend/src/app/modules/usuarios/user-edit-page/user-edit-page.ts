@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-user-edit-page',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './user-edit-page.html',
   styleUrl: './user-edit-page.css',
 })
@@ -60,9 +60,7 @@ export class UserEditPage {
 
       this.http
         .put(`${APP_ROUTES.main.childrens.usuarios.apiPath}/${this.userId}`, object)
-        .subscribe((data) => {
-          console.log(data);
-        });
+        .subscribe((data) => {});
       this.route.navigate([APP_ROUTES.main.childrens.usuarios.absolutePath]);
     } catch (err: any) {
       if (err instanceof Error) {
@@ -77,14 +75,11 @@ export class UserEditPage {
       this.route.navigate([APP_ROUTES.main.childrens.usuarios.path]);
     } else {
       this.userId = userId;
-      console.log(`${APP_ROUTES.main.childrens.usuarios.apiPath}/${userId}`);
       this.axios.fetch(`${APP_ROUTES.main.childrens.usuarios.apiPath}/${userId}`, { page: 1 }, []);
-      this.sub = this.axios.data$.pipe(
-
-      ).subscribe(data => {
+      this.sub = this.axios.data$.pipe().subscribe((data) => {
         this.authForm.patchValue({
           displayName: data.username ?? '',
-          role: data.rol ?? ''
+          role: data.rol ?? '',
         });
       });
     }
@@ -94,4 +89,5 @@ export class UserEditPage {
   }
   ngOnDestroy() {
     this.sub?.unsubscribe();
-  }}
+  }
+}
