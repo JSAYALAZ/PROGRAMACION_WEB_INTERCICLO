@@ -12,7 +12,11 @@ export type ProgrammerOutputDTO = {
   avatarUrl: string;
   contactLinks: string;
   portafolioId: string;
-  disponibilidad: [];
+  disponibilidad: ({
+    day:string,
+    startMinuts: number,
+    endMinuts: number,
+  })[];
 };
 @Component({
   selector: 'app-perfil-programador-card',

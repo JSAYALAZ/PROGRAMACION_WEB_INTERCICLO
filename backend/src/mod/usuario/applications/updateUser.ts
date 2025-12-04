@@ -13,7 +13,7 @@ export const updateUser = async (id: string, dto: UserUpdateDTO) => {
     if (dto.role == "PROGRAMMER") {
       await createProgrammerProfile({
         bio: "Ninguna por ahora",
-        dispinibilidad: [],
+        disponibilidad: [],
         specialty: "Ninguna",
         userId: id,
       });

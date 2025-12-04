@@ -1,3 +1,4 @@
+import { DisponibilidadMapper } from "src/mod/disponibilidad/api/mapper/disponibilidad_mapper";
 import { PerfilProgramador } from "../../domain/models/PerfilProgramador";
 import { ProgrammerOutputDTO } from "../dto/output";
 
@@ -7,7 +8,9 @@ export class ProgrammerMapper {
       avatarUrl: data.getAvatarUrl(),
       bio: data.getBio(),
       contactLinks: data.getContactLinks(),
-      disponibilidad: data.getDisponibilidad(),
+      disponibilidad: data
+        .getDisponibilidad()
+        .map((d) => DisponibilidadMapper.map(d)),
       id: data.getId(),
       name: data.getName(),
       portafolioId: data.getPortafolioId(),

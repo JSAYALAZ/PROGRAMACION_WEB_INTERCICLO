@@ -1,27 +1,52 @@
+import { randomBytes } from "crypto";
+import { Weekday } from "src/generated/prisma/enums";
+
 export class Asesoria {
+  private id: string;
+
+  // Getters
+  public getId(): string {
+    return this.id;
+  }
+
+
   private requesterId: string;
   private programmerId: string;
-  private availabilityId: string;
-  private date: Date;
-  private durationMin: Number;
-  private comment: string;
+  private date: Weekday;
+  private hour: number;
+  private durationMin: number;
+  private comment: string|null;
   private status: string;
-  private responseMessage: Date;
+  private responseMessage: string|null;
+
+  // Getters
+  public getHour(): number {
+    return this.hour;
+  }
+
+  // Setters
+  public setHour(hour: number): void {
+    this.hour = hour;
+  }
+  
+  
 
   constructor(data: {
+    id: string|null;
     requesterId: string;
     programmerId: string;
-    availabilityId: string;
-    date: Date;
-    durationMin: Number;
-    comment: string;
+    date: Weekday;
+    hour: number;
+    durationMin: number;
+    comment: string|null;
     status: string;
-    responseMessage: Date;
+    responseMessage: string|null;
   }) {
+   this.id = data.id ?? randomBytes(12).toString("hex");
     this.requesterId = data.requesterId;
     this.programmerId = data.programmerId;
-    this.availabilityId = data.availabilityId;
     this.date = data.date;
+    this.hour = data.hour;
     this.durationMin = data.durationMin;
     this.comment = data.comment;
     this.status = data.status;
@@ -37,19 +62,16 @@ export class Asesoria {
     return this.programmerId;
   }
 
-  public getAvailabilityId(): string {
-    return this.availabilityId;
-  }
 
-  public getDate(): Date {
+  public getDate(): Weekday {
     return this.date;
   }
 
-  public getDurationMin(): Number {
+  public getDurationMin(): number {
     return this.durationMin;
   }
 
-  public getComment(): string {
+  public getComment(): string|null {
     return this.comment;
   }
 
@@ -57,7 +79,7 @@ export class Asesoria {
     return this.status;
   }
 
-  public getResponseMessage(): Date {
+  public getResponseMessage(): string|null {
     return this.responseMessage;
   }
 }

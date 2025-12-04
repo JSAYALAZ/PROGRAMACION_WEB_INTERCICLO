@@ -15,6 +15,7 @@ import { PerfilProgramadorMainPage } from './modules/perfilProgramador/perfilPro
 import { PortafolioView } from './modules/portafolio/portafolio-view/portafolio-view';
 import { PerfilProgActions } from './modules/perfilProgramador/perfil-prog-actions/perfil-prog-actions';
 import { ProgrammerProfileFormComponent } from './modules/perfilProgramador/perfilProgramador-edit-page/perfilProgramador-edit-page.';
+import { AsesoriaNew } from './modules/asesorias/asesoria-new/asesoria-new';
 
 function redirectToLogin() {
   redirectUnauthorizedTo(APP_ROUTES.login.path);
@@ -71,10 +72,17 @@ export const APP_ROUTES = {
         component: ProyectosNewPage,
         apiPath: 'http://localhost:3000/api/proyect',
       },
+      //Asesorias
       asesorias: {
         path: 'asesorias',
         absolutePath: 'idx/asesorias',
         component: AsesoriasMainPage,
+        apiPath: 'http://localhost:3000/api/asesorias',
+      },
+      asesorias_new: {
+        path: 'asesorias/new',
+        absolutePath: 'idx/asesorias/new',
+        component: AsesoriaNew,
         apiPath: 'http://localhost:3000/api/asesorias',
       },
       //Portafoli
@@ -153,9 +161,15 @@ export const routes: Routes = [
         path: APP_ROUTES.main.childrens.proyectos_new.path,
         component: APP_ROUTES.main.childrens.proyectos_new.component,
       },
+
+      //Asesorias
       {
         path: APP_ROUTES.main.childrens.asesorias.path,
         component: APP_ROUTES.main.childrens.asesorias.component,
+      },
+      {
+        path: APP_ROUTES.main.childrens.asesorias_new.path,
+        component: APP_ROUTES.main.childrens.asesorias_new.component,
       },
       //USUARIOS
       {

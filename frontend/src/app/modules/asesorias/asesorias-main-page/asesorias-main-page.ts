@@ -25,10 +25,10 @@ export class AsesoriasMainPage {
 
   constructor(private axios: AxiosService<any[]>, private router: Router) {}
   ngOnInit() {
-    this.axios.fetch(APP_ROUTES.main.childrens.usuarios.apiPath, { page: 1 }, []);
+    this.axios.fetch(APP_ROUTES.main.childrens.asesorias.apiPath, { page: 1 }, []);
   }
 
   editar(id: string) {
-    this.router.navigate([APP_ROUTES.main.childrens.usuarios_edit.absolutePath.replace(":id",id)]);
+    this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath.replace(":id",id)]);
   }
 }

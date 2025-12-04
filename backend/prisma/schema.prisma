@@ -143,8 +143,8 @@ model Booking {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
   requesterId     String    @db.ObjectId // usuario que solicita (User)
   programmerId    String    @db.ObjectId // programmer (ProgrammerProfile.id)
-  availabilityId  String?   @db.ObjectId // referencia al slot reservado (opcional)
-  date            DateTime // fecha y hora acordada
+  date            Weekday 
+  hour            Int 
   durationMin     Int
   comment         String?
   status          String    @default("PENDING") // PENDING, APPROVED, REJECTED, CANCELLED

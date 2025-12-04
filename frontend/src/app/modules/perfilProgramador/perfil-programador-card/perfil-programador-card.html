@@ -65,8 +65,8 @@
             *ngFor="let d of programmer.disponibilidad || []"
             class="flex items-center gap-3 px-3 py-1 rounded-md bg-slate-50 border border-slate-200 text-sm"
           >
-            <!-- <span class="font-medium text-slate-800 ">{{ d.day }}</span> -->
-            <!-- <span class="text-slate-600 text-xs">{{ d.horaInicio }} — {{ d.horaFin }}</span> -->
+            <span class="font-medium text-slate-800 ">{{ d.day }}</span>
+            <span class="text-slate-600 text-xs">{{ d.startMinuts }} — {{ d.endMinuts }}</span>
           </li>
 
           <li

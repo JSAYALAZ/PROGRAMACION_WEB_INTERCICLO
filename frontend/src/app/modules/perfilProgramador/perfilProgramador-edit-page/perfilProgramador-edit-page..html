@@ -1,177 +1,138 @@
 <form
-  (ngSubmit)="onSubmit()"
-  [formGroup]="form"
-  class="max-w-3xl mx-auto p-4 md:p-8 bg-white shadow-lg rounded-xl"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="form"
+  class="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-2xl border border-slate-200"
 >
-  <h2 class="text-2xl font-bold text-slate-800 mb-6">📝 Editar Perfil de Programador</h2>
-  <div class="grid gap-6">
-        <label class="flex flex-col gap-2">
-      <span class="font-semibold text-slate-700">Biografía</span>
-      <textarea
-        formControlName="bio"
-        rows="4"
-        placeholder="Cuéntanos sobre ti, experiencia, tecnologías..."
-        class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-800 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
-      ></textarea>
-      <small class="text-xs text-slate-500"> Máx. 1000 caracteres. </small>
-      <div *ngIf="controlError('bio', 'required')" class="text-sm text-rose-600 font-medium mt-1">
-        La biografía es obligatoria.
-      </div>
-    </label>
+  <h2 class="text-3xl font-extrabold text-slate-900 mb-8 tracking-tight">
+    📝 Editar Perfil de Programador
+  </h2>
 
-        <label class="flex flex-col gap-2">
-      <span class="font-semibold text-slate-700">Especialidad</span>
-      <input
-        type="text"
-        formControlName="specialty"
-        placeholder="Ej: Frontend, Node.js, DevOps..."
-        class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-800 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
-      />
-    </label>
+  <div class="grid gap-8">
+    <!-- BIO -->
+    <label class="flex flex-col gap-3">
+      <span class="font-semibold text-slate-800 text-lg">Biografía</span>
+      <textarea
+        formControlName="bio"
+        rows="4"
+        placeholder="Cuéntanos sobre ti, experiencia, tecnologías..."
+        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+      ></textarea>
+      <small class="text-xs text-slate-500">Máx. 1000 caracteres.</small>
+      <div *ngIf="controlError('bio', 'required')" class="text-sm text-rose-600 font-medium mt-1">
+        La biografía es obligatoria.
+      </div>
+    </label>
 
-    ---
+    <!-- ESPECIALIDAD -->
+    <label class="flex flex-col gap-3">
+      <span class="font-semibold text-slate-800 text-lg">Especialidad</span>
+      <input
+        type="text"
+        formControlName="specialty"
+        placeholder="Ej: Frontend, Node.js, DevOps..."
+        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+      />
+    </label>
 
-        <fieldset class="p-5 rounded-xl border border-slate-200 bg-slate-50">
-      <legend class="text-lg font-bold text-slate-700 mb-4">⏰ Disponibilidad Semanal</legend>
+    <!-- SEPARADOR -->
+    <div class="border-t border-slate-200 my-2"></div>
 
-            <div class="mt-3 flex flex-col gap-5" formArrayName="disponibilidad">
-        <div
-          *ngFor="let d of disponibilidad.controls; let i = index"
-          [formGroupName]="i"
-          class="p-4 bg-white rounded-lg shadow-sm border border-slate-100 transition duration-150 ease-in-out grid grid-cols-2 md:grid-cols-4 gap-4 items-start relative"
-        >
-                    <div>
-            <label class="text-sm font-medium text-slate-600 block mb-1">Día</label>
-            <select
-              formControlName="day"
-              class="w-full px-3 py-2 rounded-lg border border-slate-300 text-black bg-white focus:ring-indigo-500 focus:border-indigo-500"
-            >
-              <option value="MON">Lunes</option>
-              <option value="TUE">Martes</option>
-              <option value="WED">Miércoles</option>
-              <option value="THU">Jueves</option>
-              <option value="FRI">Viernes</option>
-              <option value="SAT">Sábado</option>
-              <option value="SUN">Domingo</option>
-            </select>
-            <div
-              *ngIf="controlError('disponibilidad.' + i + '.day', 'required')"
-              class="text-xs text-rose-600 mt-1"
-            >
-              Día es obligatorio.
-            </div>
-          </div>
+    <!-- DISPONIBILIDAD -->
+    <fieldset class="p-6 rounded-2xl border border-slate-300 bg-slate-50 shadow-inner">
+      <legend class="text-xl font-bold text-slate-800 mb-4">⏰ Disponibilidad Semanal</legend>
 
-                    <div>
-            <label class="text-sm font-medium text-slate-600 block mb-1">Hora Inicio</label>
-            <input
-              type="time"
-              formControlName="startTime"
-              class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-black focus:ring-indigo-500 focus:border-indigo-500"
-            />
-            <div
-              *ngIf="controlError('disponibilidad.' + i + '.startTime', 'required')"
-              class="text-xs text-rose-600 mt-1"
-            >
-              Inicio es obligatorio.
-            </div>
-          </div>
+      <div class="mt-4 flex flex-col gap-6" formArrayName="disponibilidad">
+        <div
+          *ngFor="let d of disponibilidad.controls; let i = index"
+          [formGroupName]="i"
+          class="p-5 bg-white rounded-xl shadow-sm border border-slate-200 grid grid-cols-1 md:grid-cols-4 gap-6 items-start relative hover:shadow-md transition"
+        >
+          <!-- Día -->
+          <div>
+            <label class="text-sm font-medium text-slate-700 block mb-1">Día</label>
+            <select
+              formControlName="day"
+              class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-black shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              <option value="MON">Lunes</option>
+              <option value="TUE">Martes</option>
+              <option value="WED">Miércoles</option>
+              <option value="THU">Jueves</option>
+              <option value="FRI">Viernes</option>
+              <option value="SAT">Sábado</option>
+              <option value="SUN">Domingo</option>
+            </select>
+            <div *ngIf="controlError('disponibilidad.' + i + '.day', 'required')" class="text-xs text-rose-600 mt-1">
+              Día es obligatorio.
+            </div>
+          </div>
 
-                    <div>
-            <label class="text-sm font-medium text-slate-600 block mb-1">Hora Fin</label>
-            <input
-              type="time"
-              formControlName="endTime"
-              class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-black focus:ring-indigo-500 focus:border-indigo-500"
-            />
-            <div
-              *ngIf="controlError('disponibilidad.' + i + '.endTime', 'required')"
-              class="text-xs text-rose-600 mt-1"
-            >
-              Fin es obligatorio.
-            </div>
-          </div>
+          <!-- Inicio -->
+          <div>
+            <label class="text-sm font-medium text-slate-700 block mb-1">Hora Inicio</label>
+            <input
+              type="time"
+              formControlName="startTime"
+              class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-black shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            />
+            <div *ngIf="controlError('disponibilidad.' + i + '.startTime', 'required')" class="text-xs text-rose-600 mt-1">
+              Inicio es obligatorio.
+            </div>
+          </div>
 
-                    <div class="flex items-center justify-end md:col-span-1">
-            <button
-              type="button"
-              (click)="removeDisponibilidad(i)"
-              [disabled]="disponibilidad.length <= 1"
-              class="mt-6 md:mt-0 inline-flex items-center justify-center w-full md:w-auto px-4 py-2 rounded-lg border border-rose-300 text-rose-600 bg-rose-50 hover:bg-rose-100 disabled:opacity-50 disabled:cursor-not-allowed transition duration-150 ease-in-out"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                />
-              </svg>
-            </button>
-          </div>
+          <!-- Fin -->
+          <div>
+            <label class="text-sm font-medium text-slate-700 block mb-1">Hora Fin</label>
+            <input
+              type="time"
+              formControlName="endTime"
+              class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-black shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            />
+            <div *ngIf="controlError('disponibilidad.' + i + '.endTime', 'required')" class="text-xs text-rose-600 mt-1">
+              Fin es obligatorio.
+            </div>
+          </div>
 
-                    <div
-            *ngIf="controlError('disponibilidad.' + i, 'timeRangeInvalid')"
-            class="text-sm text-rose-600 font-medium col-span-full mt-2"
-          >
-            ⚠️ Error: La hora de inicio debe ser estrictamente anterior a la hora de fin.
-          </div>
-        </div>
+          <!-- Botón eliminar -->
+          <div class="flex items-center justify-end">
+            <button
+              type="button"
+              (click)="removeDisponibilidad(i)"
+              [disabled]="disponibilidad.length <= 1"
+              class="mt-6 md:mt-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-rose-300 text-rose-600 bg-rose-50 hover:bg-rose-100 disabled:opacity-50 shadow-sm transition"
+            >
+              🗑 Eliminar
+            </button>
+          </div>
 
-                <div class="pt-2">
-          <button
-            type="button"
-            (click)="addDisponibilidad()"
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 transition duration-150 ease-in-out"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-            Añadir otro horario
-          </button>
-        </div>
-      </div>
-    </fieldset>
+          <div *ngIf="controlError('disponibilidad.' + i, 'timeRangeInvalid')" class="text-sm text-rose-600 font-medium col-span-full mt-1">
+            ⚠️ La hora de inicio debe ser menor que la de fin.
+          </div>
+        </div>
 
-    ---
+        <div class="pt-2">
+          <button
+            type="button"
+            (click)="addDisponibilidad()"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 shadow-sm transition"
+          >
+            ➕ Añadir otro horario
+          </button>
+        </div>
+      </div>
+    </fieldset>
 
-        <div class="flex gap-4 justify-end pt-4">
-      <button
-        type="submit"
-        [disabled]="submitting || form.invalid" 
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-indigo-600 text-white font-semibold shadow-md transition duration-150 ease-in-out disabled:bg-slate-400 disabled:cursor-not-allowed hover:bg-indigo-700"
-      >
-        <svg
-          *ngIf="!submitting"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-5 h-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-        </svg>
-        <span *ngIf="!submitting">Guardar Cambios</span>
-        <span *ngIf="submitting">Guardando...</span>
-      </button>
-    </div>
-  </div>
-</form>
+    <div class="flex justify-end pt-4">
+      <button
+        type="submit"
+        [disabled]="submitting || form.invalid"
+        class="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-indigo-600 text-white font-semibold shadow-lg hover:bg-indigo-700 
+        disabled:bg-slate-400 disabled:cursor-not-allowed transition hover:cursor-pointer "
+      >
+        <span *ngIf="!submitting">💾 Guardar Cambios</span>
+        <span *ngIf="submitting">Guardando...</span>
+      </button>
+    </div>
+  </div>
+</form><!-- Versión con mejor estilo, sin cambiar funcionalidad -->
+

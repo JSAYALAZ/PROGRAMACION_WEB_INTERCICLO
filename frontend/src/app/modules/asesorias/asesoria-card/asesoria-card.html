@@ -1,0 +1,54 @@
+<article class="max-w-md w-full bg-white rounded-2xl shadow-md border border-slate-100 p-5">
+  <header class="flex items-start justify-between gap-4">
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">Asesoría — {{ asesoria.programmerId }}</h3>
+      <p class="text-sm text-slate-500 mt-1">
+        <span class="font-medium">{{ formatDate(asesoria.date) }}</span>
+        · {{ formatHour(asesoria.hour) }}
+        · <span class="text-slate-600">{{ asesoria.durationMin }} min</span>
+      </p>
+    </div>
+
+    <div>
+      <span
+        class="px-3 py-1 text-xs font-semibold rounded-full"
+        [ngClass]="statusBadgeClass(asesoria.status)"
+        >{{ asesoria.status }}</span
+      >
+    </div>
+  </header>
+
+  <main class="mt-4 text-slate-700">
+    <p *ngIf="asesoria.comment; else noComment" class="text-sm leading-relaxed">
+      {{ asesoria.comment }}
+    </p>
+    <ng-template #noComment>
+      <p class="text-sm text-slate-400 italic">Sin comentario</p>
+    </ng-template>
+  </main>
+
+  <footer class="mt-4 flex items-center justify-between gap-3">
+    <div class="text-xs text-slate-500">
+      <div *ngIf="asesoria.responseMessage; else noResp">
+        <span class="font-medium text-slate-700">Respuesta:</span>
+        <span class="ml-2">{{ asesoria.responseMessage }}</span>
+      </div>
+      <ng-template #noResp>
+        <span class="italic">Sin respuesta</span>
+      </ng-template>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <button
+        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-indigo-50 text-indigo-700 text-sm hover:bg-indigo-100 transition"
+      >
+        Ver
+      </button>
+      <button
+        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-sm hover:bg-slate-50 transition"
+      >
+        Editar
+      </button>
+    </div>
+  </footer>
+</article>

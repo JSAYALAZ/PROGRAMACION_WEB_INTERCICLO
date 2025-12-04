@@ -1,11 +1,15 @@
 import { Router } from "express";
 import { zodValidateJson } from "src/shared/ZodValidator";
-import { ProgrammerProfileCreateDTO } from "./dto/input";
+import {
+  ProgrammerProfileCreateDTO,
+  ProgrammerProfileUpdateDTO,
+} from "./dto/input";
 import { createProgrammerProfile } from "../applications/createProgrammerProfile";
 import { ApiResponse } from "src/shared/ApiResponse";
 import { listProgrammerProfile } from "../applications/listProgrammerProfile";
 import { getProgrammerProfileById } from "../applications/getProgrammerProfileById";
 import { ProgrammerMapper } from "./mapper/programmer_mapper";
+import { updateProgrammerProfile } from "../applications/updateProgrammerProfile";
 
 const router = Router();
 
@@ -27,6 +31,18 @@ router.post("/", async (req, res) => {
       ProgrammerProfileCreateDTO
     );
     const userId = await createProgrammerProfile(validated);
+    return ApiResponse.success(res, "Correcto", userId);
+  } catch (error) {
+    return ApiResponse.error(res, error);
+  }
+});
+router.put("/", async (req, res) => {
+  try {
+    const { validated } = await zodValidateJson(
+      req,
+      ProgrammerProfileUpdateDTO
+    );
+    const userId = await updateProgrammerProfile(validated);
     return ApiResponse.success(res, "Correcto", userId);
   } catch (error) {
     return ApiResponse.error(res, error);

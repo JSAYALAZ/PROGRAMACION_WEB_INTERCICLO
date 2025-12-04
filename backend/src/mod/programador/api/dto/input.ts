@@ -5,7 +5,7 @@ export const ProgrammerProfileCreateDTO = z.object({
   userId: z.string(),
   bio: z.string(),
   specialty: z.string(),
-  dispinibilidad: z.array(
+  disponibilidad: z.array(
     z.object({
       day: z.enum(Weekday),
       startMinutes: z.string(),
@@ -17,9 +17,10 @@ export type ProgrammerProfileCreateDTO = z.infer<
   typeof ProgrammerProfileCreateDTO
 >;
 export const ProgrammerProfileUpdateDTO = z.object({
+  userId:z.string(),
   bio: z.string(),
   specialty: z.string(),
-  dispinibilidad: z.array(
+  disponibilidad: z.array(
     z.object({
       day: z.enum(Weekday),
       startMinutes: z.string(),

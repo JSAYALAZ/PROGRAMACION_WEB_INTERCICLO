@@ -1,3 +1,4 @@
+import { DisponibilidadOutputDTO } from "src/mod/disponibilidad/api/dto/output";
 import { z } from "zod";
 
 export const ProgrammerOutputDTO = z.object({
@@ -9,7 +10,7 @@ export const ProgrammerOutputDTO = z.object({
   avatarUrl: z.string().nullable(),
   contactLinks: z.string().nullable(),
   portafolioId: z.string(),
-  disponibilidad: [],
+  disponibilidad: z.array(DisponibilidadOutputDTO),
 });
 
 export type ProgrammerOutputDTO = z.infer<typeof ProgrammerOutputDTO>;

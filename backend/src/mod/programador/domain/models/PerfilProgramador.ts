@@ -11,6 +11,35 @@ export class PerfilProgramador {
   private avatarUrl: string|null;
   private contactLinks: string|null;
   private portafolioId: string;
+
+  // Setters
+  public setUserId(userId: string): void {
+    this.userId = userId;
+  }
+
+  public setName(name: string): void {
+    this.name = name;
+  }
+
+  public setSpecialty(specialty: string|null): void {
+    this.specialty = specialty;
+  }
+
+  public setBio(bio: string|null): void {
+    this.bio = bio;
+  }
+
+  public setAvatarUrl(avatarUrl: string|null): void {
+    this.avatarUrl = avatarUrl;
+  }
+
+  public setContactLinks(contactLinks: string|null): void {
+    this.contactLinks = contactLinks;
+  }
+
+  public setPortafolioId(portafolioId: string): void {
+    this.portafolioId = portafolioId;
+  }
   private disponibilidad: Disponibilidad[]
 
   // Getters

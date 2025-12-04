@@ -1,10 +1,7 @@
-import { Prisma } from "src/generated/prisma/client";
 import { Disponibilidad } from "../domain/models/Disponibilidad";
 
 export interface DisponibilidadDbDefinition {
-  list(q?: any, tx?: Prisma.TransactionClient): Promise<Disponibilidad[]>;
   createMany(data: Disponibilidad[]): Promise<void>;
-  getById(id: string): Promise<Disponibilidad>;
   deleteAllFromProgrammer(programmerId: string): Promise<void>;
   // count(where: Prisma.UserWhereInput,tx?:Prisma.TransactionClient): Promise<number>;
   //   getById(id: string,tx?:Prisma.TransactionClient): Promise<Usuario>;
