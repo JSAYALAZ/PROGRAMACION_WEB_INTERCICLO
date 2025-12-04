@@ -12,11 +12,11 @@ export type ProgrammerOutputDTO = {
   avatarUrl: string;
   contactLinks: string;
   portafolioId: string;
-  disponibilidad: ({
-    day:string,
-    startMinuts: number,
-    endMinuts: number,
-  })[];
+  disponibilidad: {
+    day: string;
+    startMinuts: number;
+    endMinuts: number;
+  }[];
 };
 @Component({
   selector: 'app-perfil-programador-card',
@@ -35,5 +35,13 @@ export class PerfilProgramadorCard {
         this.programmer.portafolioId
       ),
     ]);
+  }
+
+  agendarCita() {
+    this.router.navigate([APP_ROUTES.main.childrens.asesorias_new.absolutePath], {
+      queryParams: {
+        programmerId: this.programmer.id,
+      },
+    });
   }
 }

@@ -4,7 +4,6 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -59,7 +58,7 @@ export class ProgrammerProfileFormComponent implements OnInit {
   user: User = this.activateRoute.parent?.snapshot.data['user'];
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router:Router) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -115,7 +114,7 @@ export class ProgrammerProfileFormComponent implements OnInit {
     }
 
     const payload = {
-      userId: this.user.uid, 
+      userId: this.user.uid,
       bio: this.form.value.bio,
       specialty: this.form.value.specialty,
       // Mapeo de disponibilidad para el payload de la API
@@ -127,15 +126,15 @@ export class ProgrammerProfileFormComponent implements OnInit {
     };
 
     try {
-      
-      this.http.put(APP_ROUTES.main.childrens.perfilProgramador_edit.apiPath, payload).pipe().subscribe(res=>{
-        console.log(res);
-        
-      });
-      this.router.navigate([APP_ROUTES.main.childrens.perfilProgramador.absolutePath])
+      this.http
+        .put(APP_ROUTES.main.childrens.perfilProgramador_edit.apiPath, payload)
+        .pipe()
+        .subscribe((res) => {
+          console.log(res);
+        });
+      this.router.navigate([APP_ROUTES.main.childrens.perfilProgramador.absolutePath]);
     } catch (error) {
       console.log(error);
-      
     }
   }
 

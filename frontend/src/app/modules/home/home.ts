@@ -30,9 +30,9 @@ export class Home {
   constructor(private axios: AxiosService<UserOutputDTO>) {}
   ngOnInit() {
     this.axios.fetch(`${APP_ROUTES.main.childrens.usuarios.apiPath}/${this.user.uid}`, { page: 1 });
-  }
-  getInitial() {
-    'J';
-    // return this.data$.pipe().subscribe.username?.[0]?.toUpperCase() ?? '?';
+    this.axios.data$.pipe().subscribe((data: any) => {
+      localStorage.setItem('rol', data.rol);
+      // si 'rol' pudiera ser objeto: localStorage.setItem('rol', JSON.stringify(data.rol));
+    });
   }
 }

@@ -4,11 +4,12 @@ import { APP_ROUTES } from '../../../app.routes';
 import { CommonModule } from '@angular/common';
 import { ɵInternalFormsSharedModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AsesoriaCard } from '../asesoria-card/asesoria-card';
 
 @Component({
   selector: 'app-asesorias-main-page',
   standalone: true,
-  imports: [CommonModule, ɵInternalFormsSharedModule],
+  imports: [CommonModule, ɵInternalFormsSharedModule,AsesoriaCard],
   templateUrl: './asesorias-main-page.html',
   styleUrl: './asesorias-main-page.css',
 })

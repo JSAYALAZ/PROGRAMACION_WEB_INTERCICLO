@@ -19,66 +19,71 @@ import { APP_ROUTES } from '../../app.routes';
 })
 export class SidebarCompComponent implements OnInit {
   pinUp = true;
+  rol = 'USER';
+
   modules = [
     {
       name: 'Inicio',
-      code: 'HOME',
+      rol: 'ANY',
       routes: {
         main: { path: APP_ROUTES.main.childrens.main.absolutePath },
       },
     },
     {
       name: 'Proyectos',
-      code: 'PROYECTOS',
+      rol: 'ANY',
       routes: {
         main: { path: APP_ROUTES.main.childrens.proyectos.absolutePath },
       },
     },
     {
       name: 'Usuarios',
-      code: 'USUARIOS',
+      rol: 'ADMIN',
       routes: {
         main: { path: APP_ROUTES.main.childrens.usuarios.absolutePath },
       },
     },
     {
       name: 'Asesorias',
-      code: 'ASESORIAS',
+      rol: 'USER',
       routes: {
         main: { path: APP_ROUTES.main.childrens.asesorias.absolutePath },
       },
     },
     {
       name: 'Portafolio',
-      code: 'PORTAFOLIO',
+      rol: 'ANY',
       routes: {
         main: { path: APP_ROUTES.main.childrens.portafolio.absolutePath },
       },
     },
     {
       name: 'Citas',
-      code: 'CITAS',
+      rol: 'PROGRAMMER',
       routes: {
         main: { path: APP_ROUTES.main.childrens.citas.absolutePath },
       },
     },
     {
       name: 'Programadores',
-      code: 'PROGRAMMERS',
+      rol: 'USER',
       routes: {
         main: { path: APP_ROUTES.main.childrens.perfilProgramador.absolutePath },
       },
     },
     {
       name: 'Acciones para programador',
-      code: 'PROGRAMMERS',
+      rol: 'PROGRAMMER',
       routes: {
         main: { path: APP_ROUTES.main.childrens.perfilProgramador_actions.absolutePath },
       },
     },
   ];
   onSelect(path: string) {}
-  select(path: string) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const stored = typeof window !== 'undefined' ? localStorage.getItem('rol') : null;
+    this.rol = stored ?? 'USER';
+    console.log(this.rol);
+  }
 }

@@ -50,9 +50,6 @@ export class AxiosService<T> {
         finalize(() => this.loadingSubject.next(false))
       )
       .subscribe((res) => {
-        console.log("En axios");
-        console.log(res);
-        
         if (res?.success) {
           this.dataSubject.next(res.data);
         }

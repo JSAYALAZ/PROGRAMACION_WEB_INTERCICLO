@@ -16,6 +16,7 @@ import { PortafolioView } from './modules/portafolio/portafolio-view/portafolio-
 import { PerfilProgActions } from './modules/perfilProgramador/perfil-prog-actions/perfil-prog-actions';
 import { ProgrammerProfileFormComponent } from './modules/perfilProgramador/perfilProgramador-edit-page/perfilProgramador-edit-page.';
 import { AsesoriaNew } from './modules/asesorias/asesoria-new/asesoria-new';
+import { CitasMainPage } from './modules/citas/citas-main-page/citas-main-page';
 
 function redirectToLogin() {
   redirectUnauthorizedTo(APP_ROUTES.login.path);
@@ -77,13 +78,13 @@ export const APP_ROUTES = {
         path: 'asesorias',
         absolutePath: 'idx/asesorias',
         component: AsesoriasMainPage,
-        apiPath: 'http://localhost:3000/api/asesorias',
+        apiPath: 'http://localhost:3000/api/asesoria',
       },
       asesorias_new: {
         path: 'asesorias/new',
         absolutePath: 'idx/asesorias/new',
         component: AsesoriaNew,
-        apiPath: 'http://localhost:3000/api/asesorias',
+        apiPath: 'http://localhost:3000/api/asesoria',
       },
       //Portafoli
       portafolio: {
@@ -102,7 +103,7 @@ export const APP_ROUTES = {
       citas: {
         path: 'citas',
         absolutePath: 'idx/citas',
-        component: AsesoriasMainPage,
+        component: CitasMainPage,
         apiPath: 'http://localhost:3000/api/citas',
       },
       perfilProgramador: {

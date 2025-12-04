@@ -1,4 +1,4 @@
-<div class="form_background text_color max-h-dvh h-dvh ">
+<div class="bg-neutral-300 text_color max-h-dvh h-dvh">
   <div class="flex flex-row gap-4 py-3 justify-center bg-amber-600 text_color">
     <app-sign-out></app-sign-out>
     <!-- <app-dark-button></app-dark-button> -->
@@ -8,11 +8,11 @@
   <div class="max-h-[calc(100vh-54px)] overflow-y-auto">
     <nav class="flex flex-col gap-3 mb-20">
       <!-- Lista dinámica de módulos -->
-      @for (module of modules; track module.code) {
+      @for (module of modules; track module.rol) {
       <app-options-sidebar
         [text]="module.name"
         [url]="module.routes.main.path"
-        (click)="select(module.code)"
+        *ngIf="module.rol == 'ANY' ? true : module.rol == rol"
       ></app-options-sidebar>
       } @empty {
       <li>No Modules found.</li>

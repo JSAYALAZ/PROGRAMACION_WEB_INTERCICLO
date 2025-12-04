@@ -33,7 +33,7 @@ export class ProyectosNewPage {
       title: new FormControl('', Validators.required),
     });
   }
-  async onSubmit() {
+   onSubmit() {
     this.loadingSubmit = true;
     if (!this.authForm.valid) {
       this.loadingSubmit = false;

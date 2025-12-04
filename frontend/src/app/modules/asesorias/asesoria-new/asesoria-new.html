@@ -1,1 +1,71 @@
-<p>asesoria-new works!</p>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="max-w-2xl mx-auto p-6 form_background text-black rounded-lg shadow"
+>
+  <h2 class="text-2xl font-semibold mb-4">Agendar asesoría</h2>
+
+  <!-- Descripción -->
+  <div class="mb-4">
+    <label class="form_label">Descripción</label>
+    <input
+      type="text"
+      formControlName="commet"
+      placeholder="Breve descripción de la asesoría"
+      class="form_input"
+    />
+  </div>
+
+  <!-- Fecha y Hora -->
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <label class="form_label">Fecha</label>
+      <input type="date" formControlName="date" class="form_input" />
+    </div>
+
+    <div>
+      <label class="form_label">Hora</label>
+      <input type="time" formControlName="hour" class="form_input" />
+    </div>
+  </div>
+
+  <!-- Duración -->
+  <div class="mb-4">
+    <label class="form_label">Duración (min)</label>
+    <input
+      type="number"
+      formControlName="durationMin"
+      min="1"
+      placeholder="Ej: 30"
+      class="form_input w-40"
+    />
+  </div>
+
+  <!-- Comentario -->
+  <div class="mb-4">
+    <label class="form_label">Comentario</label>
+    <textarea
+      formControlName="comment"
+      rows="3"
+      placeholder="Comentario adicional (opcional)"
+      class="form_input"
+    ></textarea>
+  </div>
+
+  <!-- Botones -->
+  <div class="flex items-center gap-3">
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      class="px-4 py-2 rounded font-medium disabled:opacity-50 
+      disabled:cursor-not-allowed border bg-green-500 hover:cursor-pointer"
+    >
+      Guardar asesoría
+    </button>
+
+    <!-- Mostrar el programmerId por claridad -->
+    <div class="ml-auto text-sm text-gray-600">
+      <span class="font-medium">ProgrammerId:</span> {{ programmerId }}
+    </div>
+  </div>
+</form>
