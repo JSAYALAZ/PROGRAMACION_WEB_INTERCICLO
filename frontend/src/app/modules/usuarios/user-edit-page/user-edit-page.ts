@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './user-edit-page.html',
-  styleUrl: './user-edit-page.css',
 })
 export class UserEditPage {
   authForm!: FormGroup;

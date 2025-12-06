@@ -22,7 +22,6 @@ export type ProgrammerOutputDTO = {
   selector: 'app-perfil-programador-card',
   imports: [CommonModule],
   templateUrl: './perfil-programador-card.html',
-  styleUrl: './perfil-programador-card.css',
 })
 export class PerfilProgramadorCard {
   @Input() programmer!: ProgrammerOutputDTO;
@@ -44,4 +43,9 @@ export class PerfilProgramadorCard {
       },
     });
   }
+  formatTime(min: number): string {
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+}
 }

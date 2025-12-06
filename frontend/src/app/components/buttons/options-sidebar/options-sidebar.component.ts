@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-options-sidebar',
   templateUrl: './options-sidebar.component.html',
-  standalone:true,
-  imports:[CommonModule]
+  standalone: true,
+  imports: [CommonModule],
 })
 export class OptionsSidebarComponent {
   @Input() text = '';
@@ -17,7 +17,7 @@ export class OptionsSidebarComponent {
   constructor(private router: Router) {}
 
   handleClick() {
-    this.clicked.emit();       // notifica al padre
+    this.clicked.emit(); // notifica al padre
     this.router.navigate([this.url]); // navega
   }
 }

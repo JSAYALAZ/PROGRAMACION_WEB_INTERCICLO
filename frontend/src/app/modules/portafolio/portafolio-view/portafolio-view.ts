@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-portafolio-view',
   imports: [CommonModule],
   templateUrl: './portafolio-view.html',
-  styleUrl: './portafolio-view.css',
 })
 export class PortafolioView {
   portafolioId: string = '';

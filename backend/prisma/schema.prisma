@@ -35,10 +35,10 @@ enum ParticipationType {
 
 model User {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  firebaseUid String  @unique // UID de Firebase si usas login Google
+  firebaseUid String    @unique // UID de Firebase si usas login Google
   email       String
   displayName String
-  picture String? 
+  picture     String?
   role        Role      @default(USER)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime?
@@ -54,6 +54,7 @@ model User {
   notifications Notification[]
   bookingsSent  Booking[]      @relation("bookingRequester")
 }
+
 enum Weekday {
   MON
   TUE
@@ -63,6 +64,7 @@ enum Weekday {
   SAT
   SUN
 }
+
 model ProgrammerProfile {
   id           String    @id @default(auto()) @map("_id") @db.ObjectId
   userId       String    @unique @db.ObjectId // relación 1:1 con User
@@ -76,21 +78,21 @@ model ProgrammerProfile {
   deleted      Boolean   @default(false)
 
   // Relaciónes
-  user           User           @relation(fields: [userId], references: [id])
-  portfolio      Portfolio?
-  available ProgrammerAvailability[]
-  notifications  Notification[]
-  bookings       Booking[]
+  user          User                     @relation(fields: [userId], references: [id])
+  portfolio     Portfolio?
+  available     ProgrammerAvailability[]
+  notifications Notification[]
+  bookings      Booking[]
 }
 
 model ProgrammerAvailability {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  programmerId String   @db.ObjectId
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  programmerId String  @db.ObjectId
   day          Weekday
-  startMinutes Int      // minutos desde 00:00 (ej: 8:00 -> 480)
-  endMinutes   Int      // exclusivo/fin (ej: 13:00 -> 780)
+  startMinutes Int // minutos desde 00:00 (ej: 8:00 -> 480)
+  endMinutes   Int // exclusivo/fin (ej: 13:00 -> 780)
 
-  programmer   ProgrammerProfile @relation(fields: [programmerId], references: [id])
+  programmer ProgrammerProfile @relation(fields: [programmerId], references: [id])
 
   @@index([programmerId, day])
 }
@@ -138,13 +140,13 @@ model Project {
   portfolio Portfolio @relation(fields: [portfolioId], references: [id])
 }
 
-
 model Booking {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
   requesterId     String    @db.ObjectId // usuario que solicita (User)
   programmerId    String    @db.ObjectId // programmer (ProgrammerProfile.id)
-  date            Weekday 
-  hour            Int 
+  date            DateTime
+  weekday         Weekday
+  hour            Int
   durationMin     Int
   comment         String?
   status          String    @default("PENDING") // PENDING, APPROVED, REJECTED, CANCELLED
@@ -153,8 +155,8 @@ model Booking {
   updatedAt       DateTime?
   deleted         Boolean   @default(false)
 
-  requester    User              @relation("bookingRequester", fields: [requesterId], references: [id])
-  programmer   ProgrammerProfile @relation(fields: [programmerId], references: [id])
+  requester  User              @relation("bookingRequester", fields: [requesterId], references: [id])
+  programmer ProgrammerProfile @relation(fields: [programmerId], references: [id])
 }
 
 model Notification {

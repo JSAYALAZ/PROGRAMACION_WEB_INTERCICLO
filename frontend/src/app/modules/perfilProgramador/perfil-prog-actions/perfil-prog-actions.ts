@@ -6,7 +6,6 @@ import { APP_ROUTES } from '../../../app.routes';
   selector: 'app-perfil-prog-actions',
   imports: [],
   templateUrl: './perfil-prog-actions.html',
-  styleUrl: './perfil-prog-actions.css',
 })
 export class PerfilProgActions {
   constructor(private router: Router) {}

@@ -10,13 +10,13 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-asesoria-new',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './asesoria-new.html',
-  styleUrl: './asesoria-new.css',
 })
 export class AsesoriaNew implements OnInit {
   programmerId = '';
   form!: FormGroup;
   private activateRoute = inject(ActivatedRoute);
   user: User = this.activateRoute.parent?.snapshot.data['user'];
+  today!: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {}
   ngOnInit() {
@@ -26,86 +26,44 @@ export class AsesoriaNew implements OnInit {
     } else {
       this.programmerId = prgId;
       this.initForm();
-      console.log('ID del programador:', prgId);
+      const now = new Date();
+      // convertir a local ISO y quitar segundos/milisegundos
+      const tzOffset = now.getTimezoneOffset() * 60000; // en ms
+      const localISO = new Date(now.getTime() - tzOffset).toISOString().slice(0, 16);
+      this.today = localISO; // "2025-12-06T10:30"
     }
   }
 
   initForm() {
     this.form = new FormGroup({
-      commet: new FormControl('', Validators.required),
-      date: new FormControl('', Validators.required),
-      hour: new FormControl('', Validators.required),
-      durationMin: new FormControl('', Validators.required),
       comment: new FormControl('', Validators.required),
+      date: new FormControl('', Validators.required),
+      durationMin: new FormControl('', Validators.required),
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (!this.form.valid) {
       return;
     }
 
     const payload = {
-      date: getDayInDate(this.form.value.date),
-      hour: timeToMinutes(this.form.value.hour),
+      date: this.form.value.date,
       durationMin: Number(this.form.value.durationMin),
       commet: this.form.value.comment,
       programmerId: this.programmerId,
       userId: this.user.uid,
     };
 
-    try {
-      this.http
-        .post(APP_ROUTES.main.childrens.asesorias_new.apiPath, payload)
-        .pipe()
-        .subscribe((res) => {
-          console.log(res);
-        });
-      this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath]);
-    } catch (error) {
-      console.log(error);
-    }
+    this.http.post(APP_ROUTES.main.childrens.asesorias_new.apiPath, payload).subscribe({
+      next: (res) => {
+        console.log(res);
+
+        // this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath]);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }
-const getDayInDate = (date: string): WeekdayValue | null => {
-  if (!date) return null;
-  const d = new Date(`${date}T00:00:00`);
-  if (isNaN(d.getTime())) return null;
-  switch (d.getDay()) {
-    case 0:
-      return Weekday.SUN;
-    case 1:
-      return Weekday.MON;
-    case 2:
-      return Weekday.TUE;
-    case 3:
-      return Weekday.WED;
-    case 4:
-      return Weekday.THU;
-    case 5:
-      return Weekday.FRI;
-    case 6:
-      return Weekday.SAT;
-    default:
-      return null;
-  }
-};
-
-const timeToMinutes = (time: string): number | null => {
-  if (!time) return null;
-  const [hh, mm] = time.split(':').map((n) => parseInt(n, 10));
-  if (Number.isNaN(hh) || Number.isNaN(mm)) return null;
-  return hh * 60 + mm;
-};
-
-export const Weekday = {
-  MON: 'MON',
-  TUE: 'TUE',
-  WED: 'WED',
-  THU: 'THU',
-  FRI: 'FRI',
-  SAT: 'SAT',
-  SUN: 'SUN',
-} as const;
-
-type WeekdayValue = (typeof Weekday)[keyof typeof Weekday];

@@ -1,9 +1,7 @@
-import { Weekday } from "src/generated/prisma/enums";
 import z from "zod";
 
 export const AsesoriaCreateDTO = z.object({
-  date: z.enum(Weekday),
-  hour: z.number(),
+  date: z.string(),
   durationMin: z.number(),
   commet: z.string(),
   programmerId: z.string(),
@@ -35,6 +33,8 @@ export const AsesoriaFiltersDTO = z.object({
       return v == "" ? undefined : v;
     })
     .optional(),
+  from: z.string().trim().optional(),
+  to: z.string().trim().optional(),
 });
 
 export type AsesoriaFiltersDTO = z.infer<typeof AsesoriaFiltersDTO>;

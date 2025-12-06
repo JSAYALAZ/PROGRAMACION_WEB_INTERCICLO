@@ -11,7 +11,6 @@ import { PerfilProgramadorCard, ProgrammerOutputDTO } from '../perfil-programado
   standalone: true,
   imports: [CommonModule, ɵInternalFormsSharedModule,PerfilProgramadorCard],
   templateUrl: './perfilProgramador-main-page.html',
-  styleUrl: './perfilProgramador-main-page.css',
 })
 export class PerfilProgramadorMainPage {
   get data$() {

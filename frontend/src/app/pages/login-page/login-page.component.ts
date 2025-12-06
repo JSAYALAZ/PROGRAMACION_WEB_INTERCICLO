@@ -9,7 +9,6 @@ import { APP_ROUTES } from '../../app.routes';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.css',
   standalone: true,
   imports: [ReactiveFormsModule],
 })

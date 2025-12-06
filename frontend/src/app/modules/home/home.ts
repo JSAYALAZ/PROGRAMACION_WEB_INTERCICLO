@@ -10,8 +10,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './home.html',
-  styleUrl: './home.css',
+  templateUrl: './home.html'
 })
 export class Home {
   private activateRoute = inject(ActivatedRoute);

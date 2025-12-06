@@ -11,7 +11,6 @@ import { UserCard, UserOutputDTO } from '../user-card/user-card';
   standalone: true,
   imports: [CommonModule, ɵInternalFormsSharedModule, UserCard],
   templateUrl: './users-main-page.html',
-  styleUrl: './users-main-page.css',
 })
 export class UsersMainPage {
   get data$() {

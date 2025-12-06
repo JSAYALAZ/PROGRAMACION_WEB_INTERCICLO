@@ -11,7 +11,6 @@ export type PortafolioOutputDTO = {
   selector: 'app-portafolio-card',
   imports: [],
   templateUrl: './portafolio-card.html',
-  styleUrl: './portafolio-card.css',
 })
 export class PortafolioCard {
   @Input({ required: true }) portfolio!: PortafolioOutputDTO;

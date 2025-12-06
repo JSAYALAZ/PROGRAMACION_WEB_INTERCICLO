@@ -11,7 +11,6 @@ import { User } from '@angular/fire/auth';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './proyectos-new-page.html',
-  styleUrl: './proyectos-new-page.css',
 })
 export class ProyectosNewPage {
   private activateRoute = inject(ActivatedRoute);

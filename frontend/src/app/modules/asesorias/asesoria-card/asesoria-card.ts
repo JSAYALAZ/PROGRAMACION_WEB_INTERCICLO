@@ -13,7 +13,6 @@ export type AsesoriaOutputDTO = {
   selector: 'app-asesoria-card',
   imports: [CommonModule],
   templateUrl: './asesoria-card.html',
-  styleUrl: './asesoria-card.css',
 })
 export class AsesoriaCard {
 @Input() asesoria!: AsesoriaOutputDTO;

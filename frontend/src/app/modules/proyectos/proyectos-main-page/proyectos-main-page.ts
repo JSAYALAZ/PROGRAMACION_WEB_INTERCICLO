@@ -9,7 +9,6 @@ import { ProjectCard } from '../proyect-card/proyect-card';
   standalone: true,
   imports: [CommonModule,ProjectCard],
   templateUrl: './proyectos-main-page.html',
-  styleUrl: './proyectos-main-page.css',
 })
 export class ProyectosMainPage implements OnInit {
   get data$() {

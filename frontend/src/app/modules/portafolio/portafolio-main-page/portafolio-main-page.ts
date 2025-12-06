@@ -9,7 +9,6 @@ import { PortafolioCard } from '../portafolio-card/portafolio-card';
   standalone: true,
   imports: [CommonModule,PortafolioCard],
   templateUrl: './portafolio-main-page.html',
-  styleUrl: './portafolio-main-page.css',
 })
 export class PortafolioMainPage implements OnInit {
   get data$() {

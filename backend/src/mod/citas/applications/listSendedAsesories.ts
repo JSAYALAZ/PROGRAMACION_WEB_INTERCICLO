@@ -5,7 +5,7 @@ import { listAsesorias } from "src/mod/asesoria/applications/listAsesorias";
 export const listSendedAsesories = async (userId: string) => {
   try {
     const user = await getUserById(userId);
-    const asesories = await listAsesorias({ requesterId: userId });
+    const asesories = await listAsesorias({ requesterId: user.getId() });
     return asesories
   } catch (error) {
     if (error instanceof AppError) throw error;

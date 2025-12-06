@@ -2,8 +2,7 @@
 
 <div *ngIf="error$ | async as error" class="text-red-500">Error: {{ error }}</div>
 
-<pre *ngIf="data$ | async as data">
+<ng-container *ngIf="data$ | async as data">
   <app-project-card *ngFor="let d of data" [project]="d"></app-project-card>
-</pre>
-
+</ng-container>
 <!-- <button (click)="reload()">Refetch</button> -->

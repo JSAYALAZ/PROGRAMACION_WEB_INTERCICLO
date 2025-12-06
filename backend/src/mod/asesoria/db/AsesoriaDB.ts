@@ -2,6 +2,7 @@ import { db, mapPrismaError } from "src/shared/prisma";
 import { AppError } from "src/shared/AppError";
 import { AsesoriaDBDefinition } from "./AsesoriaDBDefinition";
 import { Asesoria } from "../domain/models/Asesoria";
+import { fechaActual } from "src/shared/utils";
 
 export const AsesoriaDB: AsesoriaDBDefinition = {
   async getById(id) {
@@ -10,14 +11,13 @@ export const AsesoriaDB: AsesoriaDBDefinition = {
       if (!data) throw AppError.notFound();
       const resp = new Asesoria({
         comment: data.comment,
-        date: data.date,
+        date: fechaActual(data.date),
         durationMin: data.durationMin,
-        hour: data.hour,
         programmerId: data.programmerId,
         requesterId: data.requesterId,
         responseMessage: data.responseMessage,
         status: data.status,
-        id:data.id
+        id: data.id,
       });
       return resp;
     } catch (error) {
@@ -31,25 +31,22 @@ export const AsesoriaDB: AsesoriaDBDefinition = {
   },
   async list(filters) {
     try {
-      const data = await db.booking.findMany({...filters});
+      const data = await db.booking.findMany({ ...filters });
       const resp = data.map(
         (d) =>
           new Asesoria({
             comment: d.comment,
-            date: d.date,
+            date: fechaActual(d.date),
             durationMin: d.durationMin,
-            hour: d.hour,
             programmerId: d.programmerId,
             requesterId: d.requesterId,
             responseMessage: d.responseMessage,
             status: d.status,
-            id:d.id
+            id: d.id,
           })
       );
       return resp;
     } catch (error) {
-      console.log(error);
-
       if (error instanceof AppError) throw error;
       const mapped = mapPrismaError(error);
       if (mapped) throw mapped;
@@ -59,16 +56,18 @@ export const AsesoriaDB: AsesoriaDBDefinition = {
   async save(data) {
     try {
       const resp = await db.booking.upsert({
-        where:{id:data.getId()},
+        where: { id: data.getId() },
         create: {
           date: data.getDate(),
           durationMin: data.getDurationMin(),
           hour: data.getHour(),
+          weekday: data.getWeekday(),
           comment: data.getComment(),
           programmerId: data.getProgrammerId(),
           requesterId: data.getRequesterId(),
           status: data.getStatus(),
-        },update:{
+        },
+        update: {
           status: data.getStatus(),
         },
       });

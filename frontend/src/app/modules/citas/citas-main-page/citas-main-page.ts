@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AxiosService } from '../../../services/axios.service';
 import { CommonModule } from '@angular/common';
 import { APP_ROUTES } from '../../../app.routes';
 import { AsesoriaCard } from '../../asesorias/asesoria-card/asesoria-card';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-citas-main-page',
@@ -12,6 +14,10 @@ import { AsesoriaCard } from '../../asesorias/asesoria-card/asesoria-card';
   styleUrl: './citas-main-page.css',
 })
 export class CitasMainPage implements OnInit {
+  private activateRoute = inject(ActivatedRoute);
+  user: User = this.activateRoute.parent?.snapshot.data['user'];
+
+
   get data$() {
     return this.axios.data$;
   }
@@ -24,9 +30,8 @@ export class CitasMainPage implements OnInit {
 
   constructor(private axios: AxiosService<any[]>) {}
   ngOnInit() {
-    this.axios.fetch(APP_ROUTES.main.childrens.citas.apiPath, { page: 1 }, []);
+    const url = `${APP_ROUTES.main.childrens.citas.apiPath}/${this.user.uid}/received`
+    this.axios.fetch(url, { page: 1 }, []);
   }
-  reload() {
-    this.axios.fetch(APP_ROUTES.main.childrens.proyectos.apiPath);
-  }
+
 }

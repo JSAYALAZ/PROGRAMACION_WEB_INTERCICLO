@@ -14,7 +14,6 @@ export type UserOutputDTO = {
   selector: 'app-user-card',
   imports: [CommonModule],
   templateUrl: './user-card.html',
-  styleUrl: './user-card.css',
 })
 export class UserCard {
  @Input({ required: true }) user!: UserOutputDTO;

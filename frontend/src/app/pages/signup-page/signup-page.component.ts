@@ -1,12 +1,6 @@
 import { Component, inject } from '@angular/core';
-import {
-  Auth,
-  AuthErrorCodes,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from '@angular/fire/auth';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 // import { ToastService } from '../../services/toast.service';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +9,6 @@ import { APP_ROUTES } from '../../app.routes';
 @Component({
   selector: 'app-signup-page',
   templateUrl: './signup-page.component.html',
-  styleUrl: './signup-page.component.css',
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
 })
@@ -45,7 +38,7 @@ export class SignupPage {
 
   // async onSubmit() {
   //   console.log("dskdasljdask");
-    
+
   //   if (this.loadingSubmit) return;
   //   this.loadingSubmit = true;
   //   // this.toast.error('Completa la informacion');

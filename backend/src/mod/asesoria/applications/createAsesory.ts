@@ -3,23 +3,44 @@ import { AsesoriaCreateDTO } from "../api/dto/input";
 import { AsesoriaDB } from "../db/AsesoriaDB";
 import { Asesoria } from "../domain/models/Asesoria";
 import { getUserById } from "src/mod/usuario/applications/getUserById";
+import { validateDisponibilidadProgramador } from "../domain/service/validateDisponibilidadProgramador";
+import { getProgrammerProfileById } from "src/mod/programador/applications/getProgrammerProfileById";
+import { generateAsesoriaFilters } from "../db/AsesoriaFilters";
+import { validateNoAsesoriaReply } from "../domain/service/validateNoAsesoriaReply";
 
 export const createAsesory = async (dto: AsesoriaCreateDTO) => {
   try {
-    const user = await getUserById(dto.userId)
-    const data = new Asesoria({
-      comment:dto.commet,
-      date:dto.date,
-      durationMin:dto.durationMin,
-      hour:dto.hour,
-      id:null,
-      programmerId:dto.programmerId,
-      requesterId:user.getId(),
-      responseMessage:null,
-      status:"PENDIENTE",
+    //Creacion de modelos
+    const user = await getUserById(dto.userId);
+    const asesoria = new Asesoria({
+      comment: dto.commet,
+      durationMin: dto.durationMin,
+      id: null,
+      date: dto.date,
+      programmerId: dto.programmerId,
+      requesterId: user.getId(),
+      responseMessage: null,
+      status: "PENDIENTE",
     });
-    const result = await AsesoriaDB.save(data);
+    const programmer = await getProgrammerProfileById(dto.programmerId);
+    const { filters } = generateAsesoriaFilters({ from: dto.date, programmerId:dto.programmerId })
+    const citas = await AsesoriaDB.list(filters);
+    
+    //Validacion
+    if (!validateDisponibilidadProgramador(asesoria, programmer)) {
+      throw AppError.dependencyInvalid(
+        "El programador no esta disponible este dia"
+      );
+    }
+    if (!validateNoAsesoriaReply(asesoria, citas)) {
+      throw AppError.dependencyInvalid(
+        "El programador ya tiene una cita registrada"
+      );
+    }
+
+    const result = await AsesoriaDB.save(asesoria);
     return result;
+
   } catch (error) {
     if (error instanceof AppError) throw error;
     throw AppError.internal();

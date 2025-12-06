@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   standalone:true,
   imports: [],
   templateUrl: './dark-button.component.html',
-  styleUrl: './dark-button.component.css'
 })
 export class DarkButtonComponent {
 

@@ -9,13 +9,10 @@ import { APP_ROUTES } from '../../app.routes';
   standalone: true,
   imports: [
     CommonModule,
-    // DarkButtonComponent,
-
     SignOutComponent,
     OptionsSidebarComponent,
   ],
   templateUrl: './sidebar-comp.component.html',
-  styleUrl: './sidebar-comp.component.css',
 })
 export class SidebarCompComponent implements OnInit {
   pinUp = true;
@@ -84,6 +81,5 @@ export class SidebarCompComponent implements OnInit {
   ngOnInit(): void {
     const stored = typeof window !== 'undefined' ? localStorage.getItem('rol') : null;
     this.rol = stored ?? 'USER';
-    console.log(this.rol);
   }
 }

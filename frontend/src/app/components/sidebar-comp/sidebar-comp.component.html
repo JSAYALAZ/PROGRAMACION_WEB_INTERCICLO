@@ -7,16 +7,13 @@
   <!-- Scrollable area -->
   <div class="max-h-[calc(100vh-54px)] overflow-y-auto">
     <nav class="flex flex-col gap-3 mb-20">
-      <!-- Lista dinámica de módulos -->
-      @for (module of modules; track module.rol) {
-      <app-options-sidebar
-        [text]="module.name"
-        [url]="module.routes.main.path"
-        *ngIf="module.rol == 'ANY' ? true : module.rol == rol"
-      ></app-options-sidebar>
-      } @empty {
-      <li>No Modules found.</li>
-      }
+      <ng-container *ngFor="let module of modules">
+  <app-options-sidebar
+    *ngIf="module.rol === 'ANY' || rol === 'ADMIN' || module.rol === rol"
+    [text]="module.name"
+    [url]="module.routes.main.path">
+  </app-options-sidebar>
+</ng-container>
     </nav>
   </div>
 </div>
