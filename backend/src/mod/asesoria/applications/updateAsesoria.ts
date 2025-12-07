@@ -1,7 +1,8 @@
-import { AppError } from "src/shared/AppError";
+
 import { AsesoriaUpdateDTO } from "../api/dto/input";
 import { getAsesoriaById } from "./getAsesoriaById";
 import { AsesoriaDB } from "../db/AsesoriaDB";
+import { AppError } from "@/src/shared/AppError";
 
 export const updateAsesoria = async (id: string, dto: AsesoriaUpdateDTO) => {
   try {

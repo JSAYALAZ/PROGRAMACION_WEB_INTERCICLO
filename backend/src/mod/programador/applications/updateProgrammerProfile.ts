@@ -1,10 +1,11 @@
-import { getUserById } from "src/mod/usuario/applications/getUserById";
+
 import { ProgrammerProfileUpdateDTO } from "../api/dto/input";
-import { AppError } from "src/shared/AppError";
 import { getProgrammerProfileById } from "./getProgrammerProfileById";
 import { ProgrammerProfileDb } from "../db/ProgrammerProfileDb";
-import { Disponibilidad } from "src/mod/disponibilidad/domain/models/Disponibilidad";
-import { DisponibilidadDb } from "src/mod/disponibilidad/db/DisponibilidadDb";
+import { AppError } from "@/src/shared/AppError";
+import { getUserById } from "../../usuario/applications/getUserById";
+import { Disponibilidad } from "../../disponibilidad/domain/models/Disponibilidad";
+import { DisponibilidadDb } from "../../disponibilidad/db/DisponibilidadDb";
 
 export const updateProgrammerProfile = async (
   dto: ProgrammerProfileUpdateDTO

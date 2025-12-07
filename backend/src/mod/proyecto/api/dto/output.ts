@@ -1,4 +1,4 @@
-import { ParticipationType, ProjectSection } from "src/generated/prisma/enums";
+import { ParticipationType, ProjectSection } from "@/src/generated/prisma/enums";
 import { z } from "zod";
 
 export const ProyectOutputDTO = z.object({

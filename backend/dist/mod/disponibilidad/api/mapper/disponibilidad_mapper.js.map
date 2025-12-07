@@ -1,0 +1,1 @@
+{"version":3,"file":"disponibilidad_mapper.js","sourceRoot":"","sources":["../../../../../src/mod/disponibilidad/api/mapper/disponibilidad_mapper.ts"],"names":[],"mappings":";;;AAGA,MAAa,oBAAoB;IAC/B,MAAM,CAAC,GAAG,CAAC,IAAoB;QAC7B,OAAO;YACL,GAAG,EAAE,IAAI,CAAC,MAAM,EAAE;YAClB,SAAS,EAAE,IAAI,CAAC,aAAa,EAAE;YAC/B,WAAW,EAAE,IAAI,CAAC,eAAe,EAAE;SACpC,CAAC;IACJ,CAAC;CACF;AARD,oDAQC"}

@@ -1,7 +1,8 @@
-import { db, mapPrismaError } from "src/shared/prisma";
-import { AppError } from "src/shared/AppError";
+
 import { ProyectoDbDefinition } from "./ProyectoDbDefinition";
 import { Proyecto } from "../domain/models/Proyecto";
+import { AppError } from "@/src/shared/AppError";
+import { db, mapPrismaError } from "@/src/shared/prisma";
 
 export const ProyectoDb: ProyectoDbDefinition = {
   async list(filters) {

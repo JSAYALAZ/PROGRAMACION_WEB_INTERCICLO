@@ -1,4 +1,5 @@
-import { AppError } from "src/shared/AppError";
+
+import { AppError } from "@/src/shared/AppError";
 import { PortafolioDb } from "../db/PortafolioDb";
 
 export const listPortafolios = async () => {

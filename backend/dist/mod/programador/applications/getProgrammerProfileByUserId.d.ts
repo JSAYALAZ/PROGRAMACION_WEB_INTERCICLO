@@ -1,0 +1,2 @@
+export declare const getProgrammerProfileByUserId: (userId: string) => Promise<import("../domain/models/PerfilProgramador").PerfilProgramador>;
+//# sourceMappingURL=getProgrammerProfileByUserId.d.ts.map

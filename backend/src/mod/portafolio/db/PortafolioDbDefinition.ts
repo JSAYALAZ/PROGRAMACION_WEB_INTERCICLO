@@ -1,4 +1,5 @@
-import { Prisma } from "src/generated/prisma/client";
+
+import { Prisma } from "@/src/generated/prisma/client";
 import { Portafolio } from "../domain/models/Portafolio";
 
 export interface PortafolioDbDefinition {

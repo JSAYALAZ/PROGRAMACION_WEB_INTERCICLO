@@ -1,7 +1,8 @@
-import { AppError } from "src/shared/AppError";
-import { getUserById } from "src/mod/usuario/applications/getUserById";
-import { getPortafolioByProgrammerId } from "src/mod/portafolio/applications/getPortafolioByProgrammerId";
-import { listAsesorias } from "src/mod/asesoria/applications/listAsesorias";
+import { AppError } from "@/src/shared/AppError";
+import { getUserById } from "../../usuario/applications/getUserById";
+import { getPortafolioByProgrammerId } from "../../portafolio/applications/getPortafolioByProgrammerId";
+import { listAsesorias } from "../../asesoria/applications/listAsesorias";
+
 
 export const listReceivedAsesories = async (userId: string) => {
   try {

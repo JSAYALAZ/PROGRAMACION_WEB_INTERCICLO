@@ -1,6 +1,6 @@
-import { AppError } from "src/shared/AppError";
-import { getUserById } from "src/mod/usuario/applications/getUserById";
-import { listAsesorias } from "src/mod/asesoria/applications/listAsesorias";
+import { AppError } from "@/src/shared/AppError";
+import { listAsesorias } from "../../asesoria/applications/listAsesorias";
+import { getUserById } from "../../usuario/applications/getUserById";
 
 export const listSendedAsesories = async (userId: string) => {
   try {

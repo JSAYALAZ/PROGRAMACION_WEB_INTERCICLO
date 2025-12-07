@@ -1,6 +1,7 @@
-import { AppError } from "src/shared/AppError";
+
+import { AppError } from "@/src/shared/AppError";
+import { listProyects } from "../../proyecto/applications/listProyects";
 import { PortafolioDb } from "../db/PortafolioDb";
-import { listProyects } from "src/mod/proyecto/applications/listProyects";
 
 export const getPortafolioById = async (id: string) => {
   try {

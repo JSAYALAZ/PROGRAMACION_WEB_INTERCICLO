@@ -1,0 +1,1 @@
+{"version":3,"file":"proyecto_mapper.d.ts","sourceRoot":"","sources":["../../../../../src/mod/proyecto/api/mapper/proyecto_mapper.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,8BAA8B,CAAC;AACxD,OAAO,EAAE,gBAAgB,EAAE,MAAM,eAAe,CAAC;AAEjD,qBAAa,cAAc;IACzB,MAAM,CAAC,GAAG,CAAC,IAAI,EAAE,QAAQ,GAAG,gBAAgB;CAY7C"}

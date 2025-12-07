@@ -1,11 +1,11 @@
 import { Router } from "express";
 import { listProyects } from "../applications/listProyects";
-import { ApiResponse } from "src/shared/ApiResponse";
-import { zodValidateJson } from "src/shared/ZodValidator";
 import { ProyectCreateDTO } from "./dto/input";
 import { createProyect } from "../applications/createProyect";
 import { getProyectById } from "../applications/getProyectById";
 import { ProyectoMapper } from "./mapper/proyecto_mapper";
+import { ApiResponse } from "@/src/shared/ApiResponse";
+import { zodValidateJson } from "@/src/shared/ZodValidator";
 
 const router = Router();
 

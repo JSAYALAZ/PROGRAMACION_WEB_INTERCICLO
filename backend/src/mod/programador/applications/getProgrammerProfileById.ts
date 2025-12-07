@@ -1,5 +1,6 @@
+import { AppError } from "@/src/shared/AppError";
 import { ProgrammerProfileDb } from "../db/ProgrammerProfileDb";
-import { AppError } from "src/shared/AppError";
+
 
 export const getProgrammerProfileById = async (id: string) => {
   try {

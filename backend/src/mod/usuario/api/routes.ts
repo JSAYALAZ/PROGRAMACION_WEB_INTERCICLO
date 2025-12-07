@@ -1,14 +1,15 @@
 import { Router } from "express";
-import { zodValidateJson } from "src/shared/ZodValidator";
+
 import { UserCreateDTO, UserUpdateDTO } from "./dto/input";
 import { listUsers } from "../applications/listUsers";
-import { ApiResponse } from "src/shared/ApiResponse";
 import { createUser } from "../applications/createUser";
 import { getUserById } from "../applications/getUserById";
 import { updateUser } from "../applications/updateUser";
 import { UserMapper } from "./mapper/user_mapper";
 import { getProgrammerProfileByUserId } from "src/mod/programador/applications/getProgrammerProfileByUserId";
-import { ProgrammerMapper } from "src/mod/programador/api/mapper/programmer_mapper";
+import { zodValidateJson } from "@/src/shared/ZodValidator";
+import { ProgrammerMapper } from "../../programador/api/mapper/programmer_mapper";
+import { ApiResponse } from "@/src/shared/ApiResponse";
 
 const router = Router();
 

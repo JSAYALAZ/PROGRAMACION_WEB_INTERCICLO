@@ -1,9 +1,10 @@
-import { AppError } from "src/shared/AppError";
+
 import { ProyectCreateDTO } from "../api/dto/input";
 import { Proyecto } from "../domain/models/Proyecto";
 import { ProyectoDb } from "../db/ProyectoDb";
-import { getUserById } from "src/mod/usuario/applications/getUserById";
-import { getPortafolioByProgrammerId } from "src/mod/portafolio/applications/getPortafolioByProgrammerId";
+import { AppError } from "@/src/shared/AppError";
+import { getUserById } from "../../usuario/applications/getUserById";
+import { getPortafolioByProgrammerId } from "../../portafolio/applications/getPortafolioByProgrammerId";
 
 export const createProyect = async (dto: ProyectCreateDTO) => {
   try {

@@ -1,8 +1,9 @@
-import { db, mapPrismaError } from "src/shared/prisma";
-import { AppError } from "src/shared/AppError";
+
 import { AsesoriaDBDefinition } from "./AsesoriaDBDefinition";
 import { Asesoria } from "../domain/models/Asesoria";
-import { fechaActual } from "src/shared/utils";
+import { fechaActual } from "@/src/shared/utils";
+import { db, mapPrismaError } from "@/src/shared/prisma";
+import { AppError } from "@/src/shared/AppError";
 
 export const AsesoriaDB: AsesoriaDBDefinition = {
   async getById(id) {

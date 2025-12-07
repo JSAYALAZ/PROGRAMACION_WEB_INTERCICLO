@@ -1,4 +1,5 @@
-import { AppError } from "src/shared/AppError";
+
+import { AppError } from "@/src/shared/AppError";
 import { PortafolioUpdateDTO } from "../api/dto/input";
 import { PortafolioDb } from "../db/PortafolioDb";
 import { getPortafolioById } from "./getPortafolioById";

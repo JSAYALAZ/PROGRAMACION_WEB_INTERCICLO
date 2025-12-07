@@ -1,10 +1,11 @@
-import { getUserById } from "src/mod/usuario/applications/getUserById";
+
 import { ProgrammerProfileCreateDTO } from "../api/dto/input";
 import { PerfilProgramador } from "../domain/models/PerfilProgramador";
 import { ProgrammerProfileDb } from "../db/ProgrammerProfileDb";
-import { AppError } from "src/shared/AppError";
-import { Portafolio } from "src/mod/portafolio/domain/models/Portafolio";
-import { PortafolioDb } from "src/mod/portafolio/db/PortafolioDb";
+import { getUserById } from "../../usuario/applications/getUserById";
+import { Portafolio } from "../../portafolio/domain/models/Portafolio";
+import { PortafolioDb } from "../../portafolio/db/PortafolioDb";
+import { AppError } from "@/src/shared/AppError";
 
 export const createProgrammerProfile = async (
   dto: ProgrammerProfileCreateDTO

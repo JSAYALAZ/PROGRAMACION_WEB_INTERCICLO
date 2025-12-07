@@ -1,7 +1,8 @@
-import { AppError } from "src/shared/AppError";
+
 import { AsesoriaDB } from "../db/AsesoriaDB";
 import { AsesoriaFiltersDTO } from "../api/dto/input";
 import { generateAsesoriaFilters } from "../db/AsesoriaFilters";
+import { AppError } from "@/src/shared/AppError";
 
 export const listAsesorias = async (q?: AsesoriaFiltersDTO) => {
   try {

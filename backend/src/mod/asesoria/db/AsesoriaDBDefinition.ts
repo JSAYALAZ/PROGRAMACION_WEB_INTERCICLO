@@ -1,4 +1,5 @@
-import { Prisma } from "src/generated/prisma/client";
+
+import { Prisma } from "@/src/generated/prisma/client";
 import { Asesoria } from "../domain/models/Asesoria";
 import { AsesoriaFilters } from "./AsesoriaFilters";
 

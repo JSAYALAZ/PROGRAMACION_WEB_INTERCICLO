@@ -5,7 +5,7 @@ export class AsesoriaMapper {
   static map(data: Asesoria): AsesoriaOutputDTO {
     return {
       comment: data.getComment(),
-      date: data.getDate(),
+      date: data.getDate().toISOString(),
       durationMin: data.getDurationMin(),
       hour: data.getHour(),
       programmerId: data.getProgrammerId(),

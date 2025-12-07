@@ -5,7 +5,6 @@ import UserRoutes from "./mod/usuario/api/routes";
 import ProgrammerProfileRoutes from "./mod/programador/api/routes";
 import PortafolioRoutes from "./mod/portafolio/api/routes";
 import ProyectRoutes from "./mod/proyecto/api/routes";
-import AvailabilityRoutes from "./mod/disponibilidad/api/routes";
 import AsesoriaRoutes from "./mod/asesoria/api/routes";
 import CitasRouters from "./mod/citas/api/routes";
 import { ApiResponse } from "./shared/ApiResponse";
@@ -21,7 +20,6 @@ app.use("/api/user", UserRoutes);
 app.use("/api/programmerProfile", ProgrammerProfileRoutes);
 app.use("/api/portafolio", PortafolioRoutes);
 app.use("/api/proyect", ProyectRoutes);
-app.use("/api/availibility", AvailabilityRoutes);
 app.use("/api/asesoria", AsesoriaRoutes);
 app.use("/api/citas", CitasRouters);
 
@@ -30,6 +28,6 @@ app.use((req, res) => {
 });
 // Puerto
 const PORT = 3000;
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

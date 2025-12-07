@@ -1,4 +1,5 @@
-import { AppError } from "src/shared/AppError";
+
+import { AppError } from "@/src/shared/AppError";
 import { AsesoriaDB } from "../db/AsesoriaDB";
 
 export const getAsesoriaById = async (id: string) => {

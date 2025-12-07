@@ -20,7 +20,11 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-    
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]

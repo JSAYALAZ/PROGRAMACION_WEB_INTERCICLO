@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { zodValidateJson } from "src/shared/ZodValidator";
 import { listAsesorias } from "../applications/listAsesorias";
-import { ApiResponse } from "src/shared/ApiResponse";
 import { AsesoriaCreateDTO, AsesoriaUpdateDTO } from "./dto/input";
 import { createAsesory } from "../applications/createAsesory";
 import { getAsesoriaById } from "../applications/getAsesoriaById";
 import { updateAsesoria } from "../applications/updateAsesoria";
+import { ApiResponse } from "@/src/shared/ApiResponse";
+import { zodValidateJson } from "@/src/shared/ZodValidator";
 
 const router = Router();
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"DisponibilidadDbDefinition.d.ts","sourceRoot":"","sources":["../../../../src/mod/disponibilidad/db/DisponibilidadDbDefinition.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,iCAAiC,CAAC;AAEjE,MAAM,WAAW,0BAA0B;IACzC,UAAU,CAAC,IAAI,EAAE,cAAc,EAAE,GAAG,OAAO,CAAC,IAAI,CAAC,CAAC;IAClD,uBAAuB,CAAC,YAAY,EAAE,MAAM,GAAG,OAAO,CAAC,IAAI,CAAC,CAAC;CAM9D"}

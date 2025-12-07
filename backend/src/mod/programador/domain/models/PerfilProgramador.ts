@@ -1,5 +1,5 @@
+import { Disponibilidad } from "@/src/mod/disponibilidad/domain/models/Disponibilidad";
 import { randomBytes } from "crypto";
-import { Disponibilidad } from "src/mod/disponibilidad/domain/models/Disponibilidad";
 
 export class PerfilProgramador {
   private id: string;

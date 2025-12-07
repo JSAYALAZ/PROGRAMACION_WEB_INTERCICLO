@@ -1,7 +1,8 @@
-import { AppError } from "src/shared/AppError";
+
 import { ProyectoDb } from "../db/ProyectoDb";
 import { ProyectFiltersDTO } from "../api/dto/input";
 import { generateProyectoFiltres } from "../db/ProyectoFilters";
+import { AppError } from "@/src/shared/AppError";
 
 export const listProyects = async (q?: ProyectFiltersDTO) => {
   try {

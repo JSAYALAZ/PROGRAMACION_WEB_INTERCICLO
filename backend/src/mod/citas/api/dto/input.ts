@@ -1,4 +1,5 @@
-import { Weekday } from "src/generated/prisma/enums";
+
+import { Weekday } from "@/src/generated/prisma/enums";
 import z from "zod";
 
 export const AsesoriaCreateDTO = z.object({
