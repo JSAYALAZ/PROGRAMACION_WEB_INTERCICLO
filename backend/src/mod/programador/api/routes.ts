@@ -9,8 +9,8 @@ import { listProgrammerProfile } from "../applications/listProgrammerProfile";
 import { getProgrammerProfileById } from "../applications/getProgrammerProfileById";
 import { ProgrammerMapper } from "./mapper/programmer_mapper";
 import { updateProgrammerProfile } from "../applications/updateProgrammerProfile";
-import { ApiResponse } from "@/src/shared/ApiResponse";
-import { zodValidateJson } from "@/src/shared/ZodValidator";
+import { ApiResponse } from "../../../shared/ApiResponse";
+import { zodValidateJson } from "../../../shared/ZodValidator";
 
 const router = Router();
 

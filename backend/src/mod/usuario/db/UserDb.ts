@@ -1,7 +1,8 @@
-import { db, mapPrismaError } from "src/shared/prisma";
+
+import { AppError } from "../../../shared/AppError";
 import { Usuario } from "../domain/models/Usuario";
-import { AppError } from "src/shared/AppError";
 import { UserDbDefinition } from "./UserDbDefinition";
+import { db, mapPrismaError } from "../../../shared/prisma";
 
 export const UserDb: UserDbDefinition = {
   async list() {

@@ -1,5 +1,5 @@
 
-import { ProyectOutputDTO } from "@/src/mod/proyecto/api/dto/output";
+import { ProyectOutputDTO } from "../../../../mod/proyecto/api/dto/output";
 import { z } from "zod";
 
 export const PortafolioOutputDTO = z.object({

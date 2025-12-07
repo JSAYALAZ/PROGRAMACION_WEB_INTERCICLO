@@ -1,1 +1,1 @@
-{"version":3,"file":"ProyectoDb.d.ts","sourceRoot":"","sources":["../../../../src/mod/proyecto/db/ProyectoDb.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,oBAAoB,EAAE,MAAM,wBAAwB,CAAC;AAG9D,eAAO,MAAM,UAAU,EAAE,oBAkFxB,CAAC"}
+{"version":3,"file":"ProyectoDb.d.ts","sourceRoot":"","sources":["../../../../src/mod/proyecto/db/ProyectoDb.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,oBAAoB,EAAE,MAAM,wBAAwB,CAAC;AAK9D,eAAO,MAAM,UAAU,EAAE,oBAkFxB,CAAC"}

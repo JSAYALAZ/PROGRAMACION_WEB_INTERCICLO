@@ -6,10 +6,10 @@ import { createUser } from "../applications/createUser";
 import { getUserById } from "../applications/getUserById";
 import { updateUser } from "../applications/updateUser";
 import { UserMapper } from "./mapper/user_mapper";
-import { getProgrammerProfileByUserId } from "src/mod/programador/applications/getProgrammerProfileByUserId";
-import { zodValidateJson } from "@/src/shared/ZodValidator";
 import { ProgrammerMapper } from "../../programador/api/mapper/programmer_mapper";
-import { ApiResponse } from "@/src/shared/ApiResponse";
+import { getProgrammerProfileByUserId } from "../../programador/applications/getProgrammerProfileByUserId";
+import { ApiResponse } from "../../../shared/ApiResponse";
+import { zodValidateJson } from "../../../shared/ZodValidator";
 
 const router = Router();
 

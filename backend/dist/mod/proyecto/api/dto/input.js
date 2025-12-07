@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProyectFiltersDTO = exports.ProyectCreateDTO = void 0;
 exports.parseCateogyrFilter = parseCateogyrFilter;
-const enums_1 = require("src/generated/prisma/enums");
+const enums_1 = require("../../../../generated/prisma/enums");
 const zod_1 = __importDefault(require("zod"));
 exports.ProyectCreateDTO = zod_1.default.object({
     description: zod_1.default.string(),

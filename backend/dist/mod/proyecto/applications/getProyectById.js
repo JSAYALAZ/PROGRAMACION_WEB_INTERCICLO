@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getProyectById = void 0;
-const AppError_1 = require("src/shared/AppError");
+const AppError_1 = require("../../../shared/AppError");
 const ProyectoDb_1 = require("../db/ProyectoDb");
 const getProyectById = async (id) => {
     try {

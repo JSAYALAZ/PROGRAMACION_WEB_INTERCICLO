@@ -1,4 +1,4 @@
-import { Prisma } from "src/generated/prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { ProyectFiltersDTO } from "../api/dto/input";
 export declare function generateProyectoFiltres(q: ProyectFiltersDTO): {
     filters: {

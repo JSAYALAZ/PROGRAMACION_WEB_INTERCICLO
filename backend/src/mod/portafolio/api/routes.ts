@@ -5,8 +5,8 @@ import { createPortafolio } from "../applications/createPortafolio";
 import { getPortafolioById } from "../applications/getPortafolioById";
 import { PortafolioMapper } from "./mapper/portafolio_mapper";
 import { updatePortafolio } from "../applications/updatePortafolio";
-import { ApiResponse } from "@/src/shared/ApiResponse";
-import { zodValidateJson } from "@/src/shared/ZodValidator";
+import { ApiResponse } from "../../../shared/ApiResponse";
+import { zodValidateJson } from "../../../shared/ZodValidator";
 
 const router = Router();
 

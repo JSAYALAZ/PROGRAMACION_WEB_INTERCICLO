@@ -2,7 +2,7 @@
 import { ProyectCreateDTO } from "../api/dto/input";
 import { Proyecto } from "../domain/models/Proyecto";
 import { ProyectoDb } from "../db/ProyectoDb";
-import { AppError } from "@/src/shared/AppError";
+import { AppError } from "../../../shared/AppError";
 import { getUserById } from "../../usuario/applications/getUserById";
 import { getPortafolioByProgrammerId } from "../../portafolio/applications/getPortafolioByProgrammerId";
 

@@ -1,4 +1,4 @@
-import { AppError } from "@/src/shared/AppError";
+import { AppError } from "../../../shared/AppError";
 import { getUserById } from "../../usuario/applications/getUserById";
 import { getPortafolioByProgrammerId } from "../../portafolio/applications/getPortafolioByProgrammerId";
 import { listAsesorias } from "../../asesoria/applications/listAsesorias";

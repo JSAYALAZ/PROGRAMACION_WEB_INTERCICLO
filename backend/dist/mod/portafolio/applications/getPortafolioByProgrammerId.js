@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPortafolioByProgrammerId = void 0;
-const AppError_1 = require("src/shared/AppError");
+const AppError_1 = require("../../../shared/AppError");
 const PortafolioDb_1 = require("../db/PortafolioDb");
 const getPortafolioByProgrammerId = async (programmerId) => {
     try {

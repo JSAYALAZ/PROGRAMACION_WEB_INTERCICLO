@@ -1,6 +1,6 @@
-import { Role } from "src/generated/prisma/enums";
-import { RedSocial } from "src/mod/redSocial/domain/models/RedSocial";
-import { PerfilProgramador } from "src/mod/programador/domain/models/PerfilProgramador";
+import { Role } from "../../../../generated/prisma/enums";
+import { PerfilProgramador } from "../../../../mod/programador/domain/models/PerfilProgramador";
+import { RedSocial } from "../../../../mod/redSocial/domain/models/RedSocial";
 export declare class Usuario {
     private id;
     private firebaseUid;

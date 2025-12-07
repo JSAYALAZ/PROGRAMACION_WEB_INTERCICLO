@@ -1,7 +1,7 @@
 
-import { Prisma } from "@/src/generated/prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { AsesoriaFiltersDTO } from "../api/dto/input";
-import { createDateFitlers } from "@/src/shared/utils";
+import { createDateFitlers } from "../../../shared/utils";
 
 export function generateAsesoriaFilters(q: AsesoriaFiltersDTO) {
   const filters: Prisma.BookingWhereInput[] = [];

@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDb = void 0;
-const prisma_1 = require("src/shared/prisma");
+const AppError_1 = require("../../../shared/AppError");
 const Usuario_1 = require("../domain/models/Usuario");
-const AppError_1 = require("src/shared/AppError");
+const prisma_1 = require("../../../shared/prisma");
 exports.UserDb = {
     async list() {
         try {

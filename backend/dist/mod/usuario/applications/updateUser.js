@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUser = void 0;
-const AppError_1 = require("src/shared/AppError");
+const AppError_1 = require("../../../shared/AppError");
+const getProgrammerProfileByUserId_1 = require("../../programador/applications/getProgrammerProfileByUserId");
 const UserDb_1 = require("../db/UserDb");
 const getUserById_1 = require("./getUserById");
-const createProgrammerProfile_1 = require("src/mod/programador/applications/createProgrammerProfile");
-const getProgrammerProfileByUserId_1 = require("src/mod/programador/applications/getProgrammerProfileByUserId");
+const createProgrammerProfile_1 = require("../../programador/applications/createProgrammerProfile");
 const updateUser = async (id, dto) => {
     try {
         const user = await (0, getUserById_1.getUserById)(id);

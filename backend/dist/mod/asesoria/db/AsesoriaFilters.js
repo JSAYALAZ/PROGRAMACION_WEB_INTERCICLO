@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateAsesoriaFilters = generateAsesoriaFilters;
-const utils_1 = require("src/shared/utils");
+const utils_1 = require("../../../shared/utils");
 function generateAsesoriaFilters(q) {
     const filters = [];
     if (q.from || q.to) {

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Usuario = void 0;
+const AppError_1 = require("../../../../shared/AppError");
 const crypto_1 = require("crypto");
-const AppError_1 = require("src/shared/AppError");
 class Usuario {
     // Setters
     setUsername(username) {

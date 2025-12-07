@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const listProyects_1 = require("../applications/listProyects");
-const ApiResponse_1 = require("src/shared/ApiResponse");
-const ZodValidator_1 = require("src/shared/ZodValidator");
 const input_1 = require("./dto/input");
 const createProyect_1 = require("../applications/createProyect");
 const getProyectById_1 = require("../applications/getProyectById");
 const proyecto_mapper_1 = require("./mapper/proyecto_mapper");
+const ApiResponse_1 = require("../../../shared/ApiResponse");
+const ZodValidator_1 = require("../../../shared/ZodValidator");
 const router = (0, express_1.Router)();
 router.get("/", async (req, res) => {
     try {

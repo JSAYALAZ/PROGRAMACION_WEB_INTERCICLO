@@ -1,4 +1,3 @@
-import { Role } from "src/generated/prisma/enums";
 
 export class RedSocial {
   constructor(data: {

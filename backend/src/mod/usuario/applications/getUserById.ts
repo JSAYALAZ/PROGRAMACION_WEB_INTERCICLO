@@ -1,7 +1,8 @@
-import { AppError } from "src/shared/AppError";
+
+import { AppError } from "../../../shared/AppError";
 import { UserDb } from "../db/UserDb";
 import { Usuario } from "../domain/models/Usuario";
-import { getProgrammerProfileByUserId } from "src/mod/programador/applications/getProgrammerProfileByUserId";
+import { getProgrammerProfileByUserId } from "../../programador/applications/getProgrammerProfileByUserId";
 
 export const getUserById = async (id: string) => {
   try {

@@ -1,4 +1,4 @@
-import { Prisma } from "src/generated/prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { PerfilProgramador } from "../domain/models/PerfilProgramador";
 export interface ProgrammerProfileDbDefinition {
     list(q?: any, tx?: Prisma.TransactionClient): Promise<PerfilProgramador[]>;

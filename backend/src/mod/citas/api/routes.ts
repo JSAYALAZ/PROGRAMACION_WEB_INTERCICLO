@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { listSendedAsesories } from "../applications/listSendedAsesories";
-import { ApiResponse } from "src/shared/ApiResponse";
+import { ApiResponse } from "../../../shared/ApiResponse";
 import { listReceivedAsesories } from "../applications/listReceivedAsesories";
 import { AsesoriaMapper } from "./mapper/asesoria_mapper";
 

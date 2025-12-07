@@ -1,4 +1,4 @@
-import { Prisma } from "src/generated/prisma/client";
+import { Prisma } from "../generated/prisma/client";
 import { AppError } from "./AppError";
 export declare const db: import("../generated/prisma/internal/class").PrismaClient<never, Prisma.GlobalOmitConfig | undefined, import("@prisma/client/runtime/library").DefaultArgs>;
 /**db

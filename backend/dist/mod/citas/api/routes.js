@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const listSendedAsesories_1 = require("../applications/listSendedAsesories");
-const ApiResponse_1 = require("src/shared/ApiResponse");
+const ApiResponse_1 = require("../../../shared/ApiResponse");
 const listReceivedAsesories_1 = require("../applications/listReceivedAsesories");
 const asesoria_mapper_1 = require("./mapper/asesoria_mapper");
 const router = (0, express_1.Router)();

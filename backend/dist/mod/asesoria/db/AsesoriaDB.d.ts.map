@@ -1,1 +1,1 @@
-{"version":3,"file":"AsesoriaDB.d.ts","sourceRoot":"","sources":["../../../../src/mod/asesoria/db/AsesoriaDB.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,oBAAoB,EAAE,MAAM,wBAAwB,CAAC;AAI9D,eAAO,MAAM,UAAU,EAAE,oBA8ExB,CAAC"}
+{"version":3,"file":"AsesoriaDB.d.ts","sourceRoot":"","sources":["../../../../src/mod/asesoria/db/AsesoriaDB.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,oBAAoB,EAAE,MAAM,wBAAwB,CAAC;AAM9D,eAAO,MAAM,UAAU,EAAE,oBA8ExB,CAAC"}

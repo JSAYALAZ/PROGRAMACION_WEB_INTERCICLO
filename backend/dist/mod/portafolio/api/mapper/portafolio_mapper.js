@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PortafolioMapper = void 0;
-const proyecto_mapper_1 = require("src/mod/proyecto/api/mapper/proyecto_mapper");
+const proyecto_mapper_1 = require("../../../../mod/proyecto/api/mapper/proyecto_mapper");
 class PortafolioMapper {
     static map(data) {
         return {

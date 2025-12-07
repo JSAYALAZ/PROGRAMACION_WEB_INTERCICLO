@@ -4,8 +4,8 @@ import { AsesoriaCreateDTO, AsesoriaUpdateDTO } from "./dto/input";
 import { createAsesory } from "../applications/createAsesory";
 import { getAsesoriaById } from "../applications/getAsesoriaById";
 import { updateAsesoria } from "../applications/updateAsesoria";
-import { ApiResponse } from "@/src/shared/ApiResponse";
-import { zodValidateJson } from "@/src/shared/ZodValidator";
+import { ApiResponse } from "../../../shared/ApiResponse";
+import { zodValidateJson } from "../../../shared/ZodValidator";
 
 const router = Router();
 

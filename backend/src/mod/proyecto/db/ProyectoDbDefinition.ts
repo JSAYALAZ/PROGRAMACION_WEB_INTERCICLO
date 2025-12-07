@@ -1,5 +1,5 @@
 
-import { Prisma } from "@/src/generated/prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { Proyecto } from "../domain/models/Proyecto";
 import { ProjectFilters } from "./ProyectoFilters";
 

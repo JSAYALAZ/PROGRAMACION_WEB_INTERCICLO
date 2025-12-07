@@ -1,5 +1,5 @@
 import { randomBytes } from "crypto";
-import { ParticipationType, ProjectSection } from "src/generated/prisma/enums";
+import { ParticipationType, ProjectSection } from "../../../../generated/prisma/enums";
 
 export class Proyecto {
   private id: string;

@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.listProyects = void 0;
-const AppError_1 = require("src/shared/AppError");
 const ProyectoDb_1 = require("../db/ProyectoDb");
 const ProyectoFilters_1 = require("../db/ProyectoFilters");
+const AppError_1 = require("../../../shared/AppError");
 const listProyects = async (q) => {
     try {
         const { filters } = (0, ProyectoFilters_1.generateProyectoFiltres)(q || {});

@@ -1,5 +1,5 @@
 
-import { Prisma } from "@/src/generated/prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { PortafolioFiltersDTO } from "../api/dto/input";
 
 export function generatePortafolioFiltres(q: PortafolioFiltersDTO) {

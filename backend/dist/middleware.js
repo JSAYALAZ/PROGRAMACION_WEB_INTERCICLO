@@ -9,7 +9,6 @@ async function verifyFirebaseToken(req, res, next) {
         return res.status(401).json({ error: 'No token provided' });
     try {
         const decoded = await firebase_js_1.firebaseApp.auth().verifyIdToken(idToken);
-        console.log({ decoded });
         // req.user = decoded;
         next();
     }

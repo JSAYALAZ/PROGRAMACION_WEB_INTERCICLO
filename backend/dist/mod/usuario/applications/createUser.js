@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUser = void 0;
-const AppError_1 = require("src/shared/AppError");
+const AppError_1 = require("../../../shared/AppError");
 const UserDb_1 = require("../db/UserDb");
 const Usuario_1 = require("../domain/models/Usuario");
 const getUserById_1 = require("./getUserById");

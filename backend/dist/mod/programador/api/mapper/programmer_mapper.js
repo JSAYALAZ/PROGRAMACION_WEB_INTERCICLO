@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProgrammerMapper = void 0;
-const disponibilidad_mapper_1 = require("src/mod/disponibilidad/api/mapper/disponibilidad_mapper");
+const disponibilidad_mapper_1 = require("../../../../mod/disponibilidad/api/mapper/disponibilidad_mapper");
 class ProgrammerMapper {
     static map(data) {
         return {

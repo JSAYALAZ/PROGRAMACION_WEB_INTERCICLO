@@ -1,5 +1,5 @@
 
-import { ProyectoMapper } from "@/src/mod/proyecto/api/mapper/proyecto_mapper";
+import { ProyectoMapper } from "../../../../mod/proyecto/api/mapper/proyecto_mapper";
 import { Portafolio } from "../../domain/models/Portafolio";
 import { PortafolioOutputDTO } from "../dto/output";
 

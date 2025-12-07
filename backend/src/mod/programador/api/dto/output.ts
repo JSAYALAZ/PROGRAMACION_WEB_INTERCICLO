@@ -1,5 +1,5 @@
 
-import { DisponibilidadOutputDTO } from "@/src/mod/disponibilidad/api/dto/output";
+import { DisponibilidadOutputDTO } from "../../../../mod/disponibilidad/api/dto/output";
 import { z } from "zod";
 
 export const ProgrammerOutputDTO = z.object({

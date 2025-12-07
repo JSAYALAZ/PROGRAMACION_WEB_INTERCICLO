@@ -1,4 +1,4 @@
-import { Weekday } from "src/generated/prisma/enums";
+import { Weekday } from "../generated/prisma/enums";
 export declare const getDayInDate: (dateIso: string) => Weekday | null;
 export declare const fechaActual: (d?: Date) => string;
 export declare const timeToMinutes: (dateIso: string) => number | null;

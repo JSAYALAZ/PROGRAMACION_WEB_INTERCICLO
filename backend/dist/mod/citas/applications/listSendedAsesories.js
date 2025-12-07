@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.listSendedAsesories = void 0;
-const AppError_1 = require("src/shared/AppError");
-const getUserById_1 = require("src/mod/usuario/applications/getUserById");
-const listAsesorias_1 = require("src/mod/asesoria/applications/listAsesorias");
+const AppError_1 = require("../../../shared/AppError");
+const listAsesorias_1 = require("../../asesoria/applications/listAsesorias");
+const getUserById_1 = require("../../usuario/applications/getUserById");
 const listSendedAsesories = async (userId) => {
     try {
         const user = await (0, getUserById_1.getUserById)(userId);

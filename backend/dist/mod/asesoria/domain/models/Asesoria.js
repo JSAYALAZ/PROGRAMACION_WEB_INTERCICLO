@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Asesoria = void 0;
+const utils_1 = require("../../../../shared/utils");
 const crypto_1 = require("crypto");
-const utils_1 = require("src/shared/utils");
 class Asesoria {
     // Getters
     getId() {

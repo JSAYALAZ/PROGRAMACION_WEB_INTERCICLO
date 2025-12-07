@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PortafolioOutputDTO = void 0;
-const output_1 = require("src/mod/proyecto/api/dto/output");
+const output_1 = require("../../../../mod/proyecto/api/dto/output");
 const zod_1 = require("zod");
 exports.PortafolioOutputDTO = zod_1.z.object({
     id: zod_1.z.string(),

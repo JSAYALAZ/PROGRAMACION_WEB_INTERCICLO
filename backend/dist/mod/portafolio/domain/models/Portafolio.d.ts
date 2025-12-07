@@ -1,4 +1,4 @@
-import { Proyecto } from "src/mod/proyecto/domain/models/Proyecto";
+import { Proyecto } from "../../../../mod/proyecto/domain/models/Proyecto";
 export declare class Portafolio {
     private id;
     private ownerId;

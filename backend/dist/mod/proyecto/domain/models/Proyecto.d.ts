@@ -1,4 +1,4 @@
-import { ParticipationType, ProjectSection } from "src/generated/prisma/enums";
+import { ParticipationType, ProjectSection } from "../../../../generated/prisma/enums";
 export declare class Proyecto {
     private id;
     private title;

@@ -1,5 +1,5 @@
 
-import { AppError } from "@/src/shared/AppError";
+import { AppError } from "../../../shared/AppError";
 import { listProyects } from "../../proyecto/applications/listProyects";
 import { PortafolioDb } from "../db/PortafolioDb";
 

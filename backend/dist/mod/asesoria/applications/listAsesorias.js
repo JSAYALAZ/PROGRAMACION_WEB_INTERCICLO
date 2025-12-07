@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.listAsesorias = void 0;
-const AppError_1 = require("src/shared/AppError");
 const AsesoriaDB_1 = require("../db/AsesoriaDB");
 const AsesoriaFilters_1 = require("../db/AsesoriaFilters");
+const AppError_1 = require("../../../shared/AppError");
 const listAsesorias = async (q) => {
     try {
         const { filters } = (0, AsesoriaFilters_1.generateAsesoriaFilters)(q || {});

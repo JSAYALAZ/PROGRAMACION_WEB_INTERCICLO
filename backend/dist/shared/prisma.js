@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.db = void 0;
 exports.mapPrismaError = mapPrismaError;
-const client_1 = require("src/generated/prisma/client");
+const client_1 = require("../generated/prisma/client");
 const AppError_1 = require("./AppError");
 exports.db = new client_1.PrismaClient({
 // log:["query"]

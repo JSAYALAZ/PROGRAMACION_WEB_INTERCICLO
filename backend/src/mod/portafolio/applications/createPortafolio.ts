@@ -1,5 +1,5 @@
 
-import { AppError } from "@/src/shared/AppError";
+import { AppError } from "../../../shared/AppError";
 import { getProgrammerProfileById } from "../../programador/applications/getProgrammerProfileById";
 import { PortafolioCreateDTO } from "../api/dto/input";
 import { PortafolioDb } from "../db/PortafolioDb";

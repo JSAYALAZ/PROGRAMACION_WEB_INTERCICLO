@@ -1,4 +1,4 @@
-import { Disponibilidad } from "@/src/mod/disponibilidad/domain/models/Disponibilidad";
+import { Disponibilidad } from "../../../../mod/disponibilidad/domain/models/Disponibilidad";
 import { randomBytes } from "crypto";
 
 export class PerfilProgramador {

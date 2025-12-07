@@ -1,5 +1,5 @@
 
-import { Prisma, PrismaClient } from "src/generated/prisma/client";
+import { Prisma, PrismaClient } from "../generated/prisma/client";
 import { AppError } from "./AppError";
 
 

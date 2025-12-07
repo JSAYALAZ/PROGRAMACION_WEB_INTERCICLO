@@ -1,7 +1,7 @@
 
-import { AppError } from "@/src/shared/AppError";
+import { AppError } from "../../../shared/AppError";
 import { DisponibilidadDbDefinition } from "./DisponibilidadDbDefinition";
-import { db, mapPrismaError } from "@/src/shared/prisma";
+import { db, mapPrismaError } from "../../../shared/prisma";
 
 export const DisponibilidadDb: DisponibilidadDbDefinition = {
   async deleteAllFromProgrammer(programmerId) {

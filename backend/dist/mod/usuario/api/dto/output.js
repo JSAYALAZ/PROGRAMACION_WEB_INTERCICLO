@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserOutputDTO = void 0;
-const enums_1 = require("src/generated/prisma/enums");
+const enums_1 = require("../../../../generated/prisma/enums");
 const zod_1 = require("zod");
 exports.UserOutputDTO = zod_1.z.object({
     id: zod_1.z.string(),

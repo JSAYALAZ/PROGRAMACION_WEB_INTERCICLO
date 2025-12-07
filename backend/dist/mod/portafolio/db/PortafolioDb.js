@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PortafolioDb = void 0;
-const prisma_1 = require("src/shared/prisma");
 const Portafolio_1 = require("../domain/models/Portafolio");
-const AppError_1 = require("src/shared/AppError");
+const AppError_1 = require("../../../shared/AppError");
+const prisma_1 = require("../../../shared/prisma");
 exports.PortafolioDb = {
     async list() {
         try {

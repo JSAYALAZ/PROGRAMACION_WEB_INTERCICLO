@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProgrammerProfileDb = void 0;
-const prisma_1 = require("src/shared/prisma");
-const AppError_1 = require("src/shared/AppError");
 const PerfilProgramador_1 = require("../domain/models/PerfilProgramador");
-const Disponibilidad_1 = require("src/mod/disponibilidad/domain/models/Disponibilidad");
+const prisma_1 = require("../../../shared/prisma");
+const Disponibilidad_1 = require("../../disponibilidad/domain/models/Disponibilidad");
+const AppError_1 = require("../../../shared/AppError");
 exports.ProgrammerProfileDb = {
     async list() {
         try {

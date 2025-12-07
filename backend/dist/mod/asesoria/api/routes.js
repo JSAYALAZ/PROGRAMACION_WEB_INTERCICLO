@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const ZodValidator_1 = require("src/shared/ZodValidator");
 const listAsesorias_1 = require("../applications/listAsesorias");
-const ApiResponse_1 = require("src/shared/ApiResponse");
 const input_1 = require("./dto/input");
 const createAsesory_1 = require("../applications/createAsesory");
 const getAsesoriaById_1 = require("../applications/getAsesoriaById");
 const updateAsesoria_1 = require("../applications/updateAsesoria");
+const ApiResponse_1 = require("../../../shared/ApiResponse");
+const ZodValidator_1 = require("../../../shared/ZodValidator");
 const router = (0, express_1.Router)();
 router.get("/", async (req, res) => {
     try {

@@ -1,5 +1,5 @@
 
-import { DisponibilidadMapper } from "@/src/mod/disponibilidad/api/mapper/disponibilidad_mapper";
+import { DisponibilidadMapper } from "../../../../mod/disponibilidad/api/mapper/disponibilidad_mapper";
 import { PerfilProgramador } from "../../domain/models/PerfilProgramador";
 import { ProgrammerOutputDTO } from "../dto/output";
 

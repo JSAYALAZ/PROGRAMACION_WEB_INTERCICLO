@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createDateFitlers = exports.timeToMinutes = exports.fechaActual = exports.getDayInDate = void 0;
-const enums_1 = require("src/generated/prisma/enums");
+const enums_1 = require("../generated/prisma/enums");
 const getDayInDate = (dateIso) => {
     const d = new Date(dateIso);
     if (isNaN(d.getTime()))

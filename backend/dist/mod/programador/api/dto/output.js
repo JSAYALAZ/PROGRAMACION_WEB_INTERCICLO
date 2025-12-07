@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProgrammerOutputDTO = void 0;
-const output_1 = require("src/mod/disponibilidad/api/dto/output");
+const output_1 = require("../../../../mod/disponibilidad/api/dto/output");
 const zod_1 = require("zod");
 exports.ProgrammerOutputDTO = zod_1.z.object({
     id: zod_1.z.string(),

@@ -1,8 +1,8 @@
 
 import { PortafolioDbDefinition } from "./PortafolioDbDefinition";
 import { Portafolio } from "../domain/models/Portafolio";
-import { AppError } from "@/src/shared/AppError";
-import { db, mapPrismaError } from "@/src/shared/prisma";
+import { AppError } from "../../../shared/AppError";
+import { db, mapPrismaError } from "../../../shared/prisma";
 
 
 export const PortafolioDb: PortafolioDbDefinition = {

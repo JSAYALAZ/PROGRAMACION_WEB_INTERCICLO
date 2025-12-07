@@ -1,4 +1,4 @@
-import { Prisma } from "src/generated/prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { Portafolio } from "../domain/models/Portafolio";
 export interface PortafolioDbDefinition {
     list(q?: any, tx?: Prisma.TransactionClient): Promise<Portafolio[]>;

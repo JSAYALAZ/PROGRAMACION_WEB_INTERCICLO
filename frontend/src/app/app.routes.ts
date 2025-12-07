@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { UserResolver } from './services/user-resolver.service';
 import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { LoginPage } from './pages/login-page/login-page.component';
-import { SignupPage } from './pages/signup-page/signup-page.component';
 import { MainPage } from './pages/main-page/main-page.component';
 import { Home } from './modules/home/home';
 import { UsersMainPage } from './modules/usuarios/users-main-page/users-main-page';

@@ -1,4 +1,4 @@
-import { Weekday } from "src/generated/prisma/enums";
+import { Weekday } from "../../../../generated/prisma/enums";
 export declare class Asesoria {
     private id;
     private requesterId;

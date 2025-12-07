@@ -1,6 +1,6 @@
 
 
-import { Role } from "src/generated/prisma/enums";
+import { Role } from "../../../../generated/prisma/enums";
 import z from "zod";
 
 export const UserCreateDTO = z.object({

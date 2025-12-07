@@ -2,7 +2,7 @@
 import { ProgrammerProfileUpdateDTO } from "../api/dto/input";
 import { getProgrammerProfileById } from "./getProgrammerProfileById";
 import { ProgrammerProfileDb } from "../db/ProgrammerProfileDb";
-import { AppError } from "@/src/shared/AppError";
+import { AppError } from "../../../shared/AppError";
 import { getUserById } from "../../usuario/applications/getUserById";
 import { Disponibilidad } from "../../disponibilidad/domain/models/Disponibilidad";
 import { DisponibilidadDb } from "../../disponibilidad/db/DisponibilidadDb";

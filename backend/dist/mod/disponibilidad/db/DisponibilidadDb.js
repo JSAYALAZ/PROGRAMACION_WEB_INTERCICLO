@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DisponibilidadDb = void 0;
-const prisma_1 = require("src/shared/prisma");
-const AppError_1 = require("src/shared/AppError");
+const AppError_1 = require("../../../shared/AppError");
+const prisma_1 = require("../../../shared/prisma");
 exports.DisponibilidadDb = {
     async deleteAllFromProgrammer(programmerId) {
         try {

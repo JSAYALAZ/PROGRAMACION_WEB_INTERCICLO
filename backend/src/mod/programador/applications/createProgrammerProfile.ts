@@ -5,7 +5,7 @@ import { ProgrammerProfileDb } from "../db/ProgrammerProfileDb";
 import { getUserById } from "../../usuario/applications/getUserById";
 import { Portafolio } from "../../portafolio/domain/models/Portafolio";
 import { PortafolioDb } from "../../portafolio/db/PortafolioDb";
-import { AppError } from "@/src/shared/AppError";
+import { AppError } from "../../../shared/AppError";
 
 export const createProgrammerProfile = async (
   dto: ProgrammerProfileCreateDTO

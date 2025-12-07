@@ -4,8 +4,8 @@ import { ProyectCreateDTO } from "./dto/input";
 import { createProyect } from "../applications/createProyect";
 import { getProyectById } from "../applications/getProyectById";
 import { ProyectoMapper } from "./mapper/proyecto_mapper";
-import { ApiResponse } from "@/src/shared/ApiResponse";
-import { zodValidateJson } from "@/src/shared/ZodValidator";
+import { ApiResponse } from "../../../shared/ApiResponse";
+import { zodValidateJson } from "../../../shared/ZodValidator";
 
 const router = Router();
 

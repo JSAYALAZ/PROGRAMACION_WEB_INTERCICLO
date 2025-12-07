@@ -1,4 +1,5 @@
-import { AppError } from "src/shared/AppError";
+
+import { AppError } from "../../../shared/AppError";
 import { UserCreateDTO } from "../api/dto/input";
 import { UserDb } from "../db/UserDb";
 import { Usuario } from "../domain/models/Usuario";

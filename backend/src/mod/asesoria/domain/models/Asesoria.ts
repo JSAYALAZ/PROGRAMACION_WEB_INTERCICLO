@@ -1,5 +1,5 @@
-import { Weekday } from "@/src/generated/prisma/enums";
-import { getDayInDate, timeToMinutes } from "@/src/shared/utils";
+import { Weekday } from "../../../../generated/prisma/enums";
+import { getDayInDate, timeToMinutes } from "../../../../shared/utils";
 import { randomBytes } from "crypto";
 
 export class Asesoria {

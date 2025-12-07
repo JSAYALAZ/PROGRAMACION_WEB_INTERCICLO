@@ -1,9 +1,9 @@
 
 import { ProgrammerProfileDbDefinition } from "./ProgrammerProfileDbDefinition";
 import { PerfilProgramador } from "../domain/models/PerfilProgramador";
-import { db, mapPrismaError } from "@/src/shared/prisma";
+import { db, mapPrismaError } from "../../../shared/prisma";
 import { Disponibilidad } from "../../disponibilidad/domain/models/Disponibilidad";
-import { AppError } from "@/src/shared/AppError";
+import { AppError } from "../../../shared/AppError";
 
 export const ProgrammerProfileDb: ProgrammerProfileDbDefinition = {
   async list() {

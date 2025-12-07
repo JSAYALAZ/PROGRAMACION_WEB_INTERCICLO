@@ -7,7 +7,7 @@ import { generateAsesoriaFilters } from "../db/AsesoriaFilters";
 import { validateNoAsesoriaReply } from "../domain/service/validateNoAsesoriaReply";
 import { getUserById } from "../../usuario/applications/getUserById";
 import { getProgrammerProfileById } from "../../programador/applications/getProgrammerProfileById";
-import { AppError } from "@/src/shared/AppError";
+import { AppError } from "../../../shared/AppError";
 
 export const createAsesory = async (dto: AsesoriaCreateDTO) => {
   try {

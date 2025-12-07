@@ -1,9 +1,10 @@
-import { AppError } from "src/shared/AppError";
+
+import { AppError } from "../../../shared/AppError";
+import { getProgrammerProfileByUserId } from "../../programador/applications/getProgrammerProfileByUserId";
 import { UserUpdateDTO } from "../api/dto/input";
 import { UserDb } from "../db/UserDb";
 import { getUserById } from "./getUserById";
-import { createProgrammerProfile } from "src/mod/programador/applications/createProgrammerProfile";
-import { getProgrammerProfileByUserId } from "src/mod/programador/applications/getProgrammerProfileByUserId";
+import { createProgrammerProfile } from "../../programador/applications/createProgrammerProfile";
 
 export const updateUser = async (id: string, dto: UserUpdateDTO) => {
   try {

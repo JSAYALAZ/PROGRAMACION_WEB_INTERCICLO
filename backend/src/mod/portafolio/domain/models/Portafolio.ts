@@ -1,5 +1,5 @@
+import { Proyecto } from "../../../../mod/proyecto/domain/models/Proyecto";
 import { randomBytes } from "crypto";
-import { Proyecto } from "src/mod/proyecto/domain/models/Proyecto";
 
 export class Portafolio {
   private id: string;

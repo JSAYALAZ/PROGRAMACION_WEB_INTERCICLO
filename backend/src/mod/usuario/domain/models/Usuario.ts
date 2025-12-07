@@ -1,8 +1,9 @@
-import { Role } from "src/generated/prisma/enums";
-import { RedSocial } from "src/mod/redSocial/domain/models/RedSocial";
+
+import { Role } from "../../../../generated/prisma/enums";
+import { PerfilProgramador } from "../../../../mod/programador/domain/models/PerfilProgramador";
+import { RedSocial } from "../../../../mod/redSocial/domain/models/RedSocial";
+import { AppError } from "../../../../shared/AppError";
 import { randomBytes } from "crypto";
-import { AppError } from "src/shared/AppError";
-import { PerfilProgramador } from "src/mod/programador/domain/models/PerfilProgramador";
 
 export class Usuario {
   private id: string;

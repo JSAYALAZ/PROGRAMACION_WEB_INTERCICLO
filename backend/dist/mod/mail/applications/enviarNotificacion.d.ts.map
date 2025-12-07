@@ -1,1 +1,1 @@
-{"version":3,"file":"enviarNotificacion.d.ts","sourceRoot":"","sources":["../../../../src/mod/mail/applications/enviarNotificacion.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,MAAM,uCAAuC,CAAC;AAEhE,eAAO,MAAM,SAAS,GAAU,SAAS,OAAO,kBAE/C,CAAC"}
+{"version":3,"file":"enviarNotificacion.d.ts","sourceRoot":"","sources":["../../../../src/mod/mail/applications/enviarNotificacion.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,MAAM,qCAAqC,CAAC;AAE9D,eAAO,MAAM,SAAS,GAAU,SAAS,OAAO,kBAE/C,CAAC"}

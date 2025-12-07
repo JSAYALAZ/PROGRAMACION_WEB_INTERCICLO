@@ -12,7 +12,6 @@ async function verifyFirebaseToken(req:Request, res:Response, next:NextFunction)
   try {
     const decoded = await firebaseApp.auth().verifyIdToken(idToken);
 
-    console.log({decoded});
     
     // req.user = decoded;
     next();
