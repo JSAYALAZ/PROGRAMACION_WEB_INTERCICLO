@@ -3,10 +3,12 @@ import { APP_ROUTES } from '../../../app.routes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AxiosService } from '../../../services/axios.service';
 import { CommonModule } from '@angular/common';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
 
 @Component({
   selector: 'app-portafolio-view',
-  imports: [CommonModule],
+  standalone:true,
+  imports: [CommonModule,LoadingPage],
   templateUrl: './portafolio-view.html',
 })
 export class PortafolioView {

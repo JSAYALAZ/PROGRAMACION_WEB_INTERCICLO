@@ -9,6 +9,7 @@ export type PortafolioOutputDTO = {
 };
 @Component({
   selector: 'app-portafolio-card',
+  standalone:true,
   imports: [],
   templateUrl: './portafolio-card.html',
 })

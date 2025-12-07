@@ -1,21 +1,52 @@
-<div class="bg-neutral-300 text_color max-h-dvh h-dvh">
-  <div class="flex flex-row gap-4 py-3 justify-center bg-amber-600 text_color">
-    <app-sign-out></app-sign-out>
-    <!-- <app-dark-button></app-dark-button> -->
-  </div>
+<!-- sidebar.component.html -->
+<div
+  class="h-screen max-h-screen w-64 md:w-72 lg:w-80 bg-gradient-to-b from-teal-600/95 to-teal-800/90 text-white shadow-lg border-r border-black/10 flex flex-col justify-between"
+>
+  <header class="h-20 grid content-center pl-3 bg-teal-500">
+    <div class="flex items-center gap-3">
+      <div
+        class="w-12 h-12 bg-white/70 rounded-lg flex items-center justify-center text-black text-xl font-bold"
+      >
+        DM
+      </div>
+      <div>
+        <p class="text-sm text-amber-100 opacity-90">Dev</p>
+        <h1 class="text-lg font-semibold leading-none">DevManger</h1>
+      </div>
+    </div>
+  </header>
 
-  <!-- Scrollable area -->
-  <div class="max-h-[calc(100vh-54px)] overflow-y-auto">
-    <nav class="flex flex-col gap-3 mb-20">
+  <nav class="flex-1 overflow-auto">
+    <ul class="flex flex-col gap-5">
       <ng-container *ngFor="let module of modules">
-  <app-options-sidebar
-    *ngIf="module.rol === 'ANY' || rol === 'ADMIN' || module.rol === rol"
-    [text]="module.name"
-    [url]="module.routes.main.path"
-    [userId]="userId"
-    >
-  </app-options-sidebar>
-</ng-container>
-    </nav>
-  </div>
+        <li *ngIf="module.rol === 'ANY' || module.rol === rol">
+          <!-- asumimos que app-options-sidebar renderiza un item; le pasamos clases de utilidad -->
+          <app-options-sidebar
+            class="block"
+            [text]="module.name"
+            [url]="module.routes.main.path"
+            [userId]="userId"
+            [icon]="module.icon"
+          ></app-options-sidebar>
+        </li>
+      </ng-container>
+    </ul>
+  </nav>
+
+  <footer class="mt-4">
+    <div class="flex items-center gap-3 p-2 rounded-lg bg-white/10 hover:bg-white/12 transition">
+      <img
+        class="w-8 h-8 rounded-full border-2 border-white/20 object-cover"
+        [src]="user.photoURL"
+        alt="avatar"
+      />
+      <div class="flex flex-row gap-10">
+        <div>
+          <p class="text-sm font-medium leading-tight">{{ user.displayName }}</p>
+          <p class="text-xs text-white/80">{{ rol }}</p>
+        </div>
+        <app-sign-out></app-sign-out>
+      </div>
+    </div>
+  </footer>
 </div>

@@ -1,6 +1,30 @@
-<div
+<!-- app-options-sidebar.component.html -->
+<button
   (click)="handleClick()"
-  class="h-10 md:h-12  rounded-md flex items-center justify-start hover:bg-amber-600 hover:cursor-pointer"
+  class="flex items-center gap-3 px-3 py-2 
+  hover:bg-white/10 transition-colors active:bg-white/12 w-full
+  hover:cursor-pointer"
+  [title]="text"
 >
-  <p class="ml-2 font-semibold text_color hover:scale-110">{{ text }}</p>
-</div>
+  <span
+    class="w-8 h-8 flex items-center justify-center rounded-md bg-white/6 group-hover:bg-white/10 transition"
+  >
+    <!-- icon SVG or <img> -->
+    <ng-container *ngIf="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="icon" />
+      </svg>
+    </ng-container>
+  </span>
+
+  <span class="text-sm font-medium text-white/95 ">{{ text }}</span>
+
+  <span class="text-xs text-white/70 hidden md:inline">›</span>
+</button>

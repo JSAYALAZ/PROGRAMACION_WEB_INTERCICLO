@@ -14,6 +14,7 @@ export type ProyectOutputDTO = {
 
 @Component({
   selector: 'app-project-card',
+  standalone:true,
   imports:[CommonModule],
   templateUrl: './proyect-card.html',
 })

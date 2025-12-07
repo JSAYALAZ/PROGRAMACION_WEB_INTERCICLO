@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { ɵInternalFormsSharedModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PerfilProgramadorCard, ProgrammerOutputDTO } from '../perfil-programador-card/perfil-programador-card';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
+import { EmptyPage } from '../../../pages/empty-page/empty-page';
 
 @Component({
   selector: 'app-perfilProgramador-main-page',
   standalone: true,
-  imports: [CommonModule, ɵInternalFormsSharedModule,PerfilProgramadorCard],
+  imports: [CommonModule, ɵInternalFormsSharedModule,PerfilProgramadorCard,LoadingPage,EmptyPage],
   templateUrl: './perfilProgramador-main-page.html',
 })
 export class PerfilProgramadorMainPage {

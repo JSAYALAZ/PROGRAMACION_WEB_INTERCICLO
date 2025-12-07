@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-asesoria-new',
+  standalone:true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './asesoria-new.html',
 })

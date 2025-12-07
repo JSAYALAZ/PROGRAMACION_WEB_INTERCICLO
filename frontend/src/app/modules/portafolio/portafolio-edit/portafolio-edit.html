@@ -1,6 +1,6 @@
-<div *ngIf="loading$ | async">Cargando...</div>
+<ng-component *ngIf="loading$ | async"><app-loading-page></app-loading-page></ng-component>
 
-<div *ngIf="data$ | async as data">
+<div *ngIf="data$ | async as data" class="px-64">
   <form
     [formGroup]="form"
     (ngSubmit)="onSubmit()"

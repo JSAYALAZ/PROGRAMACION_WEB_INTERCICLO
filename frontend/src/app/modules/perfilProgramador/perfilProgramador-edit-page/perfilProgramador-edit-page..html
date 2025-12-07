@@ -1,7 +1,7 @@
 <form
   (ngSubmit)="onSubmit()"
   [formGroup]="form"
-  class="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-2xl border border-slate-200"
+  class="max-w-4xl mx-auto p-8 form_background shadow-2xl rounded-2xl border border-slate-200"
 >
   <h2 class="text-3xl font-extrabold text-slate-900 mb-8 tracking-tight">
     📝 Editar Perfil de Programador
@@ -9,30 +9,26 @@
 
   <div class="grid gap-8">
     <!-- BIO -->
-    <label class="flex flex-col gap-3">
-      <span class="font-semibold text-slate-800 text-lg">Biografía</span>
+    <div class="form_container">
+      <label class="font-semibold text-slate-800 text-lg">Biografía</label>
       <textarea
         formControlName="bio"
         rows="4"
         placeholder="Cuéntanos sobre ti, experiencia, tecnologías..."
-        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
       ></textarea>
-      <small class="text-xs text-slate-500">Máx. 1000 caracteres.</small>
-      <div *ngIf="controlError('bio', 'required')" class="text-sm text-rose-600 font-medium mt-1">
-        La biografía es obligatoria.
-      </div>
-    </label>
+    </div>
 
     <!-- ESPECIALIDAD -->
-    <label class="flex flex-col gap-3">
-      <span class="font-semibold text-slate-800 text-lg">Especialidad</span>
+    <div class="form_container">
+      <label class="font-semibold text-slate-800 text-lg">Especialidad</label>
       <input
         type="text"
         formControlName="specialty"
         placeholder="Ej: Frontend, Node.js, DevOps..."
-        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+        class="form_input"
       />
-    </label>
+    </div>
 
     <!-- SEPARADOR -->
     <div class="border-t border-slate-200 my-2"></div>
@@ -41,7 +37,7 @@
     <fieldset class="p-6 rounded-2xl border border-slate-300 bg-slate-50 shadow-inner">
       <legend class="text-xl font-bold text-slate-800 mb-4">⏰ Disponibilidad Semanal</legend>
 
-      <div class="mt-4 flex flex-col gap-6" formArrayName="disponibilidad">
+      <div class="flex flex-col gap-6" formArrayName="disponibilidad">
         <div
           *ngFor="let d of disponibilidad.controls; let i = index"
           [formGroupName]="i"
@@ -62,7 +58,10 @@
               <option value="SAT">Sábado</option>
               <option value="SUN">Domingo</option>
             </select>
-            <div *ngIf="controlError('disponibilidad.' + i + '.day', 'required')" class="text-xs text-rose-600 mt-1">
+            <div
+              *ngIf="controlError('disponibilidad.' + i + '.day', 'required')"
+              class="text-xs text-rose-600 mt-1"
+            >
               Día es obligatorio.
             </div>
           </div>
@@ -75,7 +74,10 @@
               formControlName="startTime"
               class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-black shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             />
-            <div *ngIf="controlError('disponibilidad.' + i + '.startTime', 'required')" class="text-xs text-rose-600 mt-1">
+            <div
+              *ngIf="controlError('disponibilidad.' + i + '.startTime', 'required')"
+              class="text-xs text-rose-600 mt-1"
+            >
               Inicio es obligatorio.
             </div>
           </div>
@@ -88,7 +90,10 @@
               formControlName="endTime"
               class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-black shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             />
-            <div *ngIf="controlError('disponibilidad.' + i + '.endTime', 'required')" class="text-xs text-rose-600 mt-1">
+            <div
+              *ngIf="controlError('disponibilidad.' + i + '.endTime', 'required')"
+              class="text-xs text-rose-600 mt-1"
+            >
               Fin es obligatorio.
             </div>
           </div>
@@ -105,7 +110,10 @@
             </button>
           </div>
 
-          <div *ngIf="controlError('disponibilidad.' + i, 'timeRangeInvalid')" class="text-sm text-rose-600 font-medium col-span-full mt-1">
+          <div
+            *ngIf="controlError('disponibilidad.' + i, 'timeRangeInvalid')"
+            class="text-sm text-rose-600 font-medium col-span-full mt-1"
+          >
             ⚠️ La hora de inicio debe ser menor que la de fin.
           </div>
         </div>
@@ -126,13 +134,12 @@
       <button
         type="submit"
         [disabled]="submitting || form.invalid"
-        class="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-indigo-600 text-white font-semibold shadow-lg hover:bg-indigo-700 
-        disabled:bg-slate-400 disabled:cursor-not-allowed transition hover:cursor-pointer "
+        class="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-indigo-600 text-white font-semibold shadow-lg hover:bg-indigo-700 disabled:bg-slate-400 disabled:cursor-not-allowed transition hover:cursor-pointer"
       >
         <span *ngIf="!submitting">💾 Guardar Cambios</span>
         <span *ngIf="submitting">Guardando...</span>
       </button>
     </div>
   </div>
-</form><!-- Versión con mejor estilo, sin cambiar funcionalidad -->
-
+</form>
+<!-- Versión con mejor estilo, sin cambiar funcionalidad -->

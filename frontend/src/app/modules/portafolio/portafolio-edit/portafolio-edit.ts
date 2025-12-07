@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ɵEmptyOutletComponent } from '@angular/router';
 import { APP_ROUTES } from '../../../app.routes';
 import { AxiosService } from '../../../services/axios.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
 
 @Component({
   selector: 'app-portafolio-edit',
-  imports: [CommonModule, ReactiveFormsModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, LoadingPage, ɵEmptyOutletComponent],
   templateUrl: './portafolio-edit.html',
 })
 export class PortafolioEdit implements OnInit {

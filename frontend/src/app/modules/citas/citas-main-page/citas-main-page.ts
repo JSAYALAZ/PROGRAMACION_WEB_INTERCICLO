@@ -5,10 +5,12 @@ import { APP_ROUTES } from '../../../app.routes';
 import { AsesoriaCard, AsesoriaOutputDTO } from '../../asesorias/asesoria-card/asesoria-card';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '@angular/fire/auth';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
+import { EmptyPage } from '../../../pages/empty-page/empty-page';
 @Component({
   selector: 'app-citas-main-page',
   standalone: true,
-  imports: [CommonModule, AsesoriaCard],
+  imports: [CommonModule, AsesoriaCard,LoadingPage,EmptyPage],
   templateUrl: './citas-main-page.html',
 })
 export class CitasMainPage implements OnInit {

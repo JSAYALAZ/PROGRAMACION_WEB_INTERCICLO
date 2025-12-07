@@ -20,6 +20,7 @@ export type ProgrammerOutputDTO = {
 };
 @Component({
   selector: 'app-perfil-programador-card',
+  standalone:true,
   imports: [CommonModule],
   templateUrl: './perfil-programador-card.html',
 })

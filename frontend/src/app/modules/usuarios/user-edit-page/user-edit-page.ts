@@ -6,11 +6,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
 
 @Component({
   selector: 'app-user-edit-page',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, LoadingPage],
   templateUrl: './user-edit-page.html',
 })
 export class UserEditPage {
@@ -47,8 +48,10 @@ export class UserEditPage {
     });
   }
   async onSubmit() {
+    if (this.loadingSubmit) {
+      return;
+    }
     this.loadingSubmit = true;
-    // this.toast.error('Completa la informacion');
     if (!this.authForm.valid) {
       this.loadingSubmit = false;
       return;

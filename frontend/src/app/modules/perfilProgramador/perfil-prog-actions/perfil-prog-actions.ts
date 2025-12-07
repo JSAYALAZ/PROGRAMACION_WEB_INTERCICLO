@@ -1,14 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ɵEmptyOutletComponent } from '@angular/router';
 import { APP_ROUTES } from '../../../app.routes';
 import { User } from '@angular/fire/auth';
 import { AxiosService } from '../../../services/axios.service';
 import { ProgrammerOutputDTO } from '../perfil-programador-card/perfil-programador-card';
 import { CommonModule } from '@angular/common';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
 
 @Component({
   selector: 'app-perfil-prog-actions',
-  imports: [CommonModule],
+  standalone:true,
+  imports: [CommonModule, LoadingPage, ɵEmptyOutletComponent],
   templateUrl: './perfil-prog-actions.html',
 })
 export class PerfilProgActions implements OnInit {

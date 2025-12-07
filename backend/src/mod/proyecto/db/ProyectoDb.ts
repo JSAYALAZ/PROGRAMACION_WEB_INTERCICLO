@@ -68,6 +68,7 @@ export const ProyectoDb: ProyectoDbDefinition = {
           liveDemoUrl: data.getUrldeploy(),
           repositoryUrl: data.getUrlRepo(),
           portfolioId: data.getPortafolioId(),
+          section:data.getSeccion(),
         },
         update: {
           description: data.getDescription(),

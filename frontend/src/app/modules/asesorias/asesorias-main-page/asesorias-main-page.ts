@@ -4,11 +4,13 @@ import { APP_ROUTES } from '../../../app.routes';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AsesoriaCard } from '../asesoria-card/asesoria-card';
+import { EmptyPage } from '../../../pages/empty-page/empty-page';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
 
 @Component({
   selector: 'app-asesorias-main-page',
   standalone: true,
-  imports: [CommonModule, AsesoriaCard],
+  imports: [CommonModule, AsesoriaCard,EmptyPage,LoadingPage],
   templateUrl: './asesorias-main-page.html',
 })
 export class AsesoriasMainPage implements OnInit {

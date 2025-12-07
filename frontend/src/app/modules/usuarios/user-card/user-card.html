@@ -1,12 +1,10 @@
 <article
-  class="w-full max-w-sm mx-auto bg-white/90 rounded-2xl shadow-md overflow-hidden transform transition hover:-translate-y-1"
+  class="w-full max-w-sm mx-auto bg-white/80 rounded-2xl shadow-md overflow-hidden transform transition hover:-translate-y-1"
   role="group"
   aria-label="Carta de presentación de usuario"
 >
   <!-- Header visual (imagen de fondo opcional) -->
-  <div
-    class="relative bg-gradient-to-br from-slate-50 to-white "
-  >
+  <div class="relative">
     <div class="p-6 flex flex-col items-center gap-3">
       <!-- Avatar grande -->
       <ng-container *ngIf="user.foto_perfil; else avatarPlaceholder">
@@ -27,7 +25,7 @@
       </ng-template>
 
       <!-- Nombre -->
-      <h1 class="mt-1 text-center text-lg md:text-2xl font-bold text-slate-900 ">
+      <h1 class="mt-1 text-center text-lg md:text-2xl font-bold text-slate-900">
         {{ user.username }}
       </h1>
 
@@ -45,9 +43,9 @@
   <!-- Body: contacto y descripción breve -->
   <div class="px-6 pb-6">
     <div class="mt-2 text-center">
-      <p class="text-sm text-slate-600  truncate">
+      <p class="text-sm text-slate-600 truncate">
         <strong>Email:</strong>
-        <span class="text-slate-800 ">{{ user.email }}</span>
+        <span class="text-slate-800">{{ user.email }}</span>
       </p>
 
       <!-- Aquí podrías añadir una línea de 'bio' o rol secundario si la tuvieras -->
@@ -55,16 +53,16 @@
     </div>
 
     <!-- Divider -->
-    <div class="my-4 border-t border-slate-100 "></div>
+    <div class="my-4 border-t border-slate-100"></div>
 
     <!-- Meta secundaria -->
-    <div class="flex flex-col gap-1 text-xs text-slate-500 ">
+    <div class="flex flex-col gap-1 text-xs text-slate-500">
       <div class="flex items-center justify-between">
-        <span class="font-medium text-slate-600 ">ID</span>
+        <span class="font-medium text-slate-600">ID</span>
         <span class="truncate" title="{{ user.id }}">{{ user.id }}</span>
       </div>
       <div class="flex items-center justify-between">
-        <span class="font-medium text-slate-600 ">Firebase UID</span>
+        <span class="font-medium text-slate-600">Firebase UID</span>
         <span class="truncate" title="{{ user.firebaseUid }}">{{ user.firebaseUid }}</span>
       </div>
     </div>
@@ -82,7 +80,7 @@
 
       <button
         type="button"
-        class="px-3 py-1.5 rounded-lg text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-50 "
+        class="px-3 py-1.5 rounded-lg text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-50"
         aria-label="Ver perfil completo"
       >
         Ver perfil

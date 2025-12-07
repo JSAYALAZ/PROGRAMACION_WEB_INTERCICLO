@@ -14,6 +14,7 @@ export type AsesoriaOutputDTO = {
 };
 @Component({
   selector: 'app-asesoria-card',
+  standalone:true,
   imports: [CommonModule],
   templateUrl: './asesoria-card.html',
 })

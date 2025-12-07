@@ -12,6 +12,7 @@ export type UserOutputDTO = {
 };
 @Component({
   selector: 'app-user-card',
+  standalone:true,
   imports: [CommonModule],
   templateUrl: './user-card.html',
 })

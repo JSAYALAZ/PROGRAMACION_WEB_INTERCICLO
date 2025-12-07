@@ -1,11 +1,12 @@
-<div *ngIf="loading$ | async">Cargando...</div>
+<ng-container *ngIf="loading$ | async"><app-loading-page></app-loading-page></ng-container>
 
-<div *ngIf="error$ | async as error" class="text-red-500">Error: {{ error }}</div>
+<ng-container *ngIf="error$ | async as error" class="text-red-500">Error: {{ error }}</ng-container>
 
-<pre *ngIf="data$ | async as data">
+<ng-container *ngIf="data$ | async as data">
+  <ng-container *ngIf="!data.length"><app-empty-page></app-empty-page></ng-container>
   <div class="felx flex-col px-64">
     <app-asesoria-card *ngFor="let d of data" [asesoria]="d" [canEdit]="false"></app-asesoria-card>
   </div>
-</pre>
+</ng-container>
 
 <!-- <button (click)="reload()">Refetch</button> -->

@@ -1,7 +1,8 @@
-<div *ngIf="loading$ | async">Cargando...</div>
+<ng-container *ngIf="loading$ | async"><app-loading-page></app-loading-page></ng-container>
+
 
 <div
-  class="w-full flex flex-col gap-8 p-6 lg:p-10 bg-white rounded-2xl shadow"
+  class="w-full flex flex-col gap-8 p-6 lg:p-10 bg-gradient-to-b from-white/60 to-white/30 rounded-2xl shadow "
   *ngIf="data$ | async as portafolio"
 >
   <!-- Header -->
@@ -22,7 +23,7 @@
   <section>
     <h2 class="text-xl font-semibold mb-4 text-slate-800">Proyectos</h2>
 
-    <div class="flex flex-col gap-6">
+    <div class="gap-6 grid grid-cols-3">
       <article
         *ngFor="let project of portafolio.project"
         class="p-5 bg-slate-50 rounded-xl border border-slate-200"

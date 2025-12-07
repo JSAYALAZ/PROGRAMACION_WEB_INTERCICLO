@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { SidebarCompComponent } from '../../components/sidebar-comp/sidebar-comp.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-main-page',
   standalone:true,
-  imports: [SidebarCompComponent, RouterOutlet, CommonModule],
+  imports: [SidebarCompComponent, RouterOutlet, CommonModule,NgStyle],
   templateUrl: './main-page.component.html',
 })
 export class MainPage {

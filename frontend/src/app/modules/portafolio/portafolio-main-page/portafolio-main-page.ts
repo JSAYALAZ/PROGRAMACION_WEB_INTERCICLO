@@ -3,11 +3,13 @@ import { AxiosService } from '../../../services/axios.service';
 import { CommonModule } from '@angular/common';
 import { APP_ROUTES } from '../../../app.routes';
 import { PortafolioCard } from '../portafolio-card/portafolio-card';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
+import { EmptyPage } from '../../../pages/empty-page/empty-page';
 
 @Component({
   selector: 'app-portafolio-main-page',
   standalone: true,
-  imports: [CommonModule,PortafolioCard],
+  imports: [CommonModule,PortafolioCard,LoadingPage,EmptyPage],
   templateUrl: './portafolio-main-page.html',
 })
 export class PortafolioMainPage implements OnInit {
