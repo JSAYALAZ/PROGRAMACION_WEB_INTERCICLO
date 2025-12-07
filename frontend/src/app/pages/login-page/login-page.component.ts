@@ -74,33 +74,36 @@ export class LoginPage {
   //     this.loadingSubmit = false;
   //   }
   // }
+loginWithGoogle() {
+  signInWithPopup(this.auth, this.googleAuthProvider)
+    .then((res) => {
+      const googleUser = res.user;
 
-  loginWithGoogle() {
-    signInWithPopup(this.auth, this.googleAuthProvider)
-      .then((res) => {
-        const object = {
-          firebaseUid: res.user.uid,
-          email: res.user.email,
-          displayName: res.user.displayName,
-          foto_perfil: res.user.photoURL,
-        };
+      const payload = {
+        firebaseUid: googleUser.uid,
+        email: googleUser.email,
+        username: googleUser.displayName,
+        foto_perfil: googleUser.photoURL,     
+      };
 
-        this.http.post(APP_ROUTES.main.childrens.usuarios.apiPath, object).subscribe({
-          next: (res: any) => {
-            localStorage.setItem('rol', res.data.rol);
-            localStorage.setItem('userId', res.data.id);
-            this.redirectMain();
-          },
-          error: (err) => {
-            console.log(err);
-          },
-        });
-      })
-      .catch(
-        (err) => {}
-        // this.toast.error(err.message || 'No se logro crear la cuenta')
-      );
-  }
+      this.http.post(APP_ROUTES.main.childrens.usuarios.apiPath, payload).subscribe({
+        next: (res: any) => {
+          // Guardar info mínima en el localStorage
+          localStorage.setItem('rol', res.data.rol);
+          localStorage.setItem('userId', res.data.id);
+
+          this.redirectMain();
+        },
+        error: (err) => {
+          console.error('Error guardando usuario:', err);
+        },
+      });
+    })
+    .catch((err) => {
+      console.error('Error con Google:', err);
+    });
+}
+
 
   redirectMain() {
     this.router.navigate([APP_ROUTES.main.path]);
