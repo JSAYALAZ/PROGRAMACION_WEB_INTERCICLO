@@ -38,13 +38,15 @@
       </ng-template>
     </div>
 
-    <div class="flex items-center gap-2" >
+    <div class="flex items-center gap-2" *ngIf="canEdit">
       <button
-        [classList]="editarCita(asesoria.id)"
-        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-sm hover:bg-slate-50 transition"
+      (click)="editarCita()"
+      class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border 
+      border-slate-200 bg-white text-slate-700 text-sm hover:bg-slate-50
+       hover:cursor-pointer transition"
       >
-        Editar
-      </button>
-    </div>
+      Editar
+    </button>
+  </div>
   </footer>
 </article>

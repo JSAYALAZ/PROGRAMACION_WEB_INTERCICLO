@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AxiosService } from '../../../services/axios.service';
 import { APP_ROUTES } from '../../../app.routes';
 import { CommonModule } from '@angular/common';
-import { ɵInternalFormsSharedModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AsesoriaCard } from '../asesoria-card/asesoria-card';
 
 @Component({
   selector: 'app-asesorias-main-page',
   standalone: true,
-  imports: [CommonModule, ɵInternalFormsSharedModule, AsesoriaCard],
+  imports: [CommonModule, AsesoriaCard],
   templateUrl: './asesorias-main-page.html',
 })
 export class AsesoriasMainPage implements OnInit {
@@ -29,6 +28,6 @@ export class AsesoriasMainPage implements OnInit {
   }
 
   editar(id: string) {
-    this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath.replace(':id', id)]);
+    this.router.navigate([APP_ROUTES.main.childrens.asesorias_edit.absolutePath.replace(':id', id)]);
   }
 }

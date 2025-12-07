@@ -69,6 +69,7 @@ export const AsesoriaDB: AsesoriaDBDefinition = {
         },
         update: {
           status: data.getStatus(),
+          responseMessage: data.getResponseMessage(),
         },
       });
       return resp.id;

@@ -186,6 +186,10 @@ export const routes: Routes = [
         path: APP_ROUTES.main.childrens.asesorias_new.path,
         component: APP_ROUTES.main.childrens.asesorias_new.component,
       },
+      {
+        path: APP_ROUTES.main.childrens.asesorias_edit.path,
+        component: APP_ROUTES.main.childrens.asesorias_edit.component,
+      },
       //USUARIOS
       {
         path: APP_ROUTES.main.childrens.usuarios.path,

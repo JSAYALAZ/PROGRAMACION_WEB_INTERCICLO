@@ -4,7 +4,7 @@
 
 <pre *ngIf="data$ | async as data">
   <div class="felx flex-col px-64">
-   <app-asesoria-card *ngFor="let d of data" [asesoria]="d" ></app-asesoria-card>
+   <app-asesoria-card *ngFor="let d of data" [asesoria]="d" [canEdit]="true"></app-asesoria-card>
 </div>
 </pre>
 

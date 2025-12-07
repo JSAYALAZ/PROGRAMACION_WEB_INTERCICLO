@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { APP_ROUTES } from '../../../app.routes';
 export type AsesoriaOutputDTO = {
   id: string;
-  programmerId: string;
-  date: string; // ISO date string expected
-  hour: number; // interpreted as minutes since midnight OR hour number (0-23)
-  durationMin: number;
   comment: string | null;
-  status: string;
+  date: string; // ISO date string expected
+  durationMin: number;
+  hour: number; // interpreted as minutes since midnight OR hour number (0-23)
+  programmerId: string;
   responseMessage: string | null;
+  status: string;
 };
 @Component({
   selector: 'app-asesoria-card',
@@ -18,7 +18,8 @@ export type AsesoriaOutputDTO = {
   templateUrl: './asesoria-card.html',
 })
 export class AsesoriaCard {
-  @Input() asesoria!: AsesoriaOutputDTO;
+  @Input({ required: true }) asesoria!: AsesoriaOutputDTO;
+  @Input() canEdit!: boolean;
 
   constructor(private router: Router) {}
   // Formatea hour en "HH:MM" intentando adivinar si hour está en minutos o en horas.
@@ -66,9 +67,9 @@ export class AsesoriaCard {
     }
   }
 
-  editarCita(id: string) {
+  editarCita() {
     this.router.navigate([
-      APP_ROUTES.main.childrens.asesorias_edit.absolutePath.replace(':id', id),
+      APP_ROUTES.main.childrens.asesorias_edit.absolutePath.replace(':id', this.asesoria.id),
     ]);
   }
 }

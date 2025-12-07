@@ -2,9 +2,10 @@ import { Router } from "express";
 import { zodValidateJson } from "src/shared/ZodValidator";
 import { listAsesorias } from "../applications/listAsesorias";
 import { ApiResponse } from "src/shared/ApiResponse";
-import { AsesoriaCreateDTO } from "./dto/input";
+import { AsesoriaCreateDTO, AsesoriaUpdateDTO } from "./dto/input";
 import { createAsesory } from "../applications/createAsesory";
 import { getAsesoriaById } from "../applications/getAsesoriaById";
+import { updateAsesoria } from "../applications/updateAsesoria";
 
 const router = Router();
 
@@ -29,6 +30,16 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const user = await getAsesoriaById(id);
+    return ApiResponse.success(res, "Correcto", user);
+  } catch (error) {
+    return ApiResponse.error(res, error);
+  }
+});
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { validated } = await zodValidateJson(req, AsesoriaUpdateDTO);
+    const user = await updateAsesoria(id,validated);
     return ApiResponse.success(res, "Correcto", user);
   } catch (error) {
     return ApiResponse.error(res, error);

@@ -4,12 +4,6 @@ import { getDayInDate, timeToMinutes } from "src/shared/utils";
 
 export class Asesoria {
   private id: string;
-
-  // Getters
-  public getId(): string {
-    return this.id;
-  }
-
   private requesterId: string;
   private programmerId: string;
   private date: Date;
@@ -19,6 +13,22 @@ export class Asesoria {
   private comment: string | null;
   private status: string;
   private responseMessage: string | null;
+
+  // Getters
+  public getId(): string {
+    return this.id;
+  }
+
+
+
+  // Setters
+  public setStatus(status: string): void {
+    this.status = status;
+  }
+
+  public setResponseMessage(responseMessage: string): void {
+    this.responseMessage = responseMessage;
+  }
 
   // Getters
   public getHour(): number {
