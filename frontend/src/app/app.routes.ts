@@ -21,8 +21,7 @@ import { AsesoriaEdit } from './modules/asesorias/asesoria-edit/asesoria-edit';
 
 export const environment = {
   production: false,
-  // api: 'https://programacion-web-interciclo.onrender.com/api/',
-  api: 'http://localhost:3000/api/',
+  api: 'https://programacion-web-interciclo.onrender.com/api/',
 };
 
 function redirectToLogin() {
