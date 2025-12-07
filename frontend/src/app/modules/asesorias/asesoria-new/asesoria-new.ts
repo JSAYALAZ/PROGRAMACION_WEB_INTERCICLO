@@ -5,10 +5,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { User } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-asesoria-new',
-  standalone:true,
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './asesoria-new.html',
 })
@@ -19,7 +20,12 @@ export class AsesoriaNew implements OnInit {
   user: User = this.activateRoute.parent?.snapshot.data['user'];
   today!: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private toast: ToastService,
+    private http: HttpClient
+  ) {}
   ngOnInit() {
     const prgId = this.route.snapshot.queryParamMap.get('programmerId');
     if (!prgId) {
@@ -57,8 +63,11 @@ export class AsesoriaNew implements OnInit {
     };
 
     this.http.post(APP_ROUTES.main.childrens.asesorias_new.apiPath, payload).subscribe({
-      next: (res) => {
-        this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath]);
+      next: (v: any) => {
+        if (v.success) {
+          this.toast.success('Guardado correctamente', 'Hecho');
+          this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath]);
+        }
       },
       error: (err) => {
         console.log(err);

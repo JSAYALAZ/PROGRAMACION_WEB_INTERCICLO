@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { LoadingPage } from '../../../pages/loading-page/loading-page';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-user-edit-page',
@@ -35,7 +36,8 @@ export class UserEditPage {
     private axios: AxiosService<any>,
     private route: Router,
     private activeRoute: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private toast: ToastService
   ) {
     this.initForm();
     const stored = localStorage.getItem('rol');
@@ -68,6 +70,7 @@ export class UserEditPage {
         .subscribe({
           next: (v: any) => {
             if (v.success) {
+              this.toast.success('Guardado correctamente', 'Hecho');
               const redirectPath =
                 this.rol == 'ADMIN'
                   ? APP_ROUTES.main.childrens.usuarios.absolutePath

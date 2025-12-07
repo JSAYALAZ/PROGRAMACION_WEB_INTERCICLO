@@ -1,6 +1,6 @@
 <div *ngIf="loading$ | async"><app-loading-page></app-loading-page></div>
 
-<div *ngIf="data$ | async as data" class="px-64">
+<div *ngIf="data$ | async as data" class="lg:px-52 md:px-24">
   <form
     [formGroup]="authForm"
     (ngSubmit)="onSubmit()"

@@ -7,10 +7,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Subscription } from 'rxjs';
 import { APP_ROUTES } from '../../../app.routes';
 import { CommonModule } from '@angular/common';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-asesoria-edit',
-  standalone:true,
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './asesoria-edit.html',
 })
@@ -19,7 +20,6 @@ export class AsesoriaEdit implements OnInit {
   asesoriaId: string = '';
   private sub?: Subscription;
   loadingSubmit: boolean = false;
-
 
   get data$() {
     return this.axios.data$;
@@ -34,7 +34,8 @@ export class AsesoriaEdit implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private axios: AxiosService<AsesoriaOutputDTO>
+    private axios: AxiosService<AsesoriaOutputDTO>,
+    private toast: ToastService
   ) {
     this.initForm();
   }
@@ -67,6 +68,7 @@ export class AsesoriaEdit implements OnInit {
         .subscribe({
           next: (v: any) => {
             if (v.success) {
+              this.toast.success('Guardado correctamente', 'Hecho');
               this.router.navigate([APP_ROUTES.main.childrens.citas.absolutePath]);
             }
           },

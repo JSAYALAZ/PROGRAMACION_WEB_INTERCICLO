@@ -14,6 +14,7 @@ import {
 import { APP_ROUTES } from '../../../app.routes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@angular/fire/auth';
+import { ToastService } from '../../../services/toast.service';
 
 // Función auxiliar para convertir tiempo HH:MM a minutos (entero)
 const timeToMinutes = (time: string): number | null => {
@@ -58,7 +59,12 @@ export class ProgrammerProfileFormComponent implements OnInit {
   user: User = this.activateRoute.parent?.snapshot.data['user'];
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private toast: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -122,13 +128,14 @@ export class ProgrammerProfileFormComponent implements OnInit {
     };
 
     try {
-      this.http
-        .put(APP_ROUTES.main.childrens.perfilProgramador_edit.apiPath, payload)
-        .pipe()
-        .subscribe((res) => {
-          console.log(res);
-        });
-      this.router.navigate([APP_ROUTES.main.childrens.perfilProgramador.absolutePath]);
+      this.http.put(APP_ROUTES.main.childrens.perfilProgramador_edit.apiPath, payload).subscribe({
+        next: (v: any) => {
+          if (v.success) {
+            this.toast.success('Guardado correctamente', 'Hecho');
+            this.router.navigate([APP_ROUTES.main.childrens.perfilProgramador.absolutePath]);
+          }
+        },
+      });
     } catch (error) {
       console.log(error);
     }

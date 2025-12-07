@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { APP_ROUTES } from '../../../app.routes';
 import { User } from '@angular/fire/auth';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-proyectos-new-page',
@@ -19,7 +20,7 @@ export class ProyectosNewPage {
   authForm!: FormGroup;
   loadingSubmit: boolean = false;
 
-  constructor(private route: Router, private http: HttpClient) {
+  constructor(private route: Router, private http: HttpClient, private toast: ToastService) {
     this.initForm();
   }
   initForm() {
@@ -32,7 +33,7 @@ export class ProyectosNewPage {
       title: new FormControl('', Validators.required),
     });
   }
-   onSubmit() {
+  onSubmit() {
     this.loadingSubmit = true;
     if (!this.authForm.valid) {
       this.loadingSubmit = false;
@@ -51,8 +52,14 @@ export class ProyectosNewPage {
         title: this.authForm.value.title,
       };
 
-      this.http.post(APP_ROUTES.main.childrens.proyectos.apiPath, object).subscribe((data) => {});
-      this.route.navigate([APP_ROUTES.main.childrens.proyectos.absolutePath]);
+      this.http.post(APP_ROUTES.main.childrens.proyectos.apiPath, object).subscribe({
+        next: (v: any) => {
+          if (v.success) {
+            this.toast.success('Guardado correctamente', 'Hecho');
+            this.route.navigate([APP_ROUTES.main.childrens.proyectos.absolutePath]);
+          }
+        },
+      });
     } catch (err: any) {
       if (err instanceof Error) {
       }

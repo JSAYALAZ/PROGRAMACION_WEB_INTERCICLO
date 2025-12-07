@@ -7,6 +7,7 @@ import { AxiosService } from '../../../services/axios.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { LoadingPage } from '../../../pages/loading-page/loading-page';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-portafolio-edit',
@@ -34,7 +35,8 @@ export class PortafolioEdit implements OnInit {
     private axios: AxiosService<any>,
     private route: ActivatedRoute,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private toast: ToastService
   ) {
     this.initForm();
   }
@@ -84,9 +86,11 @@ export class PortafolioEdit implements OnInit {
 
       this.http
         .put(`${APP_ROUTES.main.childrens.portafolio.apiPath}/${this.portafolioID}`, object)
+
         .subscribe({
           next: (v: any) => {
             if (v.success) {
+              this.toast.success('Guardado correctamente', 'Hecho');
               this.router.navigate([
                 APP_ROUTES.main.childrens.portafolio_view.absolutePath.replace(':id', v.data),
               ]);

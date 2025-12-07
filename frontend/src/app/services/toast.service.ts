@@ -1,26 +1,44 @@
-// // toast.service.ts
-// import { Injectable } from '@angular/core';
-// import { MessageService } from 'primeng/api';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class ToastService {
-//   constructor(private messageService: MessageService) {}
+export type ToastType = 'success' | 'error' | 'info';
+export interface Toast {
+  id: string;
+  title?: string;
+  message: string;
+  type: ToastType;
+  duration?: number; // ms
+}
 
-//   success(summary: string, detail?: string) {
-//     this.messageService.add({ severity: 'success', summary, detail });
-//   }
+@Injectable({ providedIn: 'root' })
+export class ToastService {
+  private toastSubject = new Subject<Toast | { action: 'remove', id: string }>();
+  toasts$ = this.toastSubject.asObservable();
 
-//   error(summary: string, detail?: string) {
-//     this.messageService.add({ severity: 'error', summary, detail });
-//   }
+  private idCounter = 0;
+  private makeId() { return `${Date.now()}-${this.idCounter++}`; }
 
-//   warn(summary: string, detail?: string) {
-//     this.messageService.add({ severity: 'warn', summary, detail });
-//   }
+  show(message: string, opts?: { title?: string, type?: ToastType, duration?: number }) {
+    const toast: Toast = {
+      id: this.makeId(),
+      title: opts?.title,
+      message,
+      type: opts?.type ?? 'info',
+      duration: opts?.duration ?? 3500
+    };
+    this.toastSubject.next(toast);
+    return toast.id;
+  }
 
-//   info(summary: string, detail?: string) {
-//     this.messageService.add({ severity: 'info', summary, detail });
-//   }
-// }
+  success(message: string, title?: string, duration?: number) {
+    return this.show(message, { title, type: 'success', duration });
+  }
+
+  error(message: string, title?: string, duration?: number) {
+    return this.show(message, { title, type: 'error', duration });
+  }
+
+  remove(id: string) {
+    this.toastSubject.next({ action: 'remove', id });
+  }
+}
