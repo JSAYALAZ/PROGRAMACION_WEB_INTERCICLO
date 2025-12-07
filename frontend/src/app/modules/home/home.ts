@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './home.html'
+  templateUrl: './home.html',
 })
 export class Home {
   private activateRoute = inject(ActivatedRoute);
@@ -26,12 +26,12 @@ export class Home {
     return this.axios.error$;
   }
 
-  constructor(private axios: AxiosService<UserOutputDTO>) {}
+  constructor(private axios: AxiosService<UserOutputDTO>, private route: Router) {}
   ngOnInit() {
     this.axios.fetch(`${APP_ROUTES.main.childrens.usuarios.apiPath}/${this.user.uid}`, { page: 1 });
-    this.axios.data$.pipe().subscribe((data: any) => {
-      localStorage.setItem('rol', data.rol);
-      // si 'rol' pudiera ser objeto: localStorage.setItem('rol', JSON.stringify(data.rol));
-    });
+  }
+
+  editarPerfil(id:string){
+    this.route.navigate([APP_ROUTES.main.childrens.usuarios_edit.absolutePath.replace(":id",id)])
   }
 }

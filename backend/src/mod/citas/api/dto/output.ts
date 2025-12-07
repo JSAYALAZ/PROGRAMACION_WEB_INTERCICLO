@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const AsesoriaOutputDTO = z.object({
+  id: z.string(),
   programmerId: z.string(),
   date: z.string(),
   hour: z.number(),

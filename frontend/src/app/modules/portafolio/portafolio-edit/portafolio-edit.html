@@ -1,0 +1,30 @@
+<div *ngIf="loading$ | async">Cargando...</div>
+
+<div *ngIf="data$ | async as data">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="form_background flex flex-col gap-4 px-6 py-8 rounded-md"
+  >
+    <div class="form_container">
+      <label for="title" class="form_label">Titulo del portafolio</label>
+      <input id="title" type="text" formControlName="title" class="form_input" />
+    </div>
+    <div class="form_container">
+      <label for="description" class="form_label">Descripcion</label>
+      <textarea
+        name="description"
+        id="description"
+        formControlName="description"
+        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full py-2 rounded-lg bg-indigo-600 font-medium hover:bg-indigo-700 active:scale-98 hover:cursor-pointer"
+    >
+      {{ loadingSubmit ? 'Cargando' : ' Guardar datos del protafolio' }}
+    </button>
+  </form>
+</div>

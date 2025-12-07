@@ -8,6 +8,11 @@ export const AsesoriaCreateDTO = z.object({
   userId: z.string(),
 });
 export type AsesoriaCreateDTO = z.infer<typeof AsesoriaCreateDTO>;
+export const AsesoriaUpdateDTO = z.object({
+  status: z.string(),
+  responseMessage: z.string(),
+});
+export type AsesoriaUpdateDTO = z.infer<typeof AsesoriaUpdateDTO>;
 
 export const AsesoriaFiltersDTO = z.object({
   requesterId: z

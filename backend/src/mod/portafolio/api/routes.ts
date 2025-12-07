@@ -2,10 +2,11 @@ import { Router } from "express";
 import { zodValidateJson } from "src/shared/ZodValidator";
 import { listPortafolios } from "../applications/listPortafolios";
 import { ApiResponse } from "src/shared/ApiResponse";
-import { PortafolioCreateDTO } from "./dto/input";
+import { PortafolioCreateDTO, PortafolioUpdateDTO } from "./dto/input";
 import { createPortafolio } from "../applications/createPortafolio";
 import { getPortafolioById } from "../applications/getPortafolioById";
 import { PortafolioMapper } from "./mapper/portafolio_mapper";
+import { updatePortafolio } from "../applications/updatePortafolio";
 
 const router = Router();
 
@@ -34,6 +35,16 @@ router.get("/:id", async (req, res) => {
     const { id } = req.params;
     const data = await getPortafolioById(id);
     return ApiResponse.success(res, "Correcto", PortafolioMapper.map(data));
+  } catch (error) {
+    return ApiResponse.error(res, error);
+  }
+});
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+     const { validated } = await zodValidateJson(req, PortafolioUpdateDTO);
+    const dataId = await updatePortafolio(id,validated);
+    return ApiResponse.success(res, "Correcto", dataId);
   } catch (error) {
     return ApiResponse.error(res, error);
   }

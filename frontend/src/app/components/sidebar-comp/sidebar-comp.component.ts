@@ -7,17 +7,13 @@ import { APP_ROUTES } from '../../app.routes';
 @Component({
   selector: 'app-sidebar-comp',
   standalone: true,
-  imports: [
-    CommonModule,
-    SignOutComponent,
-    OptionsSidebarComponent,
-  ],
+  imports: [CommonModule, SignOutComponent, OptionsSidebarComponent],
   templateUrl: './sidebar-comp.component.html',
 })
 export class SidebarCompComponent implements OnInit {
   pinUp = true;
   rol = 'USER';
-
+  userId = '';
   modules = [
     {
       name: 'Inicio',
@@ -78,8 +74,11 @@ export class SidebarCompComponent implements OnInit {
   ];
   onSelect(path: string) {}
 
-  ngOnInit(): void {
-    const stored = typeof window !== 'undefined' ? localStorage.getItem('rol') : null;
-    this.rol = stored ?? 'USER';
+  constructor() {
+    const storedRol = localStorage.getItem('rol');
+    const storedUserId = localStorage.getItem('userId');
+    this.rol = storedRol ?? 'USER';
+    this.userId = storedUserId ?? '';
   }
+  ngOnInit(): void {}
 }

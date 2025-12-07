@@ -96,14 +96,10 @@ export class ProgrammerProfileFormComponent implements OnInit {
     }
   }
 
-  // Esta función ya no es necesaria para la validación del formulario (gracias al timeRangeValidator)
-  // pero la mantenemos para transformar el dato de hora a minutos en el payload.
   private timeToMinutesString(time: string): string {
     const minutes = timeToMinutes(time);
     return minutes !== null ? String(minutes) : '';
   }
-
-  // Se eliminó validateDisponibilidades, ya que ahora el validador hace el trabajo.
 
   onSubmit() {
     this.form.markAllAsTouched(); // Muestra todos los errores

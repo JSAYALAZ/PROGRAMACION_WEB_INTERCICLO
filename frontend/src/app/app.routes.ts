@@ -17,6 +17,8 @@ import { PerfilProgActions } from './modules/perfilProgramador/perfil-prog-actio
 import { ProgrammerProfileFormComponent } from './modules/perfilProgramador/perfilProgramador-edit-page/perfilProgramador-edit-page.';
 import { AsesoriaNew } from './modules/asesorias/asesoria-new/asesoria-new';
 import { CitasMainPage } from './modules/citas/citas-main-page/citas-main-page';
+import { PortafolioEdit } from './modules/portafolio/portafolio-edit/portafolio-edit';
+import { AsesoriaEdit } from './modules/asesorias/asesoria-edit/asesoria-edit';
 
 function redirectToLogin() {
   redirectUnauthorizedTo(APP_ROUTES.login.path);
@@ -86,6 +88,12 @@ export const APP_ROUTES = {
         component: AsesoriaNew,
         apiPath: 'http://localhost:3000/api/asesoria',
       },
+      asesorias_edit: {
+        path: 'asesorias/:id/edit',
+        absolutePath: 'idx/asesorias/:id/edit',
+        component: AsesoriaEdit,
+        apiPath: 'http://localhost:3000/api/asesoria',
+      },
       //Portafoli
       portafolio: {
         path: 'portafolio',
@@ -97,6 +105,12 @@ export const APP_ROUTES = {
         path: 'portafolio/:id/view',
         absolutePath: 'idx/portafolio/:id/view',
         component: PortafolioView,
+        apiPath: 'http://localhost:3000/api/portafolio',
+      },
+      portafolio_edit: {
+        path: 'portafolio/:id/edit',
+        absolutePath: 'idx/portafolio/:id/edit',
+        component: PortafolioEdit,
         apiPath: 'http://localhost:3000/api/portafolio',
       },
       //Citas
@@ -189,6 +203,10 @@ export const routes: Routes = [
       {
         path: APP_ROUTES.main.childrens.portafolio_view.path,
         component: APP_ROUTES.main.childrens.portafolio_view.component,
+      },
+      {
+        path: APP_ROUTES.main.childrens.portafolio_edit.path,
+        component: APP_ROUTES.main.childrens.portafolio_edit.component,
       },
       //Citas
       {

@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs';
 export class UserEditPage {
   authForm!: FormGroup;
   userId: string = '';
+  rol = 'USER';
   loadingSubmit: boolean = false;
   private sub?: Subscription;
 
@@ -36,6 +37,8 @@ export class UserEditPage {
     private http: HttpClient
   ) {
     this.initForm();
+    const stored = localStorage.getItem('rol');
+    this.rol = stored ?? 'USER';
   }
   initForm() {
     this.authForm = new FormGroup({
@@ -59,8 +62,17 @@ export class UserEditPage {
 
       this.http
         .put(`${APP_ROUTES.main.childrens.usuarios.apiPath}/${this.userId}`, object)
-        .subscribe((data) => {});
-      this.route.navigate([APP_ROUTES.main.childrens.usuarios.absolutePath]);
+        .subscribe({
+          next: (v: any) => {
+            if (v.success) {
+              const redirectPath =
+                this.rol == 'ADMIN'
+                  ? APP_ROUTES.main.childrens.usuarios.absolutePath
+                  : APP_ROUTES.main.childrens.main;
+              this.route.navigate([redirectPath]);
+            }
+          },
+        });
     } catch (err: any) {
       if (err instanceof Error) {
       }

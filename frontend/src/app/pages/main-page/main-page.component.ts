@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   standalone:true,
   imports: [SidebarCompComponent, RouterOutlet, CommonModule],
   templateUrl: './main-page.component.html',
-  styleUrl: './main-page.component.css',
 })
 export class MainPage {
   private activeRoute = inject(ActivatedRoute);

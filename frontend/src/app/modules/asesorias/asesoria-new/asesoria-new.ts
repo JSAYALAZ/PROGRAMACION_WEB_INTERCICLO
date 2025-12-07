@@ -50,16 +50,14 @@ export class AsesoriaNew implements OnInit {
     const payload = {
       date: this.form.value.date,
       durationMin: Number(this.form.value.durationMin),
-      commet: this.form.value.comment,
+      comment: this.form.value.comment,
       programmerId: this.programmerId,
       userId: this.user.uid,
     };
 
     this.http.post(APP_ROUTES.main.childrens.asesorias_new.apiPath, payload).subscribe({
       next: (res) => {
-        console.log(res);
-
-        // this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath]);
+        this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath]);
       },
       error: (err) => {
         console.log(err);

@@ -11,7 +11,7 @@
       <input id="displayName" type="text" formControlName="displayName" class="form_input" />
     </div>
 
-    <div class="form_container">
+    <div class="form_container {{ rol != 'ADMIN' && 'hidden' }}">
       <label for="role" class="form_label">Rol</label>
       <select name="role" id="role" class="form_input" formControlName="role">
         <option value="PROGRAMMER">Programador</option>

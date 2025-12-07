@@ -89,7 +89,15 @@ export const UserDb: UserDbDefinition = {
           firebaseUid: data.getFirebaseUid(),
         },
       });
-      return created.id;
+      const resp = new Usuario({
+        email: created.email,
+        firebaseUid: created.firebaseUid,
+        foto_perfil: created.picture,
+        id: created.id,
+        rol: created.role,
+        username: created.displayName,
+      });
+      return resp;
     } catch (error) {
       if (error instanceof AppError) throw error;
       const mapped = mapPrismaError(error);

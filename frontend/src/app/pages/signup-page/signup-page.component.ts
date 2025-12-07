@@ -28,49 +28,6 @@ export class SignupPage {
     // this.initForm();
   }
 
-  // initForm() {
-  //   this.authForm = new FormGroup({
-  //     email: new FormControl('', Validators.required),
-  //     password: new FormControl('', Validators.required),
-  //     user: new FormControl('', Validators.required),
-  //   });
-  // }
-
-  // async onSubmit() {
-  //   console.log("dskdasljdask");
-
-  //   if (this.loadingSubmit) return;
-  //   this.loadingSubmit = true;
-  //   // this.toast.error('Completa la informacion');
-  //   if (!this.authForm.valid) {
-  //     this.loadingSubmit = false;
-  //     return;
-  //   }
-
-  //   this.authForm.value
-  //   try {
-  //     const credential = await createUserWithEmailAndPassword(
-  //       this.auth,
-  //       this.authForm.value.email,
-  //       this.authForm.value.password
-  //     );
-  //     const object = {
-  //       firebaseUid: credential.user.uid,
-  //       email: credential.user.email,
-  //       displayName: this.authForm.value.user,
-  //     };
-
-  //     this.http.post(APP_ROUTES.main.childrens.usuarios.apiPath, object).subscribe((data) => {
-  //       console.log(data);
-  //     });
-  //   } catch (error: any) {
-  //     if (error instanceof Error) {
-  //     }
-  //   } finally {
-  //     this.loadingSubmit = false;
-  //   }
-  // }
-
   async createUserWithGoogle() {
     if (this.loadingSubmit) return;
     this.loadingSubmit = true;

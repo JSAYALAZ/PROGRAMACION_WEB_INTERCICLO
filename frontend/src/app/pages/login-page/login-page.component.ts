@@ -85,8 +85,16 @@ export class LoginPage {
           foto_perfil: res.user.photoURL,
         };
 
-        this.http.post(APP_ROUTES.main.childrens.usuarios.apiPath, object).subscribe((data) => {});
-        this.redirectMain();
+        this.http.post(APP_ROUTES.main.childrens.usuarios.apiPath, object).subscribe({
+          next: (res: any) => {
+            localStorage.setItem('rol', res.data.rol);
+            localStorage.setItem('userId', res.data.id);
+            this.redirectMain();
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
       })
       .catch(
         (err) => {}

@@ -22,18 +22,18 @@ export class ProjectCard {
 
   // Mapeo de color por sección (ajusta claves a tus enums reales)
   sectionColorMap: Record<string, string> = {
-    WEB: 'bg-indigo-100 text-indigo-800',
-    MOBILE: 'bg-green-100 text-green-800',
-    BACKEND: 'bg-rose-100 text-rose-800',
+    ACADEMIC: 'bg-indigo-100 text-indigo-800',
+    WORK: 'bg-green-100 text-green-800',
     DATA: 'bg-yellow-100 text-yellow-800',
     DEFAULT: 'bg-gray-100 text-gray-800',
   };
 
   participationColorMap: Record<string, string> = {
-    SOLO: 'bg-slate-100 text-slate-800',
-    TEAM: 'bg-blue-100 text-blue-800',
-    LEAD: 'bg-purple-100 text-purple-800',
-    DEFAULT: 'bg-gray-100 text-gray-800',
+    FRONTEND: 'bg-slate-100 text-slate-800',
+    BACKEND: 'bg-blue-100 text-blue-800',
+    DATABASE: 'bg-purple-100 text-purple-800',
+    FULLSTACK: 'bg-yellow-100 text-gray-800',
+    OTHER: 'bg-gray-100 text-gray-800',
   };
 
   getSectionClasses(section: string) {

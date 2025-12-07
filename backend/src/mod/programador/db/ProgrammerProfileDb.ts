@@ -84,6 +84,7 @@ export const ProgrammerProfileDb: ProgrammerProfileDbDefinition = {
         where: { userId },
         include: { portfolio: true, available: true },
       });
+      
       if (!prof) throw AppError.notFound();
       //Mapeo a modelos
       const resp = new PerfilProgramador({

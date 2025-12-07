@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { APP_ROUTES } from '../../../app.routes';
 export type AsesoriaOutputDTO = {
+  id: string;
   programmerId: string;
   date: string; // ISO date string expected
   hour: number; // interpreted as minutes since midnight OR hour number (0-23)
@@ -15,11 +18,12 @@ export type AsesoriaOutputDTO = {
   templateUrl: './asesoria-card.html',
 })
 export class AsesoriaCard {
-@Input() asesoria!: AsesoriaOutputDTO;
+  @Input() asesoria!: AsesoriaOutputDTO;
 
+  constructor(private router: Router) {}
   // Formatea hour en "HH:MM" intentando adivinar si hour está en minutos o en horas.
   formatHour(hour: number): string {
-    if (hour == null || Number.isNaN(hour)) return "--:--";
+    if (hour == null || Number.isNaN(hour)) return '--:--';
     // si parece minutos (> 24) lo tratamos como minutos desde medianoche
     if (hour > 24) {
       const hh = Math.floor((hour % 1440) / 60);
@@ -39,31 +43,32 @@ export class AsesoriaCard {
   formatDate(iso: string): string {
     try {
       const d = new Date(iso);
-      return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+      return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
     } catch {
       return iso;
     }
   }
 
   pad(n: number) {
-    return n.toString().padStart(2, "0");
+    return n.toString().padStart(2, '0');
   }
 
   statusBadgeClass(status: string) {
-    switch ((status || "").toLowerCase()) {
-      case "confirmed":
-      case "aceptada":
-      case "done":
-        return "bg-emerald-100 text-emerald-800";
-      case "pending":
-      case "pendiente":
-        return "bg-yellow-100 text-yellow-800";
-      case "cancelled":
-      case "cancelada":
-      case "rejected":
-        return "bg-rose-100 text-rose-800";
+    switch ((status || '').toLowerCase()) {
+      case 'ACCEPTED':
+        return 'bg-emerald-100 text-emerald-800';
+      case 'PENDIENTE':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'REJECTED':
+        return 'bg-rose-100 text-rose-800';
       default:
-        return "bg-slate-100 text-slate-800";
+        return 'bg-slate-100 text-slate-800';
     }
+  }
+
+  editarCita(id: string) {
+    this.router.navigate([
+      APP_ROUTES.main.childrens.asesorias_edit.absolutePath.replace(':id', id),
+    ]);
   }
 }

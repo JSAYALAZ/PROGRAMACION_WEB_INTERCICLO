@@ -29,13 +29,14 @@
         class="w-36 h-36 rounded-full flex items-center justify-center text-4xl font-bold bg-gray-100 text-slate-800 ring-4 ring-white shadow"
         aria-hidden="true"
       >
-        {{ user.username&&user.username.charAt(0) }}
+        {{ user.username && user.username.charAt(0) }}
       </div>
     </ng-template>
 
     <!-- Nombre / email -->
-    <h2 class="mt-4 text-xl md:text-2xl font-semibold text-slate-900 truncate">
+    <h2 class="mt-4 text-xl md:text-2xl font-semibold text-slate-900 truncate flex">
       {{ user.username }}
+      <P (click)="editarPerfil(user.id)" class="text-sm text-gray-500 hover:cursor-pointer">Editar</P>
     </h2>
     <p class="mt-1 text-sm text-slate-500 truncate" title="{{ user.email }}">
       {{ user.email }}
@@ -73,27 +74,11 @@
 
     <!-- Grid de bloques (adaptable): reemplaza o rellena con datos reales -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-      <!-- Ejemplo: tarjeta de actividad -->
-      <div class="p-4 rounded-lg bg-white shadow-sm">
-        <h3 class="text-sm font-semibold text-slate-800">Actividad reciente</h3>
-        <p class="mt-2 text-xs text-slate-500">Sin actividad para mostrar (ejemplo).</p>
-      </div>
-
       <!-- Ejemplo: proyectos -->
-      <div class="p-4 rounded-lg bg-white shadow-sm">
+      <!-- <div class="p-4 rounded-lg bg-white shadow-sm">
         <h3 class="text-sm font-semibold text-slate-800">Proyectos</h3>
         <p class="mt-2 text-xs text-slate-500">Accede a tus proyectos desde aquí.</p>
-      </div>
-
-      <!-- Ejemplo: accesos rapidos -->
-      <div class="p-4 rounded-lg bg-white shadow-sm">
-        <h3 class="text-sm font-semibold text-slate-800">Accesos rápidos</h3>
-        <ul class="mt-2 text-xs text-slate-500 space-y-1">
-          <li>- Configuración</li>
-          <li>- Integraciones</li>
-          <li>- Facturación</li>
-        </ul>
-      </div>
+      </div> -->
 
       <!-- Puedes añadir más bloques o un slot para contenido dinámico -->
     </div>

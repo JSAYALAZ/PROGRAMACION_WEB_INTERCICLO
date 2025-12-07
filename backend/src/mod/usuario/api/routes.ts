@@ -7,6 +7,8 @@ import { createUser } from "../applications/createUser";
 import { getUserById } from "../applications/getUserById";
 import { updateUser } from "../applications/updateUser";
 import { UserMapper } from "./mapper/user_mapper";
+import { getProgrammerProfileByUserId } from "src/mod/programador/applications/getProgrammerProfileByUserId";
+import { ProgrammerMapper } from "src/mod/programador/api/mapper/programmer_mapper";
 
 const router = Router();
 
@@ -24,8 +26,8 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { validated } = await zodValidateJson(req, UserCreateDTO);
-    const userId = await createUser(validated);
-    return ApiResponse.success(res, "Correcto", userId);
+    const user = await createUser(validated);
+    return ApiResponse.success(res, "Correcto", UserMapper.map(user));
   } catch (error) {
     return ApiResponse.error(res, error);
   }
@@ -35,6 +37,16 @@ router.get("/:id", async (req, res) => {
     const { id } = req.params;
     const data = await getUserById(id);
     return ApiResponse.success(res, "Correcto", UserMapper.map(data));
+  } catch (error) {
+    return ApiResponse.error(res, error);
+  }
+});
+router.get("/:id/programmerProfile", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await getUserById(id)
+    const profile = await getProgrammerProfileByUserId(user.getId());
+    return ApiResponse.success(res, "Correcto", ProgrammerMapper.map(profile));
   } catch (error) {
     return ApiResponse.error(res, error);
   }

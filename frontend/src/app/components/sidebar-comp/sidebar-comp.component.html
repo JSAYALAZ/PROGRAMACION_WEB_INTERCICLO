@@ -11,7 +11,9 @@
   <app-options-sidebar
     *ngIf="module.rol === 'ANY' || rol === 'ADMIN' || module.rol === rol"
     [text]="module.name"
-    [url]="module.routes.main.path">
+    [url]="module.routes.main.path"
+    [userId]="userId"
+    >
   </app-options-sidebar>
 </ng-container>
     </nav>

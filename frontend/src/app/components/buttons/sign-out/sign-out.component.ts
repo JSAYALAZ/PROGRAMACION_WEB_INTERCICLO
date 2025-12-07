@@ -14,6 +14,7 @@ export class SignOutComponent {
   private router = inject(Router);
 
   onSignOut() {
+    localStorage.removeItem('rol')
     signOut(this.auth).then((res) => {
       this.router.navigate([APP_ROUTES.login.path]);
     });

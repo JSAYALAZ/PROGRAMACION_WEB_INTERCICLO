@@ -11,13 +11,20 @@ import { Router } from '@angular/router';
 export class OptionsSidebarComponent {
   @Input() text = '';
   @Input() url = '';
+  @Input() userId = '';
 
   @Output() clicked = new EventEmitter<void>();
 
   constructor(private router: Router) {}
 
   handleClick() {
-    this.clicked.emit(); // notifica al padre
+    if(this.text=="Citas"){
+      this.router.navigate([this.url],{queryParams:{
+        userId: this.userId
+      }}); // navega
+      return;
+    }
     this.router.navigate([this.url]); // navega
+    this.clicked.emit(); // notifica al padre
   }
 }

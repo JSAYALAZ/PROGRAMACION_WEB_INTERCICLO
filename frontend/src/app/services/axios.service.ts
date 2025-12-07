@@ -38,7 +38,7 @@ export class AxiosService<T> {
       .pipe(
         catchError((err: HttpErrorResponse) => {
           console.log(err);
-          
+
           this.errorSubject.next(err.error?.message || 'Error desconocido');
 
           if (defaultValue !== undefined) {
@@ -50,6 +50,8 @@ export class AxiosService<T> {
         finalize(() => this.loadingSubject.next(false))
       )
       .subscribe((res) => {
+        console.log(res);
+        
         if (res?.success) {
           this.dataSubject.next(res.data);
         }
