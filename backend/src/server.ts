@@ -12,7 +12,10 @@ import { ApiResponse } from "./shared/ApiResponse";
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({origin:[
+  'https://proyecto-interciclo-3c1b8.web.app/',
+  'http://localhost:4200'
+]}));
 app.use(express.json());
 
 // Rutas

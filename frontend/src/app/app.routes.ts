@@ -19,6 +19,11 @@ import { CitasMainPage } from './modules/citas/citas-main-page/citas-main-page';
 import { PortafolioEdit } from './modules/portafolio/portafolio-edit/portafolio-edit';
 import { AsesoriaEdit } from './modules/asesorias/asesoria-edit/asesoria-edit';
 
+export const environment = {
+  production: false,
+  api: 'https://programacion-web-interciclo.onrender.com/api/',
+};
+
 function redirectToLogin() {
   redirectUnauthorizedTo(APP_ROUTES.login.path);
 }
@@ -54,88 +59,88 @@ export const APP_ROUTES = {
         path: 'usuarios',
         absolutePath: 'idx/usuarios',
         component: UsersMainPage,
-        apiPath: 'http://localhost:3000/api/user',
+        apiPath: `${environment.api}user`,
       },
       usuarios_edit: {
         path: 'usuarios/:id/edit',
         absolutePath: 'idx/usuarios/:id/edit',
         component: UserEditPage,
-        apiPath: 'http://localhost:3000/api/user',
+        apiPath: `${environment.api}user`,
       },
       proyectos: {
         path: 'proyectos',
         absolutePath: 'idx/proyectos',
         component: ProyectosMainPage,
-        apiPath: 'http://localhost:3000/api/proyect',
+        apiPath: `${environment.api}proyect`,
       },
       proyectos_new: {
         path: 'proyectos/new',
         absolutePath: 'idx/proyectos/new',
         component: ProyectosNewPage,
-        apiPath: 'http://localhost:3000/api/proyect',
+        apiPath: `${environment.api}proyect`,
       },
       //Asesorias
       asesorias: {
         path: 'asesorias',
         absolutePath: 'idx/asesorias',
         component: AsesoriasMainPage,
-        apiPath: 'http://localhost:3000/api/asesoria',
+        apiPath: `${environment.api}asesoria`,
       },
       asesorias_new: {
         path: 'asesorias/new',
         absolutePath: 'idx/asesorias/new',
         component: AsesoriaNew,
-        apiPath: 'http://localhost:3000/api/asesoria',
+        apiPath: `${environment.api}asesoria`,
       },
       asesorias_edit: {
         path: 'asesorias/:id/edit',
         absolutePath: 'idx/asesorias/:id/edit',
         component: AsesoriaEdit,
-        apiPath: 'http://localhost:3000/api/asesoria',
+        apiPath: `${environment.api}asesoria`,
       },
       //Portafoli
       portafolio: {
         path: 'portafolio',
         absolutePath: 'idx/portafolio',
         component: PortafolioMainPage,
-        apiPath: 'http://localhost:3000/api/portafolio',
+        apiPath: `${environment.api}portafolio`,
       },
       portafolio_view: {
         path: 'portafolio/:id/view',
         absolutePath: 'idx/portafolio/:id/view',
         component: PortafolioView,
-        apiPath: 'http://localhost:3000/api/portafolio',
+        apiPath: `${environment.api}portafolio`,
       },
       portafolio_edit: {
         path: 'portafolio/:id/edit',
         absolutePath: 'idx/portafolio/:id/edit',
         component: PortafolioEdit,
-        apiPath: 'http://localhost:3000/api/portafolio',
+        apiPath: `${environment.api}portafolio`,
       },
       //Citas
       citas: {
         path: 'citas',
         absolutePath: 'idx/citas',
         component: CitasMainPage,
-        apiPath: 'http://localhost:3000/api/citas',
+        apiPath: `${environment.api}citas`,
       },
       perfilProgramador: {
         path: 'programmer-profile',
         absolutePath: 'idx/programmer-profile',
         component: PerfilProgramadorMainPage,
-        apiPath: 'http://localhost:3000/api/programmerProfile',
+        apiPath: `${environment.api}programmerProfile`,
       },
       perfilProgramador_edit: {
         path: 'programmer-profile-edit',
         absolutePath: 'idx/programmer-profile-edit',
         component: ProgrammerProfileFormComponent,
-        apiPath: 'http://localhost:3000/api/programmerProfile',
+        apiPath: `${environment.api}programmerProfile`,
       },
       perfilProgramador_actions: {
         path: 'programmer-profile-actions',
         absolutePath: 'idx/programmer-profile-actions',
         component: PerfilProgActions,
-        apiPath: 'http://localhost:3000/api/programmerProfile',
+        apiPath: `${environment.api}programmerProfile`,
       },
     },
   },

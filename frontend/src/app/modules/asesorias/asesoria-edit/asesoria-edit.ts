@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-asesoria-edit',
+  standalone:true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './asesoria-edit.html',
 })
