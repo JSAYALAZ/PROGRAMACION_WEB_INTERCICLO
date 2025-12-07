@@ -1,6 +1,8 @@
-<div *ngIf="loading$ | async"><app-loading-page></app-loading-page></div>
+<ng-container *ngIf="loading$ | async"><app-loading-page></app-loading-page></ng-container>
 
-<div *ngIf="data$ | async as data" class="lg:px-52 md:px-24">
+<ng-container *ngIf="error$ | async as error" class="text-red-500">Error: {{ error }}</ng-container>
+
+<div *ngIf="data$ | async as data" class="ld:px-64 md:px-24 px-5">
   <form
     [formGroup]="authForm"
     (ngSubmit)="onSubmit()"

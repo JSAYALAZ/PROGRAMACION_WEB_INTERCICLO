@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ɵEmptyOutletComponent } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { APP_ROUTES } from '../../../app.routes';
 import { User } from '@angular/fire/auth';
 import { AxiosService } from '../../../services/axios.service';
@@ -10,7 +10,7 @@ import { LoadingPage } from '../../../pages/loading-page/loading-page';
 @Component({
   selector: 'app-perfil-prog-actions',
   standalone:true,
-  imports: [CommonModule, LoadingPage, ɵEmptyOutletComponent],
+  imports: [CommonModule, LoadingPage],
   templateUrl: './perfil-prog-actions.html',
 })
 export class PerfilProgActions implements OnInit {

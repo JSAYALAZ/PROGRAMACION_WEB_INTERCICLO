@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, ɵEmptyOutletComponent } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { APP_ROUTES } from '../../../app.routes';
 import { AxiosService } from '../../../services/axios.service';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { ToastService } from '../../../services/toast.service';
 @Component({
   selector: 'app-portafolio-edit',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, LoadingPage, ɵEmptyOutletComponent],
+  imports: [CommonModule, ReactiveFormsModule, LoadingPage],
   templateUrl: './portafolio-edit.html',
 })
 export class PortafolioEdit implements OnInit {

@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { ɵInternalFormsSharedModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserCard, UserOutputDTO } from '../user-card/user-card';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
+import { EmptyPage } from '../../../pages/empty-page/empty-page';
 
 @Component({
   selector: 'app-users-main-page',
   standalone: true,
-  imports: [CommonModule, ɵInternalFormsSharedModule, UserCard],
+  imports: [CommonModule, ɵInternalFormsSharedModule, UserCard,LoadingPage, EmptyPage],
   templateUrl: './users-main-page.html',
 })
 export class UsersMainPage {

@@ -1,10 +1,9 @@
-<!-- Este article ocupa todo el espacio disponible del contenedor padre -->
-<ng-component *ngIf="loading$ | async"><app-loading-page></app-loading-page></ng-component>
+<ng-container *ngIf="loading$ | async"><app-loading-page></app-loading-page></ng-container>
 
-<ng-component *ngIf="error$ | async as error" class="text-red-500">Error: {{ error }}</ng-component>
+<ng-container *ngIf="error$ | async as error" class="text-red-500">Error: {{ error }}</ng-container>
 
-<pre *ngIf="data$ | async as data">
-  <div class="flex gap-3 items-center">
+<ng-container *ngIf="data$ | async as data">
+  <div class="flex flex-col gap-2 ld:px-64 md:px-24 px-5">
     <!-- PRIMARY (Crear proyecto) -->
     <button
       (click)="crearProyecto()"
@@ -72,4 +71,4 @@
       Actualizar Portafolio
     </button>
   </div>
-</pre>
+</ng-container>
