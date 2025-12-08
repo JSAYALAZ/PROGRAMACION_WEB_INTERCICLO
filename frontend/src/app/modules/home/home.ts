@@ -5,11 +5,12 @@ import { AxiosService } from '../../services/axios.service';
 import { UserOutputDTO } from '../usuarios/user-card/user-card';
 import { APP_ROUTES } from '../../app.routes';
 import { CommonModule } from '@angular/common';
+import { LoadingPage } from '../../pages/loading-page/loading-page';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,LoadingPage],
   templateUrl: './home.html',
 })
 export class Home {

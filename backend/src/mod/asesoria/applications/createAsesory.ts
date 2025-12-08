@@ -14,7 +14,7 @@ export const createAsesory = async (dto: AsesoriaCreateDTO) => {
     //Creacion de modelos
     const user = await getUserById(dto.userId);
     const asesoria = new Asesoria({
-      comment: dto.commet,
+      comment: dto.comment,
       durationMin: dto.durationMin,
       id: null,
       date: dto.date,
@@ -23,6 +23,7 @@ export const createAsesory = async (dto: AsesoriaCreateDTO) => {
       responseMessage: null,
       status: "PENDIENTE",
     });
+    
     const programmer = await getProgrammerProfileById(dto.programmerId);
     const { filters } = generateAsesoriaFilters({ from: dto.date, programmerId:dto.programmerId })
     const citas = await AsesoriaDB.list(filters);

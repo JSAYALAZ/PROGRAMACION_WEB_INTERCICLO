@@ -66,11 +66,15 @@ export class AsesoriaNew implements OnInit {
       next: (v: any) => {
         if (v.success) {
           this.toast.success('Guardado correctamente', 'Hecho');
-          this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath]);
+          setTimeout(() => {
+            this.router.navigate([APP_ROUTES.main.childrens.asesorias.absolutePath]);
+            }, 5000);
         }
       },
       error: (err) => {
-        console.log(err);
+        if(err.error.message){
+          this.toast.error(err.error.message,"Control")
+        }
       },
     });
   }

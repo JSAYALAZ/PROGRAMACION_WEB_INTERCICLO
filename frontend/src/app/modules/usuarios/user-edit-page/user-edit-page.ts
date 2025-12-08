@@ -75,9 +75,16 @@ export class UserEditPage {
                 this.rol == 'ADMIN'
                   ? APP_ROUTES.main.childrens.usuarios.absolutePath
                   : APP_ROUTES.main.childrens.main;
-              this.route.navigate([redirectPath]);
+              setTimeout(() => {
+                this.route.navigate([redirectPath]);
+              }, 5000);
             }
           },
+          error: (err) => {
+          if (err.error.message) {
+            this.toast.error(err.error.message, 'Control');
+          }
+        },
         });
     } catch (err: any) {
       if (err instanceof Error) {

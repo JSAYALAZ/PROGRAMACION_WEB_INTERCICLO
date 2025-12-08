@@ -3,7 +3,7 @@ import z from "zod";
 export const AsesoriaCreateDTO = z.object({
   date: z.string(),
   durationMin: z.number(),
-  commet: z.string(),
+  comment: z.string(),
   programmerId: z.string(),
   userId: z.string(),
 });

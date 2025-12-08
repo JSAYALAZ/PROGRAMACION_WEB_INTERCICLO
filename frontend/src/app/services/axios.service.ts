@@ -49,12 +49,20 @@ export class AxiosService<T> {
         }),
         finalize(() => this.loadingSubject.next(false))
       )
-      .subscribe((res) => {
-        console.log(res);
-        
-        if (res?.success) {
+      .subscribe({
+        next:(res)=>{
+          if (res?.success) {
           this.dataSubject.next(res.data);
         }
-      });
+        },
+        error: (err) => {
+          if (err.error.message) {
+            this.errorSubject.next(err.error.message);
+          }else{
+            this.errorSubject.next("Error desconocido");
+          }
+        },
+      }
+    );
   }
 }

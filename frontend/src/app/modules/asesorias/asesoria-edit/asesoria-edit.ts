@@ -8,11 +8,12 @@ import { Subscription } from 'rxjs';
 import { APP_ROUTES } from '../../../app.routes';
 import { CommonModule } from '@angular/common';
 import { ToastService } from '../../../services/toast.service';
+import { LoadingPage } from '../../../pages/loading-page/loading-page';
 
 @Component({
   selector: 'app-asesoria-edit',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, LoadingPage],
   templateUrl: './asesoria-edit.html',
 })
 export class AsesoriaEdit implements OnInit {
@@ -69,9 +70,16 @@ export class AsesoriaEdit implements OnInit {
           next: (v: any) => {
             if (v.success) {
               this.toast.success('Guardado correctamente', 'Hecho');
-              this.router.navigate([APP_ROUTES.main.childrens.citas.absolutePath]);
+              setTimeout(() => {
+                this.router.navigate([APP_ROUTES.main.childrens.citas.absolutePath]);
+              }, 5000);
             }
           },
+          error: (err) => {
+          if (err.error.message) {
+            this.toast.error(err.error.message, 'Control');
+          }
+        },
         });
     } catch (err: any) {
       if (err instanceof Error) {
@@ -90,7 +98,7 @@ export class AsesoriaEdit implements OnInit {
       this.axios.fetch(`${APP_ROUTES.main.childrens.asesorias.apiPath}/${asesoriaId}`, { page: 1 });
       this.sub = this.axios.data$.pipe().subscribe((data) => {
         this.form.patchValue({
-          status: data?.status ?? '',
+          status: "ACCEPTED",
           responseMessage: data?.responseMessage ?? '',
         });
       });

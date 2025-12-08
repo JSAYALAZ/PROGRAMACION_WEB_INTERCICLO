@@ -56,7 +56,14 @@ export class ProyectosNewPage {
         next: (v: any) => {
           if (v.success) {
             this.toast.success('Guardado correctamente', 'Hecho');
-            this.route.navigate([APP_ROUTES.main.childrens.proyectos.absolutePath]);
+            setTimeout(() => {
+              this.route.navigate([APP_ROUTES.main.childrens.proyectos.absolutePath]);
+            }, 5000);
+          }
+        },
+        error: (err) => {
+          if (err.error.message) {
+            this.toast.error(err.error.message, 'Control');
           }
         },
       });

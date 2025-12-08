@@ -8,7 +8,7 @@ import { Subscription, timer } from 'rxjs';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="fixed right-4 top-4 z-50 flex flex-col gap-3 max-w-xs ">
+    <div class="fixed right-4 top-4 z-50 flex flex-col gap-3 w-xs">
       <ng-container *ngFor="let t of toasts">
         <div
           class="flex items-start gap-3 p-3 rounded-lg shadow-lg bg-white border-l-4"
@@ -20,9 +20,9 @@ import { Subscription, timer } from 'rxjs';
           (mouseenter)="pause(t.id)"
           (mouseleave)="resume(t.id)"
         >
-          <div class="flex-1 min-w-0">
+          <div class="flex-1 min-w-0 ">
             <div class="flex items-center justify-between gap-2">
-              <div class="text-sm font-semibold truncate">{{ t.title || (t.type | titlecase) }}</div>
+              <div class="text-sm font-semibold truncate text-black">{{ t.title || (t.type | titlecase) }}</div>
               <button (click)="close(t.id)" aria-label="close" class="text-slate-400 hover:text-slate-600">
                 ✕
               </button>

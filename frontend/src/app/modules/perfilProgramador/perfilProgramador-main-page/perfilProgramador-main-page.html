@@ -4,7 +4,7 @@
 
 <ng-container *ngIf="data$ | async as data">
   <ng-container *ngIf="!data.length"><app-empty-page></app-empty-page></ng-container>
-  <div class="px-64">
+  <div class="flex flex-col gap-2 ld:px-64 md:px-24 px-5">
     <app-perfil-programador-card
       *ngFor="let d of data"
       [programmer]="d"

@@ -1,13 +1,12 @@
 <article
   *ngIf="programmer"
-  class="w-full bg-white/80 rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-transform transform hover:-translate-y-0.5 
-  hover:shadow-lg flex flex-row"
+  class="w-full bg-white/80 rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-transform transform hover:-translate-y-0.5 hover:shadow-lg flex flex-row"
   role="region"
   aria-label="Ficha de programador {{ programmer.name }}"
 >
   <div class="flex flex-col sm:flex-row items-stretch">
     <!-- AVATAR -->
-    <div class="flex-shrink-0  p-4 sm:p-6 flex items-center justify-center ">
+    <div class="flex-shrink-0 p-4 sm:p-6 flex items-center justify-center">
       <img
         *ngIf="programmer.avatarUrl; else avatarPlaceholder"
         [src]="programmer.avatarUrl"
@@ -36,7 +35,7 @@
           </p>
         </div>
 
-        <div class="hidden sm:flex flex-col items-end">
+        <div class="flex-col items-end">
           <button
             (click)="agendarCita()"
             class="mt-2 inline-block text-sm px-3 py-1 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-100 hover:cursor-pointer"
@@ -77,23 +76,6 @@
             Sin disponibilidad
           </li>
         </ul>
-
-        <!-- BOTONES MÓVIL -->
-        <div class="flex items-center gap-2 sm:hidden">
-          <a
-            *ngIf="programmer.contactLinks"
-            [href]="programmer.contactLinks"
-            target="_blank"
-            rel="noopener"
-            class="text-sm px-3 py-1 rounded-md bg-indigo-600 text-white"
-            >Contactar</a
-          >
-
-          <a class="text-sm px-3 py-1 rounded-md border border-slate-200 text-slate-700"
-            >Portafolio</a
-          >
-          <!-- [routerLink]="['/idx/portafolio/view', programmer.portafolioId]" -->
-        </div>
       </div>
     </div>
   </div>
